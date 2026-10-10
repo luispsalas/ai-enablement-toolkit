@@ -1,0 +1,3 @@
+team,tool,access_given,users_with_access,first_real_use,last_use,users_regular,status,stall_class,stall_ref,next_action,action_owner,review_date,source,synthetic
+solo consultant,Claude Code (with domain skills),2025-10-01,1,2025-10-01,2026-10-09,1,regular,,S01,After the next model launch: compare usage before and after (feedback-01),dev team,,self-report,no
+solo consultant,Claude Code skills (third-party and early),2025-11-01,1,2025-11-01,2026-01-01,0,dropped,workflow,S02,"List installed skills against the domain table; mark each keep, merge or retire",process owner,,self-report,no

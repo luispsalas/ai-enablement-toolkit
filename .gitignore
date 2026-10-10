@@ -1,0 +1,7 @@
+# Interview notes are private by the kit's own rule (adoption-kit/interview-guide.md):
+# they never go into this repository, even anonymized.
+notes-*.md
+
+.DS_Store
+__pycache__/
+*.pyc
