@@ -8,14 +8,14 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 4 of 18 items are available today. The other 14 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 4 of 19 items are available today. The other 15 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
 | | |
 |---|---|
 | **Goal** | Help teams adopt AI tools and use them well, and send every problem found to the person who can fix it. |
-| **What was done** | An adoption review kit with structured reporting, tried once, a 19-slide Spanish AI literacy deck and an operating model one-pager; 14 more to come. |
+| **What was done** | An adoption review kit with structured reporting, tried once, a 19-slide Spanish AI literacy deck and an operating model one-pager; 15 more to come. |
 | **Governance** | Consent before every interview, codes instead of names, quotations only with permission, and no tool filed as broken until reproduced. |
 | **Measurement** | One trial, n = 1: 2 diagnosis rows, 2 tracker rows and 1 feedback page; 20 checks, each seen to fail on a planted error. |
 
@@ -50,6 +50,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 | Acceptable-use one-pager | What data may go into which AI tool, and when to ask first | planned |
 | AI tool evaluation scorecard | Does the tool work in *this* workflow? Broken versus confusing, before buying | planned |
 | [**AI operating model one-pager**](governance/operating-model.md) | Who decides what: roles and decision rights for AI tools, the cycle from idea to pilot to rollout, and what each review checks | **available** |
+| AI agent specification template | One page a delivery team can build from: the agent's goal and owner, inputs and the data it must never see, tools and permissions, what it decides and what goes to a person, failure paths and success metrics, with a filled-in example | planned |
 
 ### Assessment
 
