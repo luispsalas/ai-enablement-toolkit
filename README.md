@@ -49,7 +49,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 |---|---|---|
 | Acceptable-use one-pager | What data may go into which AI tool, and when to ask first | planned |
 | AI tool evaluation scorecard | Does the tool work in *this* workflow? Broken versus confusing, before buying | planned |
-| AI operating model one-pager | Who decides what: roles and decision rights for AI tools, the cycle from idea to pilot to rollout, and what gets reviewed each month | planned |
+| AI operating model one-pager | Who decides what: roles and decision rights for AI tools, the cycle from idea to pilot to rollout, and what each review checks | next |
 
 ### Assessment
 
