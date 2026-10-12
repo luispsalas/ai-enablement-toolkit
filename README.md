@@ -50,7 +50,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 | Acceptable-use one-pager | What data may go into which AI tool, and when to ask first | planned |
 | AI tool evaluation scorecard | Does the tool work in *this* workflow? Broken versus confusing, before buying | planned |
 | [**AI operating model one-pager**](governance/operating-model.md) | Who decides what: roles and decision rights for AI tools, the cycle from idea to pilot to rollout, and what each review checks | **available** |
-| AI agent specification template | One page a delivery team can build from: the agent's goal and owner, inputs and the data it must never see, tools and permissions, what it decides and what goes to a person, failure paths and success metrics, with a filled-in example | planned |
+| AI agent specification template | One page a delivery team can build from: goal and owner, data it must never see, tools and permissions, what goes to a person, failure paths and success metrics, with an example | next |
 
 ### Assessment
 
