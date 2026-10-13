@@ -33,7 +33,7 @@ Grant the least that the job needs, and list anything the platform does by defau
 | Decision | Who makes it | Oversight |
 |---|---|---|
 
-**Oversight levels (provisional):** *person approves* every case before it takes effect · *person reviews* a sample or the exceptions · *agent acts*, and a person reads the log. Any decision involving money, access or a person's record starts at *person approves*. *These levels are a working draft; the toolkit's planned automation assessment will set the final scale.*
+**Oversight levels (provisional):** *person approves* every case before it takes effect · *person reviews* a sample or the exceptions · *agent acts*, and a person reads the log. Any decision involving money, access or a person's record starts at *person approves*. *These levels are a working draft until the toolkit's planned AI oversight levels page sets the final scale.*
 
 ### 5. Failure paths
 | Failure | How it is detected | Where it goes | Who sees it |

@@ -8,14 +8,14 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 5 of 19 items are available today. The other 14 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 5 of 20 items are available today. The other 15 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
 | | |
 |---|---|
 | **Goal** | Help teams adopt AI tools and use them well, and send every problem found to the person who can fix it. |
-| **What was done** | An adoption review kit with reporting, tried once, a 19-slide Spanish literacy deck, an operating model and an agent spec template; 14 more to come. |
+| **What was done** | An adoption review kit with reporting, tried once, a 19-slide Spanish literacy deck, an operating model and an agent spec template; 15 more to come. |
 | **Governance** | Consent before every interview, codes instead of names, quotations only with permission, and no tool filed as broken until reproduced. |
 | **Measurement** | One trial, n = 1: 2 diagnosis rows, 2 tracker rows and 1 feedback page; 20 checks, each seen to fail on a planted error. |
 
@@ -40,7 +40,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 |---|---|---|
 | [**AI literacy deck** (Spanish)](literacy/deck/) | 19 slides for non-technical teams: governance, blind spots, security, tools, prompting, glossary · [open the deck →](https://luispsalas.github.io/ai-enablement-toolkit/literacy/deck/alfabetizacion-ia-deck.html) | **available** |
 | English–Spanish glossary | Governance and literacy terms, with both usages recorded where they differ | planned |
-| Prompt quick-reference card | One page for non-technical users: how to ask, how to check | planned |
+| Prompt quick-reference card | One page for any AI chat tool, for non-technical users: how to ask, how to check | planned |
 | Training pre/post check | Did the session change what people do, not only what they know? Feeds the usage tracker | planned |
 
 ### Governance one-pagers
@@ -49,6 +49,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 |---|---|---|
 | Acceptable-use one-pager | What data may go into which AI tool, and when to ask first | planned |
 | AI tool evaluation scorecard | Does the tool work in *this* workflow? Broken versus confusing, before buying | planned |
+| AI oversight levels | How much human review an AI task needs, from approving every case to reading the log, and what decides it: reversibility, reach, detectability and the data involved | next |
 | [**AI operating model one-pager**](governance/operating-model.md) | Who decides what: roles and decision rights for AI tools, the cycle from idea to pilot to rollout, and what each review checks | **available** |
 | [**AI agent specification template**](governance/agent-spec-template.md) | One page a delivery team can build from: goal and owner, data it must never see, tools and permissions, what goes to a person, failure paths and success metrics, with an example | **available** |
 
@@ -56,16 +57,16 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 
 | Item | What it does | Status |
 |---|---|---|
-| Business AI needs assessment | Goals, processes, data readiness, skills and risk, in a short questionnaire with an output template | planned |
-| Use-case intake and prioritization canvas | Value, feasibility and risk for each idea, with stop criteria to disqualify early | planned |
+| Business AI needs assessment | Where AI could help across the organization: a short questionnaire on goals, processes, data readiness, skills and risk, ending in a list of ideas for the intake canvas | planned |
+| Use-case intake and prioritization canvas | For each idea: can it be done, and should it be (value, feasibility, risk), with stop criteria to disqualify early | planned |
 
 ### Rollout templates
 
 | Item | What it does | Status |
 |---|---|---|
-| Walkthrough script and quick reference | A short guided session and the one-page card people keep afterwards | next |
-| Office-hours and release-briefing templates | A standing session for questions, and a note for each change that ships | planned |
-| Change-communication pack | Announcement, FAQ and "what changes for you" | planned |
+| Walkthrough script and quick reference | A short guided session on one tool and task, and the card for that tool that people keep afterwards | next |
+| Office-hours and release-briefing templates | A standing session for questions, and a short note for each later change to a tool already in use | planned |
+| Change-communication pack | For the first rollout of a new tool: announcement, FAQ and "what changes for you" | planned |
 
 ## What this does not do (read first)
 
