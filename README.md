@@ -8,14 +8,14 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 5 of 20 items are available today. The other 15 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 6 of 20 items are available today. The other 14 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
 | | |
 |---|---|
 | **Goal** | Help teams adopt AI tools and use them well, and send every problem found to the person who can fix it. |
-| **What was done** | An adoption review kit with reporting, tried once, a 19-slide Spanish literacy deck, an operating model and an agent spec template; 15 more to come. |
+| **What was done** | An adoption review kit with reporting, tried once, a 19-slide Spanish literacy deck, and governance and assessment templates; 14 more to come. |
 | **Governance** | Consent before every interview, codes instead of names, quotations only with permission, and no tool filed as broken until reproduced. |
 | **Measurement** | One trial, n = 1: 2 diagnosis rows, 2 tracker rows and 1 feedback page; 20 checks, each seen to fail on a planted error. |
 
@@ -58,7 +58,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 | Item | What it does | Status |
 |---|---|---|
 | Business AI needs assessment | Where AI could help across the organization: a short questionnaire on goals, processes, data readiness, skills and risk, ending in a list of ideas for the intake canvas | planned |
-| Use-case intake and prioritization canvas | For each idea: can it be done, and should it be (value, feasibility, risk), with stop criteria to disqualify early | planned |
+| [**Use-case intake and prioritization canvas**](assessment/intake-canvas.md) | For each idea: can it be done, and should it be (value, feasibility, risk), with stop criteria to disqualify early | **available** |
 
 ### Rollout templates
 
@@ -100,6 +100,7 @@ adoption-kit/   interview guide, diagnosis sheet, feedback template, usage track
                 REPORTING.md, leadership brief template, and the two CSV templates
 literacy/deck/  the AI literacy deck (Spanish, one HTML file)
 governance/     the AI operating model one-pager and the AI agent specification template
+assessment/     the use-case intake and prioritization canvas
 tools/          check_lists.py (20 rules) and its tests
 examples/       trial-n1/: the first trial (n = 1, real, anonymized)
 assets/         the banner
