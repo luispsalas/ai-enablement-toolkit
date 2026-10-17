@@ -1,8 +1,5 @@
 <p>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-    <img src="assets/banner-light.svg" alt="AI Enablement Toolkit: Helping teams adopt AI tools, and checking that it worked" width="760">
-  </picture>
+  <img src="assets/banner.svg" alt="AI Enablement Toolkit: Helping teams adopt AI tools, and checking that it worked" width="760">
 </p>
 
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
