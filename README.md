@@ -5,7 +5,7 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 6 of 20 items are available today. The other 14 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 7 of 21 items are available today. The other 14 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
@@ -36,6 +36,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 | Item | What it does | Status |
 |---|---|---|
 | [**AI literacy deck** (Spanish)](literacy/deck/) | 19 slides for non-technical teams: governance, blind spots, security, tools, prompting, glossary · [open the deck →](https://luispsalas.github.io/ai-enablement-toolkit/literacy/deck/alfabetizacion-ia-deck.html) | **available** |
+| [**Reviewing AI output**](literacy/reviewing-ai-output.md) | Where AI errors hide in fluent output, a short routine for checking what matters, and a drill to build the skill | **available** |
 | English–Spanish glossary | Governance and literacy terms, with both usages recorded where they differ | planned |
 | Prompt quick-reference card | One page for any AI chat tool, for non-technical users: how to ask, how to check | planned |
 | Training pre/post check | Did the session change what people do, not only what they know? Feeds the usage tracker | planned |
@@ -95,7 +96,7 @@ Python 3, standard library only. The documents are plain Markdown and CSV, so th
 ```
 adoption-kit/   interview guide, diagnosis sheet, feedback template, usage tracker,
                 REPORTING.md, leadership brief template, and the two CSV templates
-literacy/deck/  the AI literacy deck (Spanish, one HTML file)
+literacy/       the guide to reviewing AI output; deck/ holds the AI literacy deck (Spanish, one HTML file)
 governance/     the AI operating model one-pager and the AI agent specification template
 assessment/     the use-case intake and prioritization canvas
 tools/          check_lists.py (20 rules) and its tests
