@@ -1,5 +1,5 @@
 <p>
-  <img src="assets/banner.svg" alt="AI Enablement Toolkit: Helping teams adopt AI tools, and checking that it worked" width="760">
+  <img src="assets/banner.svg" alt="AI Enablement Toolkit: Practical tools for adopting AI, from first pilot to proven value." width="760">
 </p>
 
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
@@ -11,10 +11,10 @@
 
 | | |
 |---|---|
-| **Goal** | Help teams adopt AI tools and use them well, and send every problem found to the person who can fix it. |
-| **What was done** | An adoption review kit with reporting, tried once, a 19-slide Spanish literacy deck, and governance and assessment templates; 14 more to come. |
-| **Governance** | Consent before every interview, codes instead of names, quotations only with permission, and no tool filed as broken until reproduced. |
-| **Measurement** | One trial, n = 1: 2 diagnosis rows, 2 tracker rows and 1 feedback page; 20 checks, each seen to fail on a planted error. |
+| **Goal** | Help organizations adopt AI tools in ways that last: choose the right uses, prepare people, govern what AI may do, and confirm the value. |
+| **What was done** | A growing set of practical guides and templates for adoption reviews, AI literacy, governance and assessment, each usable on its own. |
+| **Governance** | Every decision has a named owner, AI actions are authorized before they happen, people interviewed stay anonymous, and limits are stated up front. |
+| **Measurement** | Adoption reported as n of N, value measured against a baseline, review skill tracked through drills; so far the evidence is one trial. |
 
 ## What's in the toolkit
 
