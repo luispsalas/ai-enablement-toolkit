@@ -5741,299 +5741,6 @@
   .col-eyebrow .ebar { width: 28px; height: 1px; background: var(--teal-light); opacity: 0.55; }
 
   /* ============================================================
-     SHARED — Glosario layout
-     ============================================================ */
-  .glossary {
-    background:
-      radial-gradient(ellipse 1100px 800px at 100% 0%, rgba(42,157,143,0.14), transparent 60%),
-      radial-gradient(ellipse 900px 700px at 0% 100%, rgba(64,145,108,0.10), transparent 60%),
-      var(--green-deepest);
-  }
-  .glossary .sidebar { background: rgba(27,67,50,0.7); }
-
-  .gloss-meta {
-    display: flex; align-items: baseline; gap: 22px;
-    margin-bottom: 22px;
-    flex-wrap: wrap;
-  }
-  .gloss-meta .badge {
-    display: inline-flex; align-items: center;
-    padding: 6px 14px;
-    background: rgba(143,218,211,0.10);
-    border: 1px solid rgba(143,218,211,0.3);
-    border-radius: 999px;
-    font-size: 12px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--teal-light);
-    font-weight: 800;
-  }
-  .gloss-meta .desc {
-    font-size: 14px; color: var(--slate-300); opacity: 0.9;
-    line-height: 1.55;
-  }
-
-  .gloss-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px 18px;
-    flex: 1;
-    min-height: 0;
-    align-content: start;
-  }
-  .gloss-grid.dense6 { grid-template-rows: repeat(6, auto); grid-auto-flow: column; }
-  .gloss-grid.dense5 { grid-template-rows: repeat(5, auto); grid-auto-flow: column; }
-
-  .term {
-    background: rgba(30,41,59,0.4);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 12px;
-    padding: 12px 14px;
-    display: flex; flex-direction: column;
-    gap: 4px;
-    position: relative;
-    overflow: hidden;
-  }
-  .term::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 2px;
-    background: var(--teal-light);
-    opacity: 0.55;
-  }
-  .term .t-head {
-    display: flex; align-items: baseline;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 2px;
-  }
-  .term .t-name {
-    font-size: 14.5px;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-  }
-  .term .t-eng {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--teal-light);
-    opacity: 0.7;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-weight: 600;
-    flex-shrink: 0;
-    text-align: right;
-  }
-  .term .t-def {
-    font-size: 12px;
-    color: var(--slate-300);
-    line-height: 1.5;
-  }
-
-  .gloss-foot {
-    margin-top: 14px;
-    padding-top: 12px;
-    border-top: 1px dashed rgba(255,255,255,0.1);
-    font-size: 11px;
-    color: var(--slate-300);
-    opacity: 0.55;
-    font-style: italic;
-    display: flex; justify-content: space-between;
-    letter-spacing: 0.06em;
-  }
-
-  /* ============================================================
-     SLIDE 19 — Merged Glosario (47 terms · hover-to-define)
-     ============================================================ */
-  .glossary-merged .gloss-head-row {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 28px;
-    align-items: baseline;
-    margin-bottom: 22px;
-  }
-  .glossary-merged .gloss-head-row .desc { max-width: 760px; }
-
-  /* Halo layout: description in the centered cells, 24 chips wrap around it.
-     7 cols × 7 rows = 49 cells; detail occupies cols 2–6, rows 2–6 = 25 cells;
-     24 chips fill the remaining 24 cells. Auto-flow row-dense places chips
-     in col 1 and col 7 of the middle rows, naturally framing the panel. */
-  .gloss-merged-layout {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-auto-rows: minmax(58px, auto);
-    gap: 8px 10px;
-    grid-auto-flow: row dense;
-    flex: 1;
-    min-height: 0;
-    align-content: center;
-    justify-content: stretch;
-  }
-
-  /* .gloss-chips dissolves so its 47 button children become direct grid items
-     of .gloss-merged-layout, sitting alongside .gloss-detail. */
-  .gloss-chips {
-    display: contents;
-  }
-  .g-chip {
-    background: rgba(30,41,59,0.4);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 10px;
-    padding: 8px 12px;
-    display: grid;
-    grid-template-columns: 16px 1fr;
-    align-items: center;
-    column-gap: 4px;
-    text-align: left;
-    min-width: 0;
-    font-family: inherit;
-    color: var(--white);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition:
-      background 180ms ease,
-      border-color 180ms ease,
-      transform 180ms ease,
-      box-shadow 180ms ease;
-  }
-  .g-chip::before {
-    content: '';
-    position: absolute; top: 0; left: 0; bottom: 0;
-    width: 2px;
-    background: var(--teal-light);
-    opacity: 0;
-    transition: opacity 180ms ease;
-  }
-  .g-chip:hover {
-    background: rgba(42,157,143,0.18);
-    border-color: rgba(143,218,211,0.5);
-    transform: translateY(-1px);
-  }
-  .g-chip.active {
-    background: rgba(251,191,36,0.12);
-    border-color: rgba(251,191,36,0.5);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.28), 0 0 0 1px rgba(251,191,36,0.2);
-  }
-  .g-chip:hover::before { opacity: 0.9; }
-  .g-chip.active::before { opacity: 0.9; background: #FBBF24; }
-
-  .g-chip .t-num {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--teal-light);
-    opacity: 0.55;
-    font-variant-numeric: tabular-nums;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    letter-spacing: 0.04em;
-  }
-  .g-chip.active .t-num { opacity: 1; color: #FBBF24; }
-  .g-chip:hover .t-num { opacity: 1; }
-  .g-chip.active .t-name { color: #FBBF24; }
-  .g-chip .t-name {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: -0.005em;
-    line-height: 1.2;
-    white-space: normal;
-    min-width: 0;
-  }
-
-  /* Detail panel — 24 stacked panels, one visible. Centered in the halo grid. */
-  .gloss-detail {
-    grid-column: 2 / 7;   /* spans cols 2-6 (5 cols, centered in 7) */
-    grid-row: 2 / 7;      /* spans rows 2-6 (5 rows, centered in 7) */
-    align-self: center;
-    height: auto;
-    background: rgba(10,18,35,0.82);
-    border: 1px solid rgba(143,218,211,0.28);
-    border-radius: 20px;
-    padding: 28px 36px 22px;
-    display: flex; flex-direction: column;
-    position: relative;
-    overflow: hidden;
-    min-height: 0;
-    box-shadow: 0 16px 50px rgba(0,0,0,0.35), 0 0 0 1px rgba(143,218,211,0.06);
-  }
-  .gloss-detail::before {
-    content: '';
-    position: absolute; top: 0; left: 0; bottom: 0;
-    width: 3px;
-    background: var(--teal-light);
-    opacity: 0.85;
-  }
-  .g-panel { display: none; flex-direction: column; gap: 18px; flex: 1; }
-  .g-panel.active { display: flex; animation: gFade 220ms ease; }
-  @keyframes gFade {
-    from { opacity: 0; transform: translateY(3px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .g-panel-head {
-    display: flex; align-items: flex-start; gap: 16px;
-  }
-  .g-panel .g-num {
-    font-size: 44px; font-weight: 800; color: var(--teal-light);
-    letter-spacing: -0.03em; line-height: 0.9;
-    font-variant-numeric: tabular-nums;
-    flex-shrink: 0;
-  }
-  .g-panel .g-headwrap { flex: 1; min-width: 0; padding-top: 2px; }
-  .g-panel .g-name {
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--white);
-    letter-spacing: -0.018em;
-    line-height: 1.15;
-    margin: 0 0 6px;
-    text-wrap: balance;
-  }
-  .g-panel .g-eng {
-    display: inline-block;
-    font-size: 13px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #FBBF24;
-    opacity: 0.9;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-weight: 700;
-    padding: 3px 10px;
-    background: rgba(251,191,36,0.10);
-    border: 1px solid rgba(251,191,36,0.35);
-    border-radius: 6px;
-  }
-  .g-panel .g-def {
-    font-size: 17px;
-    color: var(--slate-300);
-    line-height: 1.6;
-    margin: 0;
-    text-wrap: pretty;
-  }
-
-  .gloss-detail-foot {
-    margin-top: auto;
-    padding-top: 16px;
-    border-top: 1px dashed rgba(255,255,255,0.1);
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 10.5px;
-    color: var(--slate-300);
-    opacity: 0.6;
-    letter-spacing: 0.08em;
-  }
-  .gloss-detail-foot .fb {
-    font-weight: 700;
-    color: var(--teal-light);
-    opacity: 0.85;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-  .gloss-detail-foot .ft {
-    font-style: italic;
-  }
-
-  /* ============================================================
      SLIDE 22 — Referencias
      ============================================================ */
   .slide-refs {
@@ -6383,24 +6090,6 @@
   .next-body               { color: #374151 !important; }
   .next-cta                { background: rgba(27,67,50,0.07) !important; border-color: rgba(15,118,110,0.25) !important; color: #374151 !important; }
 
-  /* 19 · GLOSARIO ────────────────────────────────────────────── */
-  .g-chip                  { background: rgba(27,67,50,0.06) !important; border-color: rgba(27,67,50,0.2) !important; color: #374151 !important; }
-  .g-chip.active           { background: rgba(180,83,9,0.1) !important; border-color: rgba(180,83,9,0.45) !important; }
-  .g-chip .t-num           { color: #0F766E !important; }
-  .g-chip .t-name          { color: #111827 !important; }
-  .g-chip.active .t-num,
-  .g-chip.active .t-name   { color: #92400E !important; }
-  .g-eng                   { color: #B45309 !important; background: rgba(180,83,9,0.08) !important; border-color: rgba(180,83,9,0.25) !important; }
-  .g-detail                { background: rgba(27,67,50,0.05) !important; border-color: rgba(27,67,50,0.18) !important; }
-  .g-detail-title          { color: #111827 !important; }
-  .g-detail-en             { color: #0F766E !important; }
-  .g-detail-def            { color: #374151 !important; }
-  .g-detail-footer         { color: #6B7280 !important; border-top-color: rgba(0,0,0,0.08) !important; }
-  .g-panel                 { background: rgba(27,67,50,0.05) !important; border-color: rgba(27,67,50,0.16) !important; }
-  .g-panel-term            { color: #111827 !important; }
-  .g-panel-en              { color: #0F766E !important; }
-  .g-panel-def             { color: #374151 !important; }
-
   /* 20 · REFERENCIAS ─────────────────────────────────────────── */
   .refs-intro              { color: #374151 !important; }
   .ref-item                { color: #374151 !important; border-color: rgba(0,0,0,0.08) !important; }
@@ -6475,14 +6164,14 @@
 <deck-stage width="1920" height="1080" no-rail>
 
 <!-- ============================================================
-       SLIDE 00 — COVER (Template 1 aesthetic)
+       SLIDE 01 · Portada
        ============================================================ -->
   <section class="slide-cover" data-screen-label="01 Portada">
     <div class="main">
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Guía de Referencia · Mayo 2026</span>
+          <span>Guía de referencia · Octubre 2026</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -6499,11 +6188,11 @@
       </div>
 
       <div class="content" style="position:relative;">
-        <div class="cover-eyebrow">Materiales de Referencia · Mayo 2026</div>
+        <div class="cover-eyebrow">Materiales de referencia · Octubre 2026</div>
 
         <h1 class="cover-title">Alfabetización<br>en IA.</h1>
 
-        <p class="cover-subtitle">Guía para equipos y organizaciones — comprensión de cómo funcionan los sistemas de IA, sus límites, y cómo usarlos de forma responsable.</p>
+        <p class="cover-subtitle">Guía para equipos y organizaciones sobre cómo funcionan los sistemas de IA, cuáles son sus límites y cómo usarlos de forma responsable.</p>
 
         <div class="cover-meta">
           <div class="meta-block">
@@ -6512,33 +6201,38 @@
           </div>
           <div class="meta-block">
             <div class="label">Edición</div>
-            <div class="value">Mayo 2026</div>
+            <div class="value">Octubre 2026</div>
           </div>
           <div class="meta-block">
             <div class="label">Idioma</div>
-            <div class="value">Español · 19 slides</div>
+            <div class="value">Español · 19 diapositivas</div>
           </div>
           <div class="meta-block">
             <div class="label">Alineación</div>
             <div class="value">ENIA 2024–2027 · OCDE</div>
           </div>
+          <div class="meta-block">
+            <div class="label">Niveles</div>
+            <div class="value"><span class="tier-tag" data-tier="awareness">Sensibilización</span> <span class="tier-tag" data-tier="operational">Operativo</span> <span class="tier-tag" data-tier="governance">Gobernanza</span></div>
+          </div>
         </div>
+        <p class="cover-tiers">Cada diapositiva indica su nivel: <strong>sensibilización</strong> (qué es la IA y dónde falla), <strong>operativo</strong> (cómo usarla en el trabajo diario) o <strong>gobernanza</strong> (cómo decidir, aprobar y supervisar su uso).</p>
 
         <div class="toc-header">
-          <h3>Índice de Secciones</h3>
+          <h3>Índice de secciones</h3>
           <span>8 secciones · 2 apéndices</span>
         </div>
 
         <div class="toc-grid">
           <div class="toc-item"><span class="toc-num">00</span><span class="toc-name">El estado actual de la IA</span><span class="toc-page">p. 02</span></div>
-          <div class="toc-item"><span class="toc-num">01</span><span class="toc-name">Marco de Gobernanza IA y Datos</span><span class="toc-page">p. 05</span></div>
-          <div class="toc-item"><span class="toc-num">02</span><span class="toc-name">Hoja de Ruta de Gobernanza de Datos</span><span class="toc-page">p. 08</span></div>
-          <div class="toc-item"><span class="toc-num">03</span><span class="toc-name">Puntos Ciegos Organizacionales</span><span class="toc-page">p. 09</span></div>
+          <div class="toc-item"><span class="toc-num">01</span><span class="toc-name">Marco de gobernanza de IA y datos</span><span class="toc-page">p. 05</span></div>
+          <div class="toc-item"><span class="toc-num">02</span><span class="toc-name">Hoja de ruta de gobernanza de datos</span><span class="toc-page">p. 08</span></div>
+          <div class="toc-item"><span class="toc-num">03</span><span class="toc-name">Puntos ciegos organizacionales</span><span class="toc-page">p. 09</span></div>
           <div class="toc-item"><span class="toc-num">04</span><span class="toc-name">Seguridad en IA</span><span class="toc-page">p. 10</span></div>
-          <div class="toc-item"><span class="toc-num">05</span><span class="toc-name">Valoración de Herramientas IA</span><span class="toc-page">p. 12</span></div>
-          <div class="toc-item"><span class="toc-num">06</span><span class="toc-name">Cómo escribir buenos prompts</span><span class="toc-page">p. 14</span></div>
+          <div class="toc-item"><span class="toc-num">05</span><span class="toc-name">Valoración de herramientas de IA</span><span class="toc-page">p. 12</span></div>
+          <div class="toc-item"><span class="toc-num">06</span><span class="toc-name">Prompts y uso responsable</span><span class="toc-page">p. 14</span></div>
           <div class="toc-item"><span class="toc-num">07</span><span class="toc-name">Próximos pasos</span><span class="toc-page">p. 17</span></div>
-          <div class="toc-item appendix"><span class="toc-num">A·1</span><span class="toc-name">Glosario IA (24 términos)</span><span class="toc-page">p. 18</span></div>
+          <div class="toc-item appendix"><span class="toc-num">A·1</span><span class="toc-name">Glosario IA (38 términos)</span><span class="toc-page">p. 18</span></div>
           <div class="toc-item appendix"><span class="toc-num">A·2</span><span class="toc-name">Referencias y lectura adicional</span><span class="toc-page">p. 19</span></div>
         </div>
 
@@ -6548,7 +6242,7 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 01 — EL ESTADO ACTUAL (Template 2 aesthetic)
+       SLIDE 02 · Estado actual de la IA
        ============================================================ -->
   <section class="slide-zones" data-screen-label="02 Estado actual de la IA">
     <aside class="sidebar">
@@ -6560,20 +6254,31 @@
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">00</span><span>Portada</span></div>
-          <div class="nav-item active"><span class="num">01</span><span>Estado actual</span></div>
-          <div class="nav-item"><span class="num">02</span><span>¿Qué es la IA?</span></div>
-          <div class="nav-item"><span class="num">03</span><span>Cómo funciona un LLM</span></div>
-          <div class="nav-item"><span class="num">04</span><span>Gobernanza: Intro</span></div>
-          <div class="nav-item"><span class="num">05</span><span>Principios</span></div>
-          <div class="nav-item"><span class="num">06</span><span>Ciclo de Vida</span></div>
-          <div class="nav-item"><span class="num">07</span><span>Hoja de Ruta</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item active"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
         Sección 00 · Contexto<br>
-        Slide 02 de 19
+        Diapositiva 02 de 19
       </div>
     </aside>
 
@@ -6581,7 +6286,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 00 · Contexto · 01</span>
+          <span>Sección 00</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -6598,14 +6303,15 @@
       </div>
 
       <div class="content" style="position:relative;">
+        <div class="tier-line"><span class="tier-tag" data-tier="awareness">Sensibilización</span></div>
         <div class="section-label">
           <span class="bar"></span>
-          <span>Sección 00 · Contexto</span>
+          <span>Sección 00 · El estado actual de la IA</span>
         </div>
 
         <h1 class="slide-title">El estado actual de la IA.</h1>
 
-        <p class="slide-lede">Tres zonas describen cómo las organizaciones se relacionan hoy con la IA. La mayoría de empresas en Costa Rica está en la primera — entender en cuál se encuentra la suya define qué acciones tienen sentido.</p>
+        <p class="slide-lede">Tres zonas describen cómo las organizaciones se relacionan hoy con la IA. Saber en cuál está la suya indica qué acciones tienen sentido.</p>
 
         <div class="zones-grid">
           <!-- Zone 1 -->
@@ -6620,10 +6326,6 @@
               <li>Sin política formal de uso</li>
               <li>Riesgo común: datos sensibles en plataformas no evaluadas</li>
             </ul>
-            <div class="zone-stat">
-              <strong>76%</strong> de empresas TIC en CR usan IA generativa<br>
-              <span style="opacity:0.65">PROCOMER, 2026</span>
-            </div>
           </div>
 
           <!-- Zone 2 -->
@@ -6638,10 +6340,6 @@
               <li>Modelos por industria, políticas en desarrollo</li>
               <li>Riesgo común: supervisión insuficiente en flujos automatizados</li>
             </ul>
-            <div class="zone-stat">
-              <strong>65%</strong> de organizaciones han integrado IA en al menos una función<br>
-              <span style="opacity:0.65">McKinsey, 2025</span>
-            </div>
           </div>
 
           <!-- Zone 3 -->
@@ -6656,29 +6354,25 @@
               <li>Ejecución paralela e integrada</li>
               <li>Riesgo común: pérdida de visibilidad sobre permisos y acciones</li>
             </ul>
-            <div class="zone-stat">
-              Para <strong>2027</strong>, <strong>25%</strong> de empresas con IA generativa lanzarán agentes autónomos<br>
-              <span style="opacity:0.65">Gartner, 2025</span>
-            </div>
           </div>
         </div>
 
         <div class="zone-marker">
           <span class="pin">📍</span>
-          <span>Mayoría de organizaciones en CR → <strong>Zona 1 · Uso básico</strong></span>
+          <span>Muchas organizaciones empiezan en la <strong>Zona 1 · Uso básico</strong></span>
         </div>
 
         <div class="enia-callout">
           <span class="tag">ENIA 2024–2027</span>
-          <span>De acuerdo a la Estrategia Nacional de IA (ENIA), Costa Rica no aspira a ser la mayor potencia en IA, sino una nación confiable, ética, sostenible y centrada en las personas — promoviendo su uso de forma ética, segura y responsable, maximizando beneficios y minimizando daño.</span>
-          <span class="src">— MICITT</span>
+          <span>De acuerdo con la Estrategia Nacional de IA (ENIA), Costa Rica busca ser una nación confiable, ética, sostenible y centrada en las personas en materia de IA, y promover su uso de forma ética, segura y responsable para maximizar beneficios y minimizar daños.</span>
+          <span class="src">MICITT, ENIA 2024–2027</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       SLIDE 02 — ¿QUÉ ES LA IA? (Template 4 aesthetic)
+       SLIDE 03 · Qué es la IA
        ============================================================ -->
   <section class="slide-what" data-screen-label="03 Qué es la IA">
     <aside class="sidebar">
@@ -6690,20 +6384,31 @@
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">00</span><span>Portada</span></div>
-          <div class="nav-item"><span class="num">01</span><span>Estado actual</span></div>
-          <div class="nav-item active"><span class="num">02</span><span>¿Qué es la IA?</span></div>
-          <div class="nav-item"><span class="num">03</span><span>Cómo funciona un LLM</span></div>
-          <div class="nav-item"><span class="num">04</span><span>Gobernanza: Intro</span></div>
-          <div class="nav-item"><span class="num">05</span><span>Principios</span></div>
-          <div class="nav-item"><span class="num">06</span><span>Ciclo de Vida</span></div>
-          <div class="nav-item"><span class="num">07</span><span>Hoja de Ruta</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item active"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
         Sección 00 · Contexto<br>
-        Slide 03 de 19
+        Diapositiva 03 de 19
       </div>
     </aside>
 
@@ -6711,7 +6416,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 00 · Contexto · 02</span>
+          <span>Sección 00</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -6728,16 +6433,17 @@
       </div>
 
       <div class="content" style="position:relative;">
+        <div class="tier-line"><span class="tier-tag" data-tier="awareness">Sensibilización</span></div>
         <div class="section-label">
           <span class="bar"></span>
-          <span>Sección 00 · Contexto</span>
+          <span>Sección 00 · El estado actual de la IA</span>
         </div>
 
         <div class="what-layout">
           <div class="what-left">
             <h1 class="slide-title">¿Qué es la IA?</h1>
             <div class="what-subtitle">Tres conceptos para el mismo nombre.</div>
-            <p class="what-intro">Cuando alguien dice "IA" puede referirse a cosas muy distintas. Entender la diferencia explica por qué los resultados varían — y por qué importa cómo se le pregunta.</p>
+            <p class="what-intro">Cuando alguien dice "IA" puede referirse a cosas muy distintas. Entender la diferencia explica por qué los resultados varían y por qué importa cómo se le pregunta.</p>
 
             <div class="ring-callouts" style="position:relative; margin-top:8px; left:0; width:auto; height:auto;">
               <div class="ring-call r1" style="position:relative; top:0; margin-bottom:18px;">
@@ -6747,12 +6453,12 @@
               </div>
               <div class="ring-call r2" style="position:relative; top:0; margin-bottom:18px;">
                 <strong>② IA Generativa</strong>
-                Crea contenido nuevo: texto, imágenes, audio, código. No "inventa" — recombina patrones aprendidos.
+                Crea contenido nuevo: texto, imágenes, audio, código. Lo hace recombinando patrones aprendidos.
                 <div style="opacity:0.75; margin-top:8px; font-style:italic; font-size:13px;">DALL·E · Suno · Runway</div>
               </div>
               <div class="ring-call r3" style="position:relative; top:0;">
                 <strong>③ Gran Modelo de Lenguaje (LLM)</strong>
-                IA generativa entrenada en texto masivo. Predice qué palabras continúan una secuencia — no comprende, predice.
+                IA generativa entrenada en texto masivo. Predice qué palabras continúan una secuencia a partir de patrones estadísticos.
                 <div style="opacity:0.75; margin-top:8px; font-style:italic; font-size:13px;">Claude · ChatGPT · Gemini · Copilot</div>
               </div>
             </div>
@@ -6760,7 +6466,7 @@
             <div class="definition-card">
               <div class="def-label">Definición oficial · ENIA 2024–2027</div>
               <div class="quote">"Un sistema basado en máquinas que infiere, a partir de la entrada que recibe, cómo generar salidas como predicciones, contenido, recomendaciones o decisiones que pueden influir en entornos físicos o virtuales."</div>
-              <div class="source">— OCDE 2023, adoptado por MICITT / ENIA 2024–2027</div>
+              <div class="source">OCDE, 2023 · adoptada por MICITT en la ENIA 2024–2027</div>
             </div>
           </div>
 
@@ -6787,7 +6493,7 @@
   </section>
 
 <!-- ============================================================
-       SLIDE 04 — Cómo funciona un LLM (content SLIDE 03)
+       SLIDE 04 · Cómo funciona un LLM
        ============================================================ -->
   <section class="slide-llm" data-screen-label="04 Cómo funciona un LLM">
     <aside class="sidebar">
@@ -6799,20 +6505,31 @@
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">00</span><span>Portada</span></div>
-          <div class="nav-item"><span class="num">01</span><span>Estado actual</span></div>
-          <div class="nav-item"><span class="num">02</span><span>¿Qué es la IA?</span></div>
-          <div class="nav-item active"><span class="num">03</span><span>Cómo funciona un LLM</span></div>
-          <div class="nav-item"><span class="num">04</span><span>Gobernanza: Intro</span></div>
-          <div class="nav-item"><span class="num">05</span><span>Principios</span></div>
-          <div class="nav-item"><span class="num">06</span><span>Ciclo de Vida</span></div>
-          <div class="nav-item"><span class="num">07</span><span>Hoja de Ruta</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item active"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
         Sección 00 · Contexto<br>
-        Slide 04 de 19
+        Diapositiva 04 de 19
       </div>
     </aside>
 
@@ -6820,7 +6537,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 00 · Contexto · 03</span>
+          <span>Sección 00</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -6837,14 +6554,15 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="awareness">Sensibilización</span></div>
         <div class="section-label">
           <span class="bar"></span>
-          <span>Sección 00 · Contexto</span>
+          <span>Sección 00 · El estado actual de la IA</span>
         </div>
 
         <h1 class="slide-title">Cómo funciona un LLM.</h1>
         <div class="slide-subtitle">Del texto a la predicción.</div>
-        <p class="slide-lede">Un LLM como ChatGPT, Gemini o Claude no "piensa" ni "sabe" la respuesta — predice la continuación más probable del texto, basándose en patrones aprendidos de miles de millones de documentos.</p>
+        <p class="slide-lede">Un LLM como ChatGPT, Gemini o Claude predice la continuación más probable del texto, a partir de patrones aprendidos de enormes cantidades de documentos. No "piensa" ni "sabe" la respuesta.</p>
 
         <div class="flow">
           <!-- Stage 1 -->
@@ -6864,7 +6582,7 @@
             </div>
             <div class="stage-desc">Textos, webs, libros, código y conversaciones se ingieren a escala.</div>
             <div class="stage-example">
-              <span class="ex-label">→</span>billones de tokens en el corpus de entrenamiento
+              <span class="ex-label">→</span>billones (millones de millones) de tokens en el corpus de entrenamiento
             </div>
           </div>
 
@@ -6888,9 +6606,9 @@
             </div>
             <div class="stage-desc">El lenguaje se convierte en unidades numéricas que el modelo procesa.</div>
             <div class="stage-example">
-              <span class="ex-label">Ej:</span>"El gato duerme"<br>
+              <span class="ex-label">Ej. ilustrativo:</span>"El gato duerme"<br>
               → [El][ga][to][duer][me]<br>
-              → [9823][1452][7291]
+              → [9823][1452][7291][3108][615]
             </div>
           </div>
 
@@ -6966,7 +6684,7 @@
             </div>
             <div class="stage-desc">Los patrones aprendidos se almacenan en miles de millones de parámetros.</div>
             <div class="stage-example">
-              <span class="ex-label">~</span>175B parámetros entrenables
+              <span class="ex-label">→</span>los modelos grandes tienen miles de millones de parámetros
             </div>
           </div>
 
@@ -6992,9 +6710,9 @@
               <div class="stage-num">05</div>
               <div class="stage-name">Predicción Probabilística</div>
             </div>
-            <div class="stage-desc">No hay una sola respuesta "correcta" almacenada — cada token es una muestra de una distribución.</div>
+            <div class="stage-desc">No hay una sola respuesta "correcta" almacenada. Cada token es una muestra de una distribución.</div>
             <div class="stage-example">
-              <span class="ex-label">Ej:</span>"gato" → ...
+              <span class="ex-label">Ej. ilustrativo:</span>"gato" → ...
               <div class="dist">
                 <div class="dist-row"><span class="word">duerme</span><span class="bar" style="--w:94%"></span><span class="pct">47%</span></div>
                 <div class="dist-row"><span class="word">come</span><span class="bar" style="--w:66%"></span><span class="pct">33%</span></div>
@@ -7028,7 +6746,7 @@
           <span class="bolt">⚡</span>
           <div>
             <div class="tag">Clave · No determinismo</div>
-            <div class="body">La misma pregunta puede producir respuestas distintas. <strong>No hay una sola respuesta "correcta" almacenada</strong> — cada token es una muestra de una distribución de probabilidades. Esto explica las alucinaciones, la variabilidad y por qué el contexto del prompt importa tanto.</div>
+            <div class="body">La misma pregunta puede producir respuestas distintas. <strong>No hay una sola respuesta "correcta" almacenada.</strong> Cada token es una muestra de una distribución de probabilidades. Esto explica las alucinaciones, la variabilidad y por qué el contexto del prompt importa tanto.</div>
           </div>
         </div>
       </div>
@@ -7036,32 +6754,43 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 05 — Gobernanza: Intro (content SLIDE 04)
+       SLIDE 05 · Gobernanza · Intro
        ============================================================ -->
   <section class="slide-gov" data-screen-label="05 Gobernanza · Intro">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">Sección 01</div>
-        <div class="brand-name">Gobernanza<br>IA y Datos</div>
+        <div class="brand-name">Gobernanza</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">00</span><span>Portada</span></div>
-          <div class="nav-item"><span class="num">01</span><span>Estado actual</span></div>
-          <div class="nav-item"><span class="num">02</span><span>¿Qué es la IA?</span></div>
-          <div class="nav-item"><span class="num">03</span><span>Cómo funciona un LLM</span></div>
-          <div class="nav-item active"><span class="num">04</span><span>Gobernanza: Intro</span></div>
-          <div class="nav-item"><span class="num">05</span><span>Principios</span></div>
-          <div class="nav-item"><span class="num">06</span><span>Ciclo de Vida</span></div>
-          <div class="nav-item"><span class="num">07</span><span>Hoja de Ruta</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item active"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
         Sección 01 · Gobernanza<br>
-        Slide 05 de 19
+        Diapositiva 05 de 19
       </div>
     </aside>
 
@@ -7069,7 +6798,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 01 · Marco de Gobernanza IA y Datos · 01</span>
+          <span>Sección 01</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -7086,9 +6815,10 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="governance">Gobernanza</span></div>
         <div class="section-label">
           <span class="bar"></span>
-          <span>Sección 01 · Marco de Gobernanza IA y Datos</span>
+          <span>Sección 01 · Marco de gobernanza de IA y datos</span>
         </div>
 
         <h1 class="slide-title">¿Qué es la gobernanza de datos?</h1>
@@ -7103,7 +6833,7 @@
             <div class="gov-rule"></div>
 
             <div class="gov-sub-eyebrow">Por qué la IA cambia el panorama</div>
-            <div class="gov-sub-title">La IA no reemplaza la gobernanza — la amplifica.</div>
+            <div class="gov-sub-title">La IA amplifica la gobernanza que ya existe, y también sus vacíos.</div>
             <p class="gov-sub-text">Cuando se introduce IA, los datos dejan de ser solo insumos para decisiones humanas y pasan a ser el material con el que el sistema aprende, razona y genera resultados.</p>
 
             <ul class="gov-questions">
@@ -7161,32 +6891,43 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 06 — Principios y primeros pasos (content SLIDE 05)
+       SLIDE 06 · Principios y primeros pasos
        ============================================================ -->
   <section class="slide-pri" data-screen-label="06 Principios y primeros pasos">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">Sección 01</div>
-        <div class="brand-name">Gobernanza<br>IA y Datos</div>
+        <div class="brand-name">Gobernanza</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">00</span><span>Portada</span></div>
-          <div class="nav-item"><span class="num">01</span><span>Estado actual</span></div>
-          <div class="nav-item"><span class="num">02</span><span>¿Qué es la IA?</span></div>
-          <div class="nav-item"><span class="num">03</span><span>Cómo funciona un LLM</span></div>
-          <div class="nav-item"><span class="num">04</span><span>Gobernanza: Intro</span></div>
-          <div class="nav-item active"><span class="num">05</span><span>Principios</span></div>
-          <div class="nav-item"><span class="num">06</span><span>Ciclo de Vida</span></div>
-          <div class="nav-item"><span class="num">07</span><span>Hoja de Ruta</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item active"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
         Sección 01 · Gobernanza<br>
-        Slide 06 de 19
+        Diapositiva 06 de 19
       </div>
     </aside>
 
@@ -7194,7 +6935,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 01 · Marco de Gobernanza IA y Datos · 01</span>
+          <span>Sección 01</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -7211,13 +6952,14 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="governance">Gobernanza</span></div>
         <div class="section-label">
           <span class="bar"></span>
-          <span>Sección 01 · Marco de Gobernanza IA y Datos</span>
+          <span>Sección 01 · Marco de gobernanza de IA y datos</span>
         </div>
 
         <h1 class="slide-title">Principios y primeros pasos.</h1>
-        <p class="slide-lede">Cinco principios fundamentales para gobernar el uso de IA — y tres pasos concretos para empezar, sin necesidad de un marco completo.</p>
+        <p class="slide-lede">Cinco principios para gobernar el uso de IA y tres pasos concretos para empezar sin necesidad de un marco completo.</p>
 
         <div class="pri-layout">
           <!-- LEFT: Principles -->
@@ -7227,15 +6969,15 @@
               <div class="principle">
                 <div class="pnum">01</div>
                 <div>
-                  <div class="ptitle">Responsabilidad clara</div>
-                  <div class="pdesc">Toda iniciativa de IA necesita un responsable identificable. Sin él, los problemas se ignoran hasta que escalan.</div>
+                  <div class="ptitle">Un responsable asignado</div>
+                  <div class="pdesc">Cada sistema de IA tiene un responsable asignado por escrito: una persona con nombre, nunca un equipo ni un comité. Sin esa persona, los problemas se ignoran hasta que escalan.</div>
                 </div>
               </div>
               <div class="principle">
                 <div class="pnum">02</div>
                 <div>
                   <div class="ptitle">Supervisión humana activa</div>
-                  <div class="pdesc">Los resultados de IA son insumos para la decisión humana, no decisiones en sí mismas. Alguien debe revisar y aprobar antes de actuar.</div>
+                  <div class="pdesc">Los resultados de IA son insumos para la decisión humana. Cada tarea recibe uno de los cuatro niveles de supervisión (revisión completa, revisión selectiva, humano sobre el bucle o iniciada por una persona) según lo que está en juego.</div>
                 </div>
               </div>
               <div class="principle">
@@ -7289,7 +7031,7 @@
                   <div class="snum">3</div>
                   <div>
                     <div class="stitle">Punto de responsabilidad</div>
-                    <div class="sdesc">¿Quién es el responsable designado de actualizar y comunicar las políticas de uso de IA?</div>
+                    <div class="sdesc">¿Quién es el responsable asignado de actualizar y comunicar las políticas de uso de IA?</div>
                   </div>
                 </div>
               </div>
@@ -7306,31 +7048,43 @@
   </section>
 
 <!-- ============================================================
-       SLIDE 07 — Ciclo de Vida (content SLIDE 06)
+       SLIDE 07 · Gobernanza · Ciclo de Vida
        ============================================================ -->
   <section class="slide-cycle" data-screen-label="07 Gobernanza · Ciclo de Vida">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">Sección 01</div>
-        <div class="brand-name">Gobernanza<br>IA y Datos</div>
+        <div class="brand-name">Gobernanza</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">03</span><span>Cómo funciona un LLM</span></div>
-          <div class="nav-item"><span class="num">04</span><span>Gobernanza: Intro</span></div>
-          <div class="nav-item"><span class="num">05</span><span>Principios</span></div>
-          <div class="nav-item active"><span class="num">06</span><span>Ciclo de Vida</span></div>
-          <div class="nav-item"><span class="num">07</span><span>Hoja de Ruta</span></div>
-          <div class="nav-item"><span class="num">08</span><span>Puntos Ciegos</span></div>
-          <div class="nav-item"><span class="num">09</span><span>Seguridad: Qué cambia</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item active"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
         Sección 01 · Gobernanza<br>
-        Slide 07 de 19
+        Diapositiva 07 de 19
       </div>
     </aside>
 
@@ -7338,7 +7092,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 01 · Marco de Gobernanza IA y Datos · 01</span>
+          <span>Sección 01</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -7355,16 +7109,18 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="governance">Gobernanza</span></div>
         <div class="section-label">
           <span class="bar"></span>
-          <span>Sección 01 · Marco de Gobernanza IA y Datos</span>
+          <span>Sección 01 · Marco de gobernanza de IA y datos</span>
         </div>
 
         <div class="cycle-layout">
           <div class="cycle-header">
             <h1 class="slide-title">Cómo se gestiona la IA en el tiempo.</h1>
             <div class="slide-subtitle">Cinco fases · mejora continua en el centro.</div>
-            <p class="cycle-lede">No es un documento que se aprueba una vez — es un <strong>ciclo continuo de cinco fases</strong>, con revisión activa en cada etapa y retroalimentación permanente en el centro del proceso.</p>
+            <p class="cycle-lede">La gobernanza funciona como un <strong>ciclo continuo de cinco fases</strong>, con revisión activa en cada etapa y retroalimentación permanente en el centro del proceso.</p>
+            <p class="cycle-lede cycle-stages">Las cinco actividades acompañan cada etapa del modelo operativo (Idea, Piloto, Despliegue y Revisión), con más profundidad a medida que el uso crece.</p>
           </div>
 
           <div class="cycle-stage">
@@ -7460,31 +7216,43 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 08 — Hoja de Ruta: 4 etapas (content SLIDE 07)
+       SLIDE 08 · Hoja de Ruta · 4 etapas
        ============================================================ -->
   <section class="slide-road" data-screen-label="08 Hoja de Ruta · 4 etapas">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">Sección 02</div>
-        <div class="brand-name">Hoja de Ruta</div>
+        <div class="brand-name">Hoja de ruta</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">03</span><span>Cómo funciona un LLM</span></div>
-          <div class="nav-item"><span class="num">04</span><span>Gobernanza: Intro</span></div>
-          <div class="nav-item"><span class="num">05</span><span>Principios</span></div>
-          <div class="nav-item"><span class="num">06</span><span>Ciclo de Vida</span></div>
-          <div class="nav-item active"><span class="num">07</span><span>Hoja de Ruta</span></div>
-          <div class="nav-item"><span class="num">08</span><span>Puntos Ciegos</span></div>
-          <div class="nav-item"><span class="num">09</span><span>Seguridad: Qué cambia</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item active"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
-        Sección 02 · Gobernanza de Datos<br>
-        Slide 08 de 19
+        Sección 02 · Hoja de ruta<br>
+        Diapositiva 08 de 19
       </div>
     </aside>
 
@@ -7492,7 +7260,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 02 · Hoja de Ruta Gobernanza de Datos · 02</span>
+          <span>Sección 02</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -7509,13 +7277,14 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="governance">Gobernanza</span></div>
         <div class="section-label">
           <span class="bar"></span>
-          <span>Sección 02 · Hoja de Ruta Gobernanza de Datos</span>
+          <span>Sección 02 · Hoja de ruta de gobernanza de datos</span>
         </div>
 
         <h1 class="slide-title">Hoja de ruta: cuatro etapas de madurez.</h1>
-        <p class="slide-lede">La madurez en gobernanza de IA no se construye de una vez — cada etapa habilita la siguiente. Identifique dónde está la organización hoy y qué acciones concretas corresponden.</p>
+        <p class="slide-lede">La madurez en gobernanza de IA se construye por etapas, y cada una habilita la siguiente. Identifique dónde está la organización hoy y qué acciones concretas corresponden.</p>
 
         <div class="road-grid">
           <div class="level" style="--fill: 25%;">
@@ -7589,39 +7358,50 @@
 
         <div class="road-callout">
           <span class="ctag">Regla acumulativa</span>
-          <span class="cbody">Sin responsables definidos no hay calidad de datos. Sin calidad de datos no hay modelos de IA confiables. <strong>Cada etapa es prerequisito de la siguiente</strong> — no se puede saltar niveles.</span>
+          <span class="cbody">Sin responsables definidos no hay calidad de datos. Sin calidad de datos no hay modelos de IA confiables. <strong>Cada etapa es prerrequisito de la siguiente</strong>, así que no se pueden saltar niveles.</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       SLIDE 09 — Puntos Ciegos (interactive 1-of-8 selector)
+       SLIDE 09 · Puntos Ciegos
        ============================================================ -->
   <section class="slide-pc" data-screen-label="09 Puntos Ciegos">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">Sección 03</div>
-        <div class="brand-name">Puntos Ciegos<br>Organizacionales</div>
+        <div class="brand-name">Puntos ciegos</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">03</span><span>Cómo funciona un LLM</span></div>
-          <div class="nav-item"><span class="num">04</span><span>Gobernanza: Intro</span></div>
-          <div class="nav-item"><span class="num">05</span><span>Principios</span></div>
-          <div class="nav-item"><span class="num">06</span><span>Ciclo de Vida</span></div>
-          <div class="nav-item"><span class="num">07</span><span>Hoja de Ruta</span></div>
-          <div class="nav-item active"><span class="num">08</span><span>Puntos Ciegos</span></div>
-          <div class="nav-item"><span class="num">09</span><span>Seguridad: Qué cambia</span></div>
-          <div class="nav-item"><span class="num">10</span><span>Seguridad: Riesgos</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item active"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
-        Sección 03 · Puntos Ciegos<br>
-        Slide 09 de 19
+        Sección 03 · Puntos ciegos<br>
+        Diapositiva 09 de 19
       </div>
     </aside>
 
@@ -7629,7 +7409,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 03 · Puntos Ciegos Organizacionales · 03</span>
+          <span>Sección 03</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -7646,15 +7426,16 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="governance">Gobernanza</span></div>
         <div class="section-label">
           <span class="bar"></span>
-          <span>Sección 03 · Puntos Ciegos Organizacionales</span>
+          <span>Sección 03 · Puntos ciegos organizacionales</span>
         </div>
 
         <div class="pc-head-row">
           <div>
             <h1 class="slide-title" style="margin-bottom:28px; font-size:54px;">Ocho supuestos que sabotean la adopción.</h1>
-            <p class="slide-lede" style="margin-bottom:0; font-size:18px;">La adopción de IA falla con frecuencia no por razones técnicas, sino por supuestos no cuestionados. <strong style="color:var(--white); font-weight:600;">Seleccione un número</strong> para explorar cada uno.</p>
+            <p class="slide-lede" style="margin-bottom:0; font-size:18px;">La adopción de IA falla con frecuencia por supuestos que nadie cuestiona, más que por razones técnicas. <strong style="color:var(--white); font-weight:600;">Seleccione un número</strong> para explorar cada uno.</p>
           </div>
           <div class="pc-counter">
             <span class="big" data-pc-index>01</span><span class="total">/ 8</span><span class="lbl">Punto ciego</span>
@@ -7720,7 +7501,7 @@
               <ul class="d-remedios">
                 <li class="head">Remedios</li>
                 <li>Exija que los resultados sean verificables antes de usarlos en decisiones importantes.</li>
-                <li>Documente el proceso de validación, no solo el resultado.</li>
+                <li>Documente el proceso de validación junto con el resultado.</li>
                 <li>Trate la explicabilidad como requisito de diseño desde el inicio.</li>
               </ul>
             </div>
@@ -7791,9 +7572,9 @@
               </div>
               <ul class="d-remedios">
                 <li class="head">Remedios</li>
-                <li>Involucre a las personas que usarán la IA desde el diseño, no solo en la implementación.</li>
+                <li>Involucre desde el diseño a las personas que usarán la IA.</li>
                 <li>Defina métricas de adopción antes de lanzar cualquier herramienta.</li>
-                <li>Trate la capacitación como inversión estratégica, no como tarea operativa.</li>
+                <li>Trate la capacitación como una inversión estratégica.</li>
               </ul>
             </div>
 
@@ -7817,7 +7598,7 @@
                 <li class="head">Remedios</li>
                 <li>Audite la calidad de sus datos antes de construir cualquier sistema de IA.</li>
                 <li>Establezca criterios mínimos de calidad para los datos que alimentan sus herramientas.</li>
-                <li>Trate la gestión de datos como proceso continuo, no preparación inicial.</li>
+                <li>Trate la gestión de datos como un proceso continuo.</li>
               </ul>
             </div>
 
@@ -7835,7 +7616,7 @@
               </div>
               <div class="d-explain">
                 <span class="lbl">Por qué es un error</span>
-                Este supuesto genera resistencia legítima y bloquea la adopción. En la mayoría de casos actuales, la IA amplía las capacidades de las personas, no las reemplaza.
+                Este supuesto genera resistencia legítima y bloquea la adopción. En muchos casos actuales, la IA amplía lo que las personas pueden hacer.
               </div>
               <ul class="d-remedios">
                 <li class="head">Remedios</li>
@@ -7887,8 +7668,8 @@
               </div>
               <ul class="d-remedios">
                 <li class="head">Remedios</li>
-                <li>Invierta en diseñar contextos reutilizables, no solo instrucciones puntuales.</li>
-                <li>Documente los flujos de trabajo con IA como procesos, no conversaciones individuales.</li>
+                <li>Invierta en diseñar contextos reutilizables.</li>
+                <li>Documente los flujos de trabajo con IA como procesos repetibles.</li>
                 <li>Distinga entre uso táctico (instrucción a instrucción) y estratégico (sistemas de contexto).</li>
               </ul>
             </div>
@@ -7900,31 +7681,43 @@
   </section>
 
 <!-- ============================================================
-       SLIDE 11 — Seguridad: Qué cambia (content SLIDE 10)
+       SLIDE 10 · Seguridad · Qué cambia
        ============================================================ -->
   <section class="slide-sec" data-screen-label="10 Seguridad · Qué cambia">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">Sección 04</div>
-        <div class="brand-name">Seguridad<br>en IA</div>
+        <div class="brand-name">Seguridad</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">05</span><span>Principios</span></div>
-          <div class="nav-item"><span class="num">06</span><span>Ciclo de Vida</span></div>
-          <div class="nav-item"><span class="num">07</span><span>Hoja de Ruta</span></div>
-          <div class="nav-item"><span class="num">08</span><span>Puntos Ciegos</span></div>
-          <div class="nav-item active"><span class="num">09</span><span>Seguridad: Qué cambia</span></div>
-          <div class="nav-item"><span class="num">10</span><span>Seguridad: Riesgos</span></div>
-          <div class="nav-item"><span class="num">11</span><span>Herramientas: Mapa</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item active"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
         Sección 04 · Seguridad<br>
-        Slide 10 de 19
+        Diapositiva 10 de 19
       </div>
     </aside>
 
@@ -7932,7 +7725,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 04 · Seguridad en IA · 04</span>
+          <span>Sección 04</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -7949,21 +7742,22 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="awareness">Sensibilización</span></div>
         <h1 class="slide-title">Seguridad en IA: una dimensión nueva.</h1>
 
         <div class="sec-layout">
           <div>
-            <p class="sec-lede">La IA introduce riesgos que no existían en los sistemas tradicionales: opera con <strong>lenguaje natural</strong>, genera respuestas <strong>no deterministas</strong> y accede a información organizacional de forma transversal — a menudo sin planificación explícita.</p>
+            <p class="sec-lede">La IA introduce riesgos que no existían en los sistemas tradicionales: opera con <strong>lenguaje natural</strong>, genera respuestas <strong>no deterministas</strong> y accede a información organizacional de forma transversal, a menudo sin planificación explícita.</p>
 
             <div class="sec-rule"></div>
 
             <div class="sec-risk-block">
-            <p class="sec-lede" style="margin-bottom:18px;">No es solo una cuestión técnica. Es una <strong>dimensión regulatoria y de confianza</strong>: los datos de clientes e información interna tienen implicaciones directas bajo los marcos normativos aplicables a cada organización.</p>
+            <p class="sec-lede" style="margin-bottom:18px;">También es una <strong>dimensión regulatoria y de confianza</strong>: los datos de clientes e información interna tienen implicaciones directas bajo los marcos normativos aplicables a cada organización.</p>
 
             <div class="sec-stats">
               <div class="sec-stat">
                 <div class="stat-tag">Operativo</div>
-                <div class="stat-txt">El lenguaje natural elimina las barreras técnicas — cualquier empleado puede generar exposición sin saberlo.</div>
+                <div class="stat-txt">El lenguaje natural elimina las barreras técnicas, así que cualquier empleado puede generar exposición sin saberlo.</div>
               </div>
               <div class="sec-stat">
                 <div class="stat-tag">Regulatorio</div>
@@ -7996,7 +7790,7 @@
                 </div>
                 <div>
                   <div class="cttitle">Lista de herramientas aprobadas</div>
-                  <div class="ctdesc">Publicar y comunicar activamente qué herramientas están autorizadas. Sin esta lista, el uso no autorizado (Shadow AI) es inevitable.</div>
+                  <div class="ctdesc">Publicar y comunicar activamente qué herramientas están autorizadas. Sin esta lista, la IA en la sombra (uso no autorizado) es inevitable.</div>
                 </div>
                 <div class="ctnum">02</div>
               </div>
@@ -8020,31 +7814,43 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 12 — Seguridad: Riesgos (content SLIDE 11)
+       SLIDE 11 · Seguridad · Riesgos
        ============================================================ -->
   <section class="slide-risk" data-screen-label="11 Seguridad · Riesgos">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">Sección 04</div>
-        <div class="brand-name">Seguridad<br>en IA</div>
+        <div class="brand-name">Seguridad</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">05</span><span>Principios</span></div>
-          <div class="nav-item"><span class="num">06</span><span>Ciclo de Vida</span></div>
-          <div class="nav-item"><span class="num">07</span><span>Hoja de Ruta</span></div>
-          <div class="nav-item"><span class="num">08</span><span>Puntos Ciegos</span></div>
-          <div class="nav-item"><span class="num">09</span><span>Seguridad: Qué cambia</span></div>
-          <div class="nav-item active"><span class="num">10</span><span>Seguridad: Riesgos</span></div>
-          <div class="nav-item"><span class="num">11</span><span>Herramientas: Mapa</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item active"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
         Sección 04 · Seguridad<br>
-        Slide 11 de 19
+        Diapositiva 11 de 19
       </div>
     </aside>
 
@@ -8052,7 +7858,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 04 · Seguridad en IA · 04</span>
+          <span>Sección 04</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -8069,6 +7875,7 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="operational">Operativo</span></div>
         <h1 class="slide-title">Los 5 riesgos más frecuentes.</h1>
         <p class="slide-lede">Cada riesgo indica la audiencia más directamente afectada y la acción más efectiva para mitigarlo. Una herramienta operativa para empezar la conversación de gobernanza.</p>
 
@@ -8086,10 +7893,10 @@
             </div>
             <div class="risk-name">
               <div class="id">R · 01</div>
-              <div class="nm">Shadow AI</div>
+              <div class="nm">IA en la sombra</div>
             </div>
             <div class="risk-what">Colaboradores usan herramientas externas no aprobadas para procesar información interna, sin que la organización lo sepa.</div>
-            <div class="risk-do">Publicar una <strong>lista de herramientas aprobadas</strong> con alternativas disponibles. Política con consecuencias claras.</div>
+            <div class="risk-do">Publicar una <strong>lista de herramientas aprobadas</strong> y ofrecer una alternativa autorizada para cada uso restringido. Sin una vía permitida, el uso no autorizado continúa.</div>
           </div>
 
           <div class="risk-row">
@@ -8113,7 +7920,7 @@
               <div class="nm">Alucinaciones con impacto operativo</div>
             </div>
             <div class="risk-what">El modelo genera respuestas incorrectas pero plausibles sobre procesos, normativas o datos internos.</div>
-            <div class="risk-do">Revisión humana obligatoria en flujos críticos. Tratar todo output factual como <strong>punto de partida</strong>, no como fuente.</div>
+            <div class="risk-do">Revisión humana obligatoria en flujos críticos. Tratar todo output factual como un <strong>punto de partida</strong> que se verifica antes de usarlo.</div>
           </div>
 
           <div class="risk-row">
@@ -8145,32 +7952,43 @@
   </section>
 
 <!-- ============================================================
-       SLIDE 13 — Herramientas: Mapa (content SLIDE 12)
+       SLIDE 12 · Herramientas · Mapa
        ============================================================ -->
   <section class="slide-tools" data-screen-label="12 Herramientas · Mapa">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">Sección 05</div>
-        <div class="brand-name">Valoración de<br>Herramientas IA</div>
+        <div class="brand-name">Herramientas</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">08</span><span>Puntos Ciegos 1–4</span></div>
-          <div class="nav-item"><span class="num">09</span><span>Puntos Ciegos 5–8</span></div>
-          <div class="nav-item"><span class="num">10</span><span>Seguridad: Qué cambia</span></div>
-          <div class="nav-item"><span class="num">11</span><span>Seguridad: Riesgos</span></div>
-          <div class="nav-item active"><span class="num">12</span><span>Herramientas: Mapa</span></div>
-          <div class="nav-item"><span class="num">13</span><span>Herramientas: Criterios</span></div>
-          <div class="nav-item"><span class="num">14</span><span>Prompts: Construir</span></div>
-          <div class="nav-item"><span class="num">15</span><span>Prompts: Práctica</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item active"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
         Sección 05 · Herramientas<br>
-        Slide 12 de 19
+        Diapositiva 12 de 19
       </div>
     </aside>
 
@@ -8178,7 +7996,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 05 · Valoración de Herramientas IA por Tarea · 05</span>
+          <span>Sección 05</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -8195,15 +8013,16 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="operational">Operativo</span></div>
         <h1 class="slide-title">Mapa de herramientas por tipo de tarea.</h1>
-        <p class="slide-lede">Un punto de partida, no una prescripción. El ecosistema cambia rápido — lo que no cambia es la lógica: identificar la tarea, evaluar qué herramienta la ejecuta mejor, y definir el punto de supervisión humana.</p>
+        <p class="slide-lede">Un punto de partida para elegir herramientas. El ecosistema cambia rápido, pero la lógica se mantiene: identificar la tarea, evaluar qué herramienta la ejecuta mejor y definir el nivel de supervisión humana.</p>
 
         <div class="tools-table">
           <div class="tools-header">
             <div>Tipo de tarea</div>
-            <div>Herramientas recomendadas</div>
+            <div>Herramientas de ejemplo (mayo 2026)</div>
             <div>Casos de uso típicos</div>
-            <div>Supervisión</div>
+            <div>Nivel de supervisión</div>
           </div>
 
           <div class="tools-row">
@@ -8215,7 +8034,7 @@
               <span class="tt-chip">Claude</span><span class="tt-chip">ChatGPT</span><span class="tt-chip">Gemini</span>
             </div>
             <div class="tt-cases">Emails, informes, propuestas, resúmenes ejecutivos.</div>
-            <div><span class="tt-sup mid"><span class="lvl"><span></span><span></span><span></span></span>Media</span></div>
+            <div><span class="tt-sup mid"><span class="lvl"><span></span><span></span><span></span></span>Revisión selectiva</span></div>
           </div>
 
           <div class="tools-row">
@@ -8227,7 +8046,7 @@
               <span class="tt-chip">Perplexity</span><span class="tt-chip">Claude</span><span class="tt-chip">ChatGPT</span>
             </div>
             <div class="tt-cases">Síntesis de temas, antecedentes, mapeo de actores.</div>
-            <div><span class="tt-sup high"><span class="lvl"><span></span><span></span><span></span></span>Alta</span></div>
+            <div><span class="tt-sup high"><span class="lvl"><span></span><span></span><span></span></span>Revisión completa</span></div>
           </div>
 
           <div class="tools-row">
@@ -8239,7 +8058,7 @@
               <span class="tt-chip">Claude</span><span class="tt-chip">ChatGPT</span><span class="tt-chip">NotebookLM</span>
             </div>
             <div class="tt-cases">Revisión de contratos, análisis de informes, puntos clave.</div>
-            <div><span class="tt-sup high"><span class="lvl"><span></span><span></span><span></span></span>Alta</span></div>
+            <div><span class="tt-sup high"><span class="lvl"><span></span><span></span><span></span></span>Revisión completa</span></div>
           </div>
 
           <div class="tools-row">
@@ -8251,7 +8070,7 @@
               <span class="tt-chip">Gamma</span><span class="tt-chip">Beautiful.ai</span><span class="tt-chip">Claude</span>
             </div>
             <div class="tt-cases">Decks de clientes, materiales de capacitación.</div>
-            <div><span class="tt-sup mid"><span class="lvl"><span></span><span></span><span></span></span>Media</span></div>
+            <div><span class="tt-sup mid"><span class="lvl"><span></span><span></span><span></span></span>Revisión selectiva</span></div>
           </div>
 
           <div class="tools-row">
@@ -8263,7 +8082,7 @@
               <span class="tt-chip">Otter.ai</span><span class="tt-chip">Fireflies</span><span class="tt-chip">Notion IA</span>
             </div>
             <div class="tt-cases">Minutas automáticas, seguimiento de acuerdos.</div>
-            <div><span class="tt-sup midlow"><span class="lvl"><span></span><span></span><span></span></span>Baja–Media</span></div>
+            <div><span class="tt-sup midlow"><span class="lvl"><span></span><span></span><span></span></span>Revisión selectiva</span></div>
           </div>
 
           <div class="tools-row">
@@ -8275,7 +8094,7 @@
               <span class="tt-chip">Notion IA</span><span class="tt-chip">Obsidian</span><span class="tt-chip">Mem</span>
             </div>
             <div class="tt-cases">Organización de información, búsqueda en documentos internos.</div>
-            <div><span class="tt-sup low"><span class="lvl"><span></span><span></span><span></span></span>Baja</span></div>
+            <div><span class="tt-sup low"><span class="lvl"><span></span><span></span><span></span></span>Humano sobre el bucle</span></div>
           </div>
 
           <div class="tools-row">
@@ -8287,7 +8106,7 @@
               <span class="tt-chip">ChatGPT</span><span class="tt-chip">Claude</span><span class="tt-chip">Julius</span>
             </div>
             <div class="tt-cases">Análisis de hojas de cálculo, detección de patrones.</div>
-            <div><span class="tt-sup high"><span class="lvl"><span></span><span></span><span></span></span>Alta</span></div>
+            <div><span class="tt-sup high"><span class="lvl"><span></span><span></span><span></span></span>Revisión completa</span></div>
           </div>
 
           <div class="tools-row">
@@ -8299,42 +8118,53 @@
               <span class="tt-chip">GitHub Copilot</span><span class="tt-chip">Claude</span><span class="tt-chip">Cursor</span>
             </div>
             <div class="tt-cases">Generación de scripts, automatización de procesos.</div>
-            <div><span class="tt-sup high"><span class="lvl"><span></span><span></span><span></span></span>Alta</span></div>
+            <div><span class="tt-sup high"><span class="lvl"><span></span><span></span><span></span></span>Revisión completa</span></div>
           </div>
         </div>
 
-        <div class="tools-foot">Mapa basado en el ecosistema disponible en mayo 2026 · Recomendado revisarlo cada 6 meses.</div>
+        <div class="tools-foot">Las herramientas son ejemplos disponibles en mayo de 2026, sin recomendación de compra. Revise el mapa cada 6 meses. Los niveles de supervisión son los del glosario (A·1).</div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       SLIDE 14 — Herramientas: Criterios (content SLIDE 13)
+       SLIDE 13 · Herramientas · Criterios
        ============================================================ -->
   <section class="slide-crit" data-screen-label="13 Herramientas · Criterios">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">Sección 05</div>
-        <div class="brand-name">Valoración de<br>Herramientas IA</div>
+        <div class="brand-name">Herramientas</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">08</span><span>Puntos Ciegos 1–4</span></div>
-          <div class="nav-item"><span class="num">09</span><span>Puntos Ciegos 5–8</span></div>
-          <div class="nav-item"><span class="num">10</span><span>Seguridad: Qué cambia</span></div>
-          <div class="nav-item"><span class="num">11</span><span>Seguridad: Riesgos</span></div>
-          <div class="nav-item"><span class="num">12</span><span>Herramientas: Mapa</span></div>
-          <div class="nav-item active"><span class="num">13</span><span>Herramientas: Criterios</span></div>
-          <div class="nav-item"><span class="num">14</span><span>Prompts: Construir</span></div>
-          <div class="nav-item"><span class="num">15</span><span>Prompts: Práctica</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item active"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
         Sección 05 · Herramientas<br>
-        Slide 13 de 19
+        Diapositiva 13 de 19
       </div>
     </aside>
 
@@ -8342,7 +8172,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 05 · Valoración de Herramientas IA por Tarea · 05</span>
+          <span>Sección 05</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -8359,6 +8189,7 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="operational">Operativo</span></div>
         <h1 class="slide-title">Cuatro preguntas para evaluar cualquier herramienta nueva.</h1>
         <p class="slide-lede">Antes de adoptar una nueva herramienta de IA en un flujo de trabajo, pásela por estas cuatro preguntas. Si alguna no tiene respuesta, no integre todavía.</p>
 
@@ -8375,7 +8206,7 @@
             <div class="crit-num">02</div>
             <div>
               <div class="crit-q">¿Quién valida el resultado antes de usarlo?</div>
-              <div class="crit-detail">Defina el <strong>punto de supervisión</strong> antes de integrar la herramienta al flujo de trabajo. La validación humana no es una formalidad — es el control que evita que un error puntual escale a un problema operativo.</div>
+              <div class="crit-detail">Defina el <strong>punto de supervisión</strong> antes de integrar la herramienta al flujo de trabajo. La validación humana es el control que evita que un error puntual escale a un problema operativo.</div>
             </div>
           </div>
 
@@ -8391,7 +8222,7 @@
             <div class="crit-num">04</div>
             <div>
               <div class="crit-q">¿Cuál es el costo de un error?</div>
-              <div class="crit-detail">A mayor impacto de un error, <strong>mayor debe ser el nivel de supervisión humana</strong>. Calibre la confianza en la herramienta según las consecuencias reales — no según la fluidez de la respuesta.</div>
+              <div class="crit-detail">A mayor impacto de un error, <strong>mayor debe ser el nivel de supervisión humana</strong>. Calibre la confianza según las consecuencias reales de un error. La fluidez de la respuesta no indica que sea correcta.</div>
             </div>
           </div>
         </div>
@@ -8400,37 +8231,53 @@
           <span class="ctag">Lógica permanente</span>
           <span class="cbody">La lógica de selección no cambia aunque las herramientas sí lo hagan: <strong>identifique la tarea, evalúe qué herramienta la ejecuta mejor con los datos disponibles, y defina el punto de supervisión humana.</strong></span>
         </div>
+
+        <div class="crit-callout crit-repro">
+          <span class="ctag">¿Falla o confunde?</span>
+          <span class="cbody">Antes de llamar a algo un fallo de la herramienta, reprodúzcalo usted. Si también le falla, es un problema de la herramienta, con pasos que un desarrollador puede seguir. Si funciona, la persona hizo algo distinto o la herramienta la confundió, y eso se resuelve con capacitación, con el flujo de trabajo o con el diseño.</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       SLIDE 15 — Prompts: Cómo construirlo (content SLIDE 14)
+       SLIDE 14 · Prompts · Cómo construirlo
        ============================================================ -->
   <section class="slide-prompt" data-screen-label="14 Prompts · Cómo construirlo">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">Sección 06</div>
-        <div class="brand-name">Cómo escribir<br>buenos prompts</div>
+        <div class="brand-name">Prompts y uso responsable</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">08</span><span>Puntos Ciegos 1–4</span></div>
-          <div class="nav-item"><span class="num">09</span><span>Puntos Ciegos 5–8</span></div>
-          <div class="nav-item"><span class="num">10</span><span>Seguridad: Qué cambia</span></div>
-          <div class="nav-item"><span class="num">11</span><span>Seguridad: Riesgos</span></div>
-          <div class="nav-item"><span class="num">12</span><span>Herramientas: Mapa</span></div>
-          <div class="nav-item"><span class="num">13</span><span>Herramientas: Criterios</span></div>
-          <div class="nav-item active"><span class="num">14</span><span>Prompts: Construir</span></div>
-          <div class="nav-item"><span class="num">15</span><span>Prompts: Práctica</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item active"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
+          <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
+          <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
-        Sección 06 · Prompts<br>
-        Slide 14 de 19
+        Sección 06 · Prompts y uso responsable<br>
+        Diapositiva 14 de 19
       </div>
     </aside>
 
@@ -8438,7 +8285,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 06 · Cómo escribir buenos prompts · 06</span>
+          <span>Sección 06</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -8455,8 +8302,9 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="operational">Operativo</span></div>
         <h1 class="slide-title">Cómo construir un buen prompt.</h1>
-        <p class="slide-lede">Un prompt es una instrucción a la IA. Su calidad depende del <em style="color:var(--teal-light);font-style:normal">contexto</em> que lo acompaña — el modelo parte de cero en cada conversación y solo sabe lo que usted le dice.</p>
+        <p class="slide-lede">Un prompt es una instrucción a la IA. Su calidad depende del <em style="color:var(--teal-light);font-style:normal">contexto</em> que lo acompaña. Salvo que la herramienta tenga memoria o instrucciones guardadas, el modelo empieza cada conversación sin saber nada de usted y solo sabe lo que usted le dice.</p>
 
         <div class="prompt-flow">
           <div class="pf-step">
@@ -8531,7 +8379,7 @@
 <span class="field">Restricciones:</span> <span class="placeholder">[Formato, extensión, tono, qué no incluir]</span>.
 
 <span class="field">Resultado esperado:</span> <span class="placeholder">[Tabla, párrafos, lista, borrador, etc.]</span>.</div>
-            <div class="tmpl-note">No es necesario completar todos los campos — solo los que evitan malinterpretación. Cuanto más sensible la tarea, más explícito el contexto.</div>
+            <div class="tmpl-note">No es necesario completar todos los campos, solo los que evitan malinterpretaciones. Cuanto más sensible la tarea, más explícito debe ser el contexto.</div>
           </div>
         </div>
       </div>
@@ -8539,32 +8387,43 @@
   </section>
 
 <!-- ============================================================
-       SLIDE 16 — Prompts: En la práctica (content SLIDE 15)
+       SLIDE 15 · Prompts · Práctica
        ============================================================ -->
   <section class="slide-prac" data-screen-label="15 Prompts · Práctica">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">Sección 06</div>
-        <div class="brand-name">Cómo escribir<br>buenos prompts</div>
+        <div class="brand-name">Prompts y uso responsable</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">11</span><span>Seguridad: Riesgos</span></div>
-          <div class="nav-item"><span class="num">12</span><span>Herramientas: Mapa</span></div>
-          <div class="nav-item"><span class="num">13</span><span>Herramientas: Criterios</span></div>
-          <div class="nav-item"><span class="num">14</span><span>Prompts: Construir</span></div>
-          <div class="nav-item active"><span class="num">15</span><span>Prompts: Práctica</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item active"><span class="num">15</span><span>Prompts: práctica</span></div>
           <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
           <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
           <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
-        Sección 06 · Prompts<br>
-        Slide 15 de 19
+        Sección 06 · Prompts y uso responsable<br>
+        Diapositiva 15 de 19
       </div>
     </aside>
 
@@ -8572,7 +8431,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 06 · Cómo escribir buenos prompts · 06</span>
+          <span>Sección 06</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -8589,13 +8448,14 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="operational">Operativo</span></div>
         <h1 class="slide-title">En la práctica: ejemplos y errores.</h1>
         <p class="slide-lede">Ver el cambio antes y después de añadir contexto hace el efecto evidente. Después, tres errores frecuentes que cuestan tiempo y producen resultados pobres.</p>
 
         <div class="prac-layout">
           <div>
             <div class="compare-header">
-              <span class="ch-weak">Prompt débil <span class="ch-hint">— clic para ver</span></span>
+              <span class="ch-weak">Prompt débil <span class="ch-hint">· clic para ver</span></span>
               <span></span>
               <span class="ch-strong">Con contexto</span>
             </div>
@@ -8630,13 +8490,13 @@
               <div class="err-card">
                 <div class="err-num"><span class="pip">1</span>Error frecuente</div>
                 <div class="err-title">Asumir que el modelo ya sabe.</div>
-                <div class="err-desc">El modelo no recuerda conversaciones anteriores ni conoce la organización. Cada sesión parte de cero — proporcione el contexto desde el inicio.</div>
+                <div class="err-desc">El modelo no conoce la organización y, salvo que la herramienta tenga memoria activada, no recuerda conversaciones anteriores. Proporcione el contexto desde el inicio.</div>
               </div>
 
               <div class="err-card">
                 <div class="err-num"><span class="pip">2</span>Error frecuente</div>
                 <div class="err-title">Aceptar la primera respuesta sin iterar.</div>
-                <div class="err-desc">El primer output es un punto de partida. Pida ajustes: "Hágalo más corto", "Cambie el tono". Iterar es parte del proceso, no señal de mal prompt.</div>
+                <div class="err-desc">El primer output es un punto de partida. Pida ajustes: "Hágalo más corto", "Cambie el tono". Iterar es parte normal del proceso.</div>
               </div>
 
               <div class="err-card">
@@ -8652,32 +8512,43 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 17 — Uso responsable (content SLIDE 16)
+       SLIDE 16 · Uso responsable
        ============================================================ -->
   <section class="slide-resp" data-screen-label="16 Uso responsable">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">Sección 06</div>
-        <div class="brand-name">Uso<br>responsable</div>
+        <div class="brand-name">Prompts y uso responsable</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">11</span><span>Seguridad: Riesgos</span></div>
-          <div class="nav-item"><span class="num">12</span><span>Herramientas: Mapa</span></div>
-          <div class="nav-item"><span class="num">13</span><span>Herramientas: Criterios</span></div>
-          <div class="nav-item"><span class="num">14</span><span>Prompts: Construir</span></div>
-          <div class="nav-item"><span class="num">15</span><span>Prompts: Práctica</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
           <div class="nav-item active"><span class="num">16</span><span>Uso responsable</span></div>
           <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
           <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
-        Sección 06 · Uso responsable<br>
-        Slide 16 de 19
+        Sección 06 · Prompts y uso responsable<br>
+        Diapositiva 16 de 19
       </div>
     </aside>
 
@@ -8685,7 +8556,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Sección 06 · Uso Responsable · →</span>
+          <span>Sección 06</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -8702,11 +8573,12 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="operational">Operativo</span></div>
         <h1 class="slide-title">Uso responsable: límites que todo usuario debe conocer.</h1>
 
         <div class="resp-quote">
           <span class="qtag">Principio</span>
-          <span class="qbody">La IA <strong>amplifica</strong> la capacidad de quien la usa — pero <strong>no transfiere</strong> la responsabilidad. El usuario final responde por lo que comparte, decide o aprueba con su nombre.</span>
+          <span class="qbody">La IA <strong>amplifica</strong> la capacidad de quien la usa, y la responsabilidad sigue siendo de la persona. El usuario final responde por lo que comparte, decide o aprueba con su nombre.</span>
         </div>
 
         <div class="resp-layout">
@@ -8729,7 +8601,7 @@
                   <!-- Lock / sensitive data -->
                   <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
                 </div>
-                <div class="never-text">Los datos involucrados son sensibles — clientes, expedientes, información financiera — y no han sido anonimizados.</div>
+                <div class="never-text">Los datos involucrados son sensibles (clientes, expedientes, información financiera) y no han sido anonimizados.</div>
               </div>
 
               <div class="never-item">
@@ -8790,7 +8662,7 @@
                 <div class="ask-num">04</div>
                 <div>
                   <div class="ask-q">¿La herramienta está autorizada para esta tarea?</div>
-                  <div class="ask-imp">Usar herramientas no evaluadas en tareas sensibles es un riesgo organizacional, no solo personal.</div>
+                  <div class="ask-imp">Usar herramientas no evaluadas en tareas sensibles es un riesgo para la organización y para usted.</div>
                 </div>
               </div>
             </div>
@@ -8801,32 +8673,43 @@
   </section>
 
   <!-- ============================================================
-       SLIDE 18 — Próximos pasos (content SLIDE 17)
+       SLIDE 17 · Próximos pasos
        ============================================================ -->
   <section class="slide-next" data-screen-label="17 Próximos pasos">
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-mark">Cierre</div>
-        <div class="brand-name">Próximos<br>pasos</div>
+        <div class="brand-mark">Sección 07</div>
+        <div class="brand-name">Próximos pasos</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">11</span><span>Seguridad: Riesgos</span></div>
-          <div class="nav-item"><span class="num">12</span><span>Herramientas: Mapa</span></div>
-          <div class="nav-item"><span class="num">13</span><span>Herramientas: Criterios</span></div>
-          <div class="nav-item"><span class="num">14</span><span>Prompts: Construir</span></div>
-          <div class="nav-item"><span class="num">15</span><span>Prompts: Práctica</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
           <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
           <div class="nav-item active"><span class="num">17</span><span>Próximos pasos</span></div>
           <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
+          <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
-        Cierre · Próximos pasos<br>
-        Slide 17 de 19
+        Sección 07 · Próximos pasos<br>
+        Diapositiva 17 de 19
       </div>
     </aside>
 
@@ -8834,7 +8717,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Cierre · Próximos Pasos · →</span>
+          <span>Sección 07</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -8851,8 +8734,9 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="governance">Gobernanza</span></div>
         <h1 class="slide-title">De la comprensión a la acción.</h1>
-        <p class="slide-lede">Tres reglas que aplican siempre, independientemente del nivel de madurez de la organización y tres acciones concretas según la zona de partida.</p>
+        <p class="slide-lede">Tres reglas que aplican siempre, sin importar el nivel de madurez de la organización, y tres acciones concretas según la zona de partida.</p>
 
         <div class="always-band">
           <div class="always-card">
@@ -8861,7 +8745,7 @@
               <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L21 21"/></svg>
             </div>
             <div>
-              <div class="always-title">Siempre verifique</div>
+              <div class="always-title"><a class="always-link" href="https://github.com/luispsalas/ai-enablement-toolkit/blob/main/literacy/reviewing-ai-output.md" target="_blank" rel="noopener" title="Cómo revisar resultados de IA (página en inglés)">Siempre verifique ↗</a></div>
               <div class="always-desc">Un LLM puede parecer correcto y estar equivocado. Antes de compartir un output, contrástelo con la fuente original.</div>
             </div>
           </div>
@@ -8889,15 +8773,17 @@
           </div>
         </div>
 
+        <p class="next-baseline">Antes de cambiar una tarea con IA, registre su <strong>línea base</strong>: cómo funciona hoy en tiempo, errores y retrabajo. Sin ella no hay forma de saber si la IA la mejoró.</p>
+
         <div class="zones-row">
           <div class="zone-block z1">
             <div class="zone-head">
               <span class="ztag">Zona 01</span>
               <div class="zname">Uso básico</div>
-              <div class="zsub">Mayoría de organizaciones hoy</div>
+              <div class="zsub">Muchas organizaciones hoy</div>
             </div>
             <ul class="zone-actions">
-              <li><span class="num">01</span><span>Use una <strong style="color:var(--white);font-weight:600">cuenta institucional</strong> — no su correo personal — para herramientas de IA.</span></li>
+              <li><span class="num">01</span><span>Use una <strong style="color:var(--white);font-weight:600">cuenta institucional</strong> para las herramientas de IA, nunca su correo personal.</span></li>
               <li><span class="num">02</span><span>Identifique una tarea concreta donde la IA pueda ahorrarle <strong style="color:var(--white);font-weight:600">30 minutos esta semana</strong> y pruébela.</span></li>
               <li><span class="num">03</span><span>Consulte si su organización tiene política de uso de IA. Si no existe, pregunte <strong style="color:var(--white);font-weight:600">quién la está elaborando</strong>.</span></li>
             </ul>
@@ -8910,7 +8796,7 @@
               <div class="zsub">Organizaciones líderes a nivel global</div>
             </div>
             <ul class="zone-actions">
-              <li><span class="num">01</span><span>Documente qué datos organizacionales entran a sus herramientas — y <strong style="color:var(--white);font-weight:600">quién tiene acceso</strong> a esos outputs.</span></li>
+              <li><span class="num">01</span><span>Documente qué datos organizacionales entran a sus herramientas y <strong style="color:var(--white);font-weight:600">quién tiene acceso</strong> a esos outputs.</span></li>
               <li><span class="num">02</span><span>Designe un <strong style="color:var(--white);font-weight:600">responsable de revisión humana</strong> para cada flujo automatizado activo.</span></li>
               <li><span class="num">03</span><span>Establezca un <strong style="color:var(--white);font-weight:600">ciclo de revisión semestral</strong>: ¿las herramientas activas siguen siendo adecuadas y seguras?</span></li>
             </ul>
@@ -8923,8 +8809,8 @@
               <div class="zsub">Hacia dónde va el mundo en 2026–2027</div>
             </div>
             <ul class="zone-actions">
-              <li><span class="num">01</span><span>Audite agentes activos: <strong style="color:var(--white);font-weight:600">¿quién los autorizó? ¿qué permisos tienen?</strong> ¿hay supervisión humana en el loop?</span></li>
-              <li><span class="num">02</span><span>Implemente <strong style="color:var(--white);font-weight:600">alertas de monitoreo</strong> en flujos multi-paso autónomos — no asuma que funcionan correctamente.</span></li>
+              <li><span class="num">01</span><span>Audite agentes activos: <strong style="color:var(--white);font-weight:600">¿quién los autorizó? ¿qué permisos tienen?</strong> ¿qué nivel de supervisión humana tienen?</span></li>
+              <li><span class="num">02</span><span>Implemente <strong style="color:var(--white);font-weight:600">alertas de monitoreo</strong> en flujos autónomos de varios pasos para detectar fallos a tiempo.</span></li>
               <li><span class="num">03</span><span>Actualice el marco de gobernanza para incluir <strong style="color:var(--white);font-weight:600">criterios de autonomía permitida</strong> y puntos de intervención humana.</span></li>
             </ul>
           </div>
@@ -8936,30 +8822,43 @@
   </section>
 
 <!-- ============================================================
-       SLIDE 19 — Glosario (47 términos · interactive hover)
+       SLIDE 18 · Glosario
        ============================================================ -->
-  <section class="glossary glossary-merged" data-screen-label="18 Glosario">
+  <section class="glossary" data-screen-label="18 Glosario">
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-mark">Apéndice</div>
+        <div class="brand-mark">Apéndice A·1</div>
         <div class="brand-name">Glosario IA</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">14</span><span>Cierre</span></div>
-          <div class="nav-item"><span class="num">15</span><span>Preguntas</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
           <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
           <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
-          <div class="nav-item active"><span class="num">A·1</span><span>Glosario</span></div>
+          <div class="nav-item active"><span class="num">A·1</span><span>Glosario IA</span></div>
           <div class="nav-item"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
-        Apéndice · Glosario IA<br>
-        Slide 18 de 19
+        Apéndice A·1 · Glosario IA<br>
+        Diapositiva 18 de 19
       </div>
     </aside>
 
@@ -8967,7 +8866,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Apéndice · Glosario IA · A·1</span>
+          <span>Apéndice A·1</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -8983,392 +8882,63 @@
         </div>
       </div>
 
-      <div class="content">
-        <div class="gloss-head-row">
-          <h1 class="slide-title" style="font-size:52px; margin-bottom:0;">Glosario IA.</h1>
-          <div class="gloss-meta" style="margin-bottom:0;">
-            <span class="badge">24 términos</span>
-            <span class="desc">Pase el cursor (o haga clic) sobre un término para ver su definición. Orden alfabético en español; referencia cruzada en inglés.</span>
-          </div>
+      <div class="content gx">
+        <div class="tier-line"><span class="tier-tag" data-tier="awareness">Sensibilización</span></div>
+        <div class="gx-head">
+          <h1 class="slide-title gx-title">Glosario IA.</h1>
+          <span class="badge">38 términos</span>
+          <input class="gx-filter" type="search" placeholder="Buscar en los cinco grupos" aria-label="Buscar un término" autocomplete="off">
+          <a class="gx-link" href="https://github.com/luispsalas/ai-enablement-toolkit/blob/main/literacy/glossary.md" target="_blank" rel="noopener">Glosario completo, con notas de uso y enlaces ↗</a>
         </div>
-
-        <div class="gloss-merged-layout">
-          <div class="gloss-chips" role="tablist" aria-label="Términos del glosario">
-              <button class="g-chip active" type="button" role="tab" data-idx="0" aria-selected="true">
-                <span class="t-num">01</span>
-                <span class="t-name">Agente de IA</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="1" aria-selected="false">
-                <span class="t-num">02</span>
-                <span class="t-name">Alineación</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="2" aria-selected="false">
-                <span class="t-num">03</span>
-                <span class="t-name">Alucinación de IA</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="3" aria-selected="false">
-                <span class="t-num">04</span>
-                <span class="t-name">Barreras de protección</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="4" aria-selected="false">
-                <span class="t-num">05</span>
-                <span class="t-name">Caja negra</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="5" aria-selected="false">
-                <span class="t-num">06</span>
-                <span class="t-name">Calidad de datos</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="6" aria-selected="false">
-                <span class="t-num">07</span>
-                <span class="t-name">Contexto</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="7" aria-selected="false">
-                <span class="t-num">08</span>
-                <span class="t-name">Cumplimiento normativo</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="8" aria-selected="false">
-                <span class="t-num">09</span>
-                <span class="t-name">Dominio</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="9" aria-selected="false">
-                <span class="t-num">10</span>
-                <span class="t-name">Enmarcado de contexto</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="10" aria-selected="false">
-                <span class="t-num">11</span>
-                <span class="t-name">Explicabilidad</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="11" aria-selected="false">
-                <span class="t-num">12</span>
-                <span class="t-name">Fundamentación</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="12" aria-selected="false">
-                <span class="t-num">13</span>
-                <span class="t-name">Generación aumentada</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="13" aria-selected="false">
-                <span class="t-num">14</span>
-                <span class="t-name">Humano en el bucle</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="14" aria-selected="false">
-                <span class="t-num">15</span>
-                <span class="t-name">Modos de fallo</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="15" aria-selected="false">
-                <span class="t-num">16</span>
-                <span class="t-name">Observabilidad</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="16" aria-selected="false">
-                <span class="t-num">17</span>
-                <span class="t-name">Orquestación</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="17" aria-selected="false">
-                <span class="t-num">18</span>
-                <span class="t-name">Propiedad / responsabilidad</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="18" aria-selected="false">
-                <span class="t-num">19</span>
-                <span class="t-name">Rastro de auditoría</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="19" aria-selected="false">
-                <span class="t-num">20</span>
-                <span class="t-name">Responsabilidad</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="20" aria-selected="false">
-                <span class="t-num">21</span>
-                <span class="t-name">Retroalimentación continua</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="21" aria-selected="false">
-                <span class="t-num">22</span>
-                <span class="t-name">Sesgo</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="22" aria-selected="false">
-                <span class="t-num">23</span>
-                <span class="t-name">Tokenización</span>
-              </button>
-              <button class="g-chip" type="button" role="tab" data-idx="23" aria-selected="false">
-                <span class="t-num">24</span>
-                <span class="t-name">Ventana de contexto</span>
-              </button>
-          </div>
-
-          <aside class="gloss-detail" aria-live="polite">
-            <div class="g-panel active" data-idx="0">
-              <div class="g-panel-head">
-                <div class="g-num">01</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Agente de IA</h3>
-                  <div class="g-eng">AI Agent</div>
-                </div>
-              </div>
-              <p class="g-def">Sistema de IA que percibe información, toma decisiones y ejecuta acciones de forma autónoma para alcanzar un objetivo.</p>
-            </div>
-            <div class="g-panel" data-idx="1">
-              <div class="g-panel-head">
-                <div class="g-num">02</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Alineación</h3>
-                  <div class="g-eng">Alignment</div>
-                </div>
-              </div>
-              <p class="g-def">Proceso de asegurar que el comportamiento de un sistema de IA corresponda con los valores y objetivos de la organización.</p>
-            </div>
-            <div class="g-panel" data-idx="2">
-              <div class="g-panel-head">
-                <div class="g-num">03</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Alucinación de IA</h3>
-                  <div class="g-eng">Hallucination</div>
-                </div>
-              </div>
-              <p class="g-def">Cuando un sistema de IA genera información incorrecta o inventada, presentándola como si fuera verdadera.</p>
-            </div>
-            <div class="g-panel" data-idx="3">
-              <div class="g-panel-head">
-                <div class="g-num">04</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Barreras de protección</h3>
-                  <div class="g-eng">Guardrails</div>
-                </div>
-              </div>
-              <p class="g-def">Mecanismos de control implementados en sistemas de IA para limitar comportamientos no deseados o fuera de política.</p>
-            </div>
-            <div class="g-panel" data-idx="4">
-              <div class="g-panel-head">
-                <div class="g-num">05</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Caja negra</h3>
-                  <div class="g-eng">Black Box</div>
-                </div>
-              </div>
-              <p class="g-def">Sistema de IA cuyo proceso interno de razonamiento no es visible ni interpretable por los usuarios o administradores.</p>
-            </div>
-            <div class="g-panel" data-idx="5">
-              <div class="g-panel-head">
-                <div class="g-num">06</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Calidad de datos</h3>
-                  <div class="g-eng">Data Quality</div>
-                </div>
-              </div>
-              <p class="g-def">Grado en que los datos son precisos, completos, consistentes, oportunos y relevantes para el uso previsto.</p>
-            </div>
-            <div class="g-panel" data-idx="6">
-              <div class="g-panel-head">
-                <div class="g-num">07</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Contexto</h3>
-                  <div class="g-eng">Context</div>
-                </div>
-              </div>
-              <p class="g-def">Información disponible para el modelo al generar una respuesta: instrucciones, historial y datos de referencia.</p>
-            </div>
-            <div class="g-panel" data-idx="7">
-              <div class="g-panel-head">
-                <div class="g-num">08</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Cumplimiento normativo</h3>
-                  <div class="g-eng">Compliance</div>
-                </div>
-              </div>
-              <p class="g-def">Adherencia de los sistemas de IA a leyes, regulaciones, políticas internas y estándares éticos aplicables.</p>
-            </div>
-            <div class="g-panel" data-idx="8">
-              <div class="g-panel-head">
-                <div class="g-num">09</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Dominio</h3>
-                  <div class="g-eng">Domain</div>
-                </div>
-              </div>
-              <p class="g-def">Área específica de conocimiento o actividad sobre la cual opera un sistema de IA o se aplica una política.</p>
-            </div>
-            <div class="g-panel" data-idx="9">
-              <div class="g-panel-head">
-                <div class="g-num">10</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Enmarcado de contexto</h3>
-                  <div class="g-eng">Context Framing</div>
-                </div>
-              </div>
-              <p class="g-def">Manera en que se presenta la información al modelo: orden, tono y supuestos implícitos que influyen en la interpretación.</p>
-            </div>
-            <div class="g-panel" data-idx="10">
-              <div class="g-panel-head">
-                <div class="g-num">11</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Explicabilidad</h3>
-                  <div class="g-eng">XAI</div>
-                </div>
-              </div>
-              <p class="g-def">Capacidad de un sistema de IA de presentar sus resultados de manera comprensible para personas no técnicas.</p>
-            </div>
-            <div class="g-panel" data-idx="11">
-              <div class="g-panel-head">
-                <div class="g-num">12</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Fundamentación</h3>
-                  <div class="g-eng">Grounding</div>
-                </div>
-              </div>
-              <p class="g-def">Proceso de conectar las respuestas de un modelo con fuentes verificables, reduciendo la generación de contenido inventado.</p>
-            </div>
-            <div class="g-panel" data-idx="12">
-              <div class="g-panel-head">
-                <div class="g-num">13</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Generación aumentada</h3>
-                  <div class="g-eng">RAG</div>
-                </div>
-              </div>
-              <p class="g-def">Técnica que combina un modelo con una base de conocimiento externa para recuperar información actualizada antes de responder.</p>
-            </div>
-            <div class="g-panel" data-idx="13">
-              <div class="g-panel-head">
-                <div class="g-num">14</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Humano en el bucle</h3>
-                  <div class="g-eng">Human-in-the-Loop</div>
-                </div>
-              </div>
-              <p class="g-def">Modelo operativo donde una persona revisa, valida o aprueba las acciones del sistema de IA antes de que tengan efecto.</p>
-            </div>
-            <div class="g-panel" data-idx="14">
-              <div class="g-panel-head">
-                <div class="g-num">15</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Modos de fallo</h3>
-                  <div class="g-eng">Failure Modes</div>
-                </div>
-              </div>
-              <p class="g-def">Formas específicas en que un sistema de IA puede producir resultados incorrectos, dañinos o inesperados.</p>
-            </div>
-            <div class="g-panel" data-idx="15">
-              <div class="g-panel-head">
-                <div class="g-num">16</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Observabilidad</h3>
-                  <div class="g-eng">Observability</div>
-                </div>
-              </div>
-              <p class="g-def">Capacidad de monitorear e interpretar el comportamiento de un sistema en producción. Sin observabilidad no hay gobernanza.</p>
-            </div>
-            <div class="g-panel" data-idx="16">
-              <div class="g-panel-head">
-                <div class="g-num">17</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Orquestación</h3>
-                  <div class="g-eng">Orchestration</div>
-                </div>
-              </div>
-              <p class="g-def">Coordinación automatizada de múltiples componentes (modelos, agentes, herramientas) para ejecutar tareas complejas.</p>
-            </div>
-            <div class="g-panel" data-idx="17">
-              <div class="g-panel-head">
-                <div class="g-num">18</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Propiedad / responsabilidad</h3>
-                  <div class="g-eng">Ownership</div>
-                </div>
-              </div>
-              <p class="g-def">Asignación clara de quién es responsable de un sistema de IA, sus datos, su mantenimiento y sus resultados.</p>
-            </div>
-            <div class="g-panel" data-idx="18">
-              <div class="g-panel-head">
-                <div class="g-num">19</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Rastro de auditoría</h3>
-                  <div class="g-eng">Audit Trail</div>
-                </div>
-              </div>
-              <p class="g-def">Registro estructurado y cronológico de las entradas, acciones, decisiones y resultados de un sistema de IA.</p>
-            </div>
-            <div class="g-panel" data-idx="19">
-              <div class="g-panel-head">
-                <div class="g-num">20</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Responsabilidad</h3>
-                  <div class="g-eng">Accountability</div>
-                </div>
-              </div>
-              <p class="g-def">Obligación de responder por los resultados generados por sistemas de IA, independientemente del nivel de automatización.</p>
-            </div>
-            <div class="g-panel" data-idx="20">
-              <div class="g-panel-head">
-                <div class="g-num">21</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Retroalimentación continua</h3>
-                  <div class="g-eng">Continuous Feedback</div>
-                </div>
-              </div>
-              <p class="g-def">Proceso de recolectar evaluaciones del sistema y usarlas para ajustar o mejorar su desempeño iterativamente.</p>
-            </div>
-            <div class="g-panel" data-idx="21">
-              <div class="g-panel-head">
-                <div class="g-num">22</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Sesgo</h3>
-                  <div class="g-eng">Bias</div>
-                </div>
-              </div>
-              <p class="g-def">Tendencia sistemática de un modelo a producir resultados injustos o inexactos, generalmente heredada de los datos de entrenamiento.</p>
-            </div>
-            <div class="g-panel" data-idx="22">
-              <div class="g-panel-head">
-                <div class="g-num">23</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Tokenización</h3>
-                  <div class="g-eng">Tokenization</div>
-                </div>
-              </div>
-              <p class="g-def">Proceso por el que un modelo divide el texto en unidades mínimas de procesamiento (tokens) antes de analizarlo.</p>
-            </div>
-            <div class="g-panel" data-idx="23">
-              <div class="g-panel-head">
-                <div class="g-num">24</div>
-                <div class="g-headwrap">
-                  <h3 class="g-name">Ventana de contexto</h3>
-                  <div class="g-eng">Context Window</div>
-                </div>
-              </div>
-              <p class="g-def">Cantidad máxima de información (texto, instrucciones, documentos) que un modelo puede procesar en una sola interacción.</p>
-            </div>
-
-            <div class="gloss-detail-foot">
-              <span class="fb">A — V</span>
-              <span class="ft">24 términos · Mayo 2026</span>
-            </div>
-          </aside>
+        <div class="gx-tabs" role="tablist" aria-label="Grupos del glosario">
+          <button class="gx-tab" type="button" role="tab" id="gx-tab-0" aria-controls="gx-pane-0" aria-selected="true" tabindex="0">Cómo funciona la IA <span class="gx-count">9</span></button><button class="gx-tab" type="button" role="tab" id="gx-tab-1" aria-controls="gx-pane-1" aria-selected="false" tabindex="-1">Dónde falla <span class="gx-count">8</span></button><button class="gx-tab" type="button" role="tab" id="gx-tab-2" aria-controls="gx-pane-2" aria-selected="false" tabindex="-1">Gobernanza <span class="gx-count">7</span></button><button class="gx-tab" type="button" role="tab" id="gx-tab-3" aria-controls="gx-pane-3" aria-selected="false" tabindex="-1">Supervisión y control <span class="gx-count">6</span></button><button class="gx-tab" type="button" role="tab" id="gx-tab-4" aria-controls="gx-pane-4" aria-selected="false" tabindex="-1">Adopción y valor <span class="gx-count">8</span></button>
+        </div>
+        <div class="gx-panes">
+          <div class="gx-pane" role="tabpanel" id="gx-pane-0" aria-labelledby="gx-tab-0"><h2 class="gx-group">Cómo funciona la IA</h2><div class="gx-term" data-search="agente de ia ai agent un sistema de ia que persigue un objetivo planificando pasos, usando herramientas y actuando segun los resultados."><h3 class="gx-name">Agente de IA</h3><div class="gx-other">AI agent</div><p class="gx-def">Un sistema de IA que persigue un objetivo planificando pasos, usando herramientas y actuando según los resultados.</p></div><div class="gx-term" data-search="contexto context todo lo que el modelo lee antes de responder: instrucciones, historial de la conversacion, documentos y resultados de herramientas."><h3 class="gx-name">Contexto</h3><div class="gx-other">Context</div><p class="gx-def">Todo lo que el modelo lee antes de responder: instrucciones, historial de la conversación, documentos y resultados de herramientas.</p></div><div class="gx-term" data-search="dominio domain el campo en que trabaja un sistema de ia, que define sus terminos, sus estandares y el costo de un error."><h3 class="gx-name">Dominio</h3><div class="gx-other">Domain</div><p class="gx-def">El campo en que trabaja un sistema de IA, que define sus términos, sus estándares y el costo de un error.</p></div><div class="gx-term" data-search="enmarcado de contexto context framing como se presenta la informacion al modelo (su orden, tono y supuestos), lo que influye en como interpreta la solicitud."><h3 class="gx-name">Enmarcado de contexto</h3><div class="gx-other">Context framing</div><p class="gx-def">Cómo se presenta la información al modelo (su orden, tono y supuestos), lo que influye en cómo interpreta la solicitud.</p></div><div class="gx-term" data-search="fundamentacion grounding vincular las respuestas de un modelo a fuentes que se pueden verificar, en lugar de a lo que aprendio en el entrenamiento."><h3 class="gx-name">Fundamentación</h3><div class="gx-other">Grounding</div><p class="gx-def">Vincular las respuestas de un modelo a fuentes que se pueden verificar, en lugar de a lo que aprendió en el entrenamiento.</p></div><div class="gx-term" data-search="orquestacion orchestration coordinar modelos, herramientas y pasos para que cada uno se ejecute en el orden correcto y se gestione un paso fallido."><h3 class="gx-name">Orquestación</h3><div class="gx-other">Orchestration</div><p class="gx-def">Coordinar modelos, herramientas y pasos para que cada uno se ejecute en el orden correcto y se gestione un paso fallido.</p></div><div class="gx-term" data-search="rag · retrieval-augmented generation · generacion aumentada por recuperacion  encontrar primero los documentos relevantes y luego hacer que el modelo responda a partir de ellos."><h3 class="gx-name">RAG · Retrieval-augmented generation · generación aumentada por recuperación</h3><p class="gx-def">Encontrar primero los documentos relevantes y luego hacer que el modelo responda a partir de ellos.</p></div><div class="gx-term" data-search="tokenizacion tokenization dividir el texto en unidades pequenas, llamadas tokens, antes de que el modelo lo procese. los limites y costos se cuentan en tokens."><h3 class="gx-name">Tokenización</h3><div class="gx-other">Tokenization</div><p class="gx-def">Dividir el texto en unidades pequeñas, llamadas tokens, antes de que el modelo lo procese. Los límites y costos se cuentan en tokens.</p></div><div class="gx-term" data-search="ventana de contexto context window lo maximo que un modelo puede recibir a la vez, contado en tokens y compartido por todo el contexto."><h3 class="gx-name">Ventana de contexto</h3><div class="gx-other">Context window</div><p class="gx-def">Lo máximo que un modelo puede recibir a la vez, contado en tokens y compartido por todo el contexto.</p></div></div><div class="gx-pane" role="tabpanel" id="gx-pane-1" aria-labelledby="gx-tab-1" hidden><h2 class="gx-group">Dónde falla</h2><div class="gx-term" data-search="alucinacion hallucination un resultado falso o inventado, presentado con la misma fluidez y seguridad que un resultado correcto."><h3 class="gx-name">Alucinación</h3><div class="gx-other">Hallucination</div><p class="gx-def">Un resultado falso o inventado, presentado con la misma fluidez y seguridad que un resultado correcto.</p></div><div class="gx-term" data-search="caja negra black box un sistema cuyo funcionamiento interno no pueden ver ni interpretar quienes lo usan o lo supervisan."><h3 class="gx-name">Caja negra</h3><div class="gx-other">Black box</div><p class="gx-def">Un sistema cuyo funcionamiento interno no pueden ver ni interpretar quienes lo usan o lo supervisan.</p></div><div class="gx-term" data-search="calidad de datos data quality que tan aptos son los datos para su uso previsto: suficientemente precisos, completos, consistentes y actualizados."><h3 class="gx-name">Calidad de datos</h3><div class="gx-other">Data quality</div><p class="gx-def">Qué tan aptos son los datos para su uso previsto: suficientemente precisos, completos, consistentes y actualizados.</p></div><div class="gx-term" data-search="complacencia sycophancy un modelo que dice lo que la persona parece querer oir en lugar de lo que respalda la evidencia."><h3 class="gx-name">Complacencia</h3><div class="gx-other">Sycophancy</div><p class="gx-def">Un modelo que dice lo que la persona parece querer oír en lugar de lo que respalda la evidencia.</p></div><div class="gx-term" data-search="modos de fallo failure modes las formas especificas y reconocibles en que falla un sistema de ia, cada una con su propia causa y solucion."><h3 class="gx-name">Modos de fallo</h3><div class="gx-other">Failure modes</div><p class="gx-def">Las formas específicas y reconocibles en que falla un sistema de IA, cada una con su propia causa y solución.</p></div><div class="gx-term" data-search="sesgo bias error sistematico que favorece o perjudica injustamente a algunos grupos, a menudo heredado de los datos de entrenamiento."><h3 class="gx-name">Sesgo</h3><div class="gx-other">Bias</div><p class="gx-def">Error sistemático que favorece o perjudica injustamente a algunos grupos, a menudo heredado de los datos de entrenamiento.</p></div><div class="gx-term" data-search="sesgo de automatizacion automation bias confiar en un resultado automatizado en lugar de verificarlo, sobre todo cuando suena fluido y seguro."><h3 class="gx-name">Sesgo de automatización</h3><div class="gx-other">Automation bias</div><p class="gx-def">Confiar en un resultado automatizado en lugar de verificarlo, sobre todo cuando suena fluido y seguro.</p></div><div class="gx-term" data-search="verificacion verification contrastar un resultado con algo externo al sistema que lo produjo, como la fuente, los datos o una prueba."><h3 class="gx-name">Verificación</h3><div class="gx-other">Verification</div><p class="gx-def">Contrastar un resultado con algo externo al sistema que lo produjo, como la fuente, los datos o una prueba.</p></div></div><div class="gx-pane" role="tabpanel" id="gx-pane-2" aria-labelledby="gx-tab-2" hidden><h2 class="gx-group">Gobernanza</h2><div class="gx-term" data-search="alineacion de la ia ai alignment lograr que un sistema de ia haga lo que pretenden sus desarrolladores y usuarios, no solo lo que se especifico literalmente."><h3 class="gx-name">Alineación de la IA</h3><div class="gx-other">AI alignment</div><p class="gx-def">Lograr que un sistema de IA haga lo que pretenden sus desarrolladores y usuarios, no solo lo que se especificó literalmente.</p></div><div class="gx-term" data-search="cumplimiento normativo compliance demostrar que el uso de ia cumple las leyes, regulaciones, estandares y politicas internas que le aplican."><h3 class="gx-name">Cumplimiento normativo</h3><div class="gx-other">Compliance</div><p class="gx-def">Demostrar que el uso de IA cumple las leyes, regulaciones, estándares y políticas internas que le aplican.</p></div><div class="gx-term" data-search="explicabilidad explainability · xai hacer que el resultado o la logica de un sistema de ia sean comprensibles para las personas que dependen de el."><h3 class="gx-name">Explicabilidad</h3><div class="gx-other">Explainability · XAI</div><p class="gx-def">Hacer que el resultado o la lógica de un sistema de IA sean comprensibles para las personas que dependen de él.</p></div><div class="gx-term" data-search="ia en la sombra shadow ai uso de ia que la organizacion no ha aprobado ni evaluado, como pegar trabajo en un chatbot personal."><h3 class="gx-name">IA en la sombra</h3><div class="gx-other">Shadow AI</div><p class="gx-def">Uso de IA que la organización no ha aprobado ni evaluado, como pegar trabajo en un chatbot personal.</p></div><div class="gx-term" data-search="responsabilidad proactiva accountability el deber continuo de una persona designada de responder por los resultados de un sistema de ia y mostrar como se obtuvieron."><h3 class="gx-name">Responsabilidad proactiva</h3><div class="gx-other">Accountability</div><p class="gx-def">El deber continuo de una persona designada de responder por los resultados de un sistema de IA y mostrar cómo se obtuvieron.</p></div><div class="gx-term" data-search="responsable asignado ownership un sistema de ia asignado por escrito a una persona con nombre, nunca a un equipo ni a un comite."><h3 class="gx-name">Responsable asignado</h3><div class="gx-other">Ownership</div><p class="gx-def">Un sistema de IA asignado por escrito a una persona con nombre, nunca a un equipo ni a un comité.</p></div><div class="gx-term" data-search="uso aceptable acceptable use las reglas sobre que herramientas de ia se pueden usar, para que trabajo y con que datos."><h3 class="gx-name">Uso aceptable</h3><div class="gx-other">Acceptable use</div><p class="gx-def">Las reglas sobre qué herramientas de IA se pueden usar, para qué trabajo y con qué datos.</p></div></div><div class="gx-pane" role="tabpanel" id="gx-pane-3" aria-labelledby="gx-tab-3" hidden><h2 class="gx-group">Supervisión y control</h2><div class="gx-term" data-search="barreras de proteccion guardrails controles alrededor de un modelo, como filtros y limites de permisos, que mantienen su comportamiento dentro de limites definidos."><h3 class="gx-name">Barreras de protección</h3><div class="gx-other">Guardrails</div><p class="gx-def">Controles alrededor de un modelo, como filtros y límites de permisos, que mantienen su comportamiento dentro de límites definidos.</p></div><div class="gx-term" data-search="hitl · human in the loop · humano en el bucle  una persona revisa, corrige o aprueba el trabajo de la ia en puntos definidos, en uno de los niveles de supervision."><h3 class="gx-name">HITL · Human in the loop · humano en el bucle</h3><p class="gx-def">Una persona revisa, corrige o aprueba el trabajo de la IA en puntos definidos, en uno de los niveles de supervisión.</p></div><div class="gx-term" data-search="niveles de supervision oversight levels cuanta revision humana recibe una tarea: revision completa, revision selectiva, humano sobre el bucle o iniciada por una persona."><h3 class="gx-name">Niveles de supervisión</h3><div class="gx-other">Oversight levels</div><p class="gx-def">Cuánta revisión humana recibe una tarea: revisión completa, revisión selectiva, humano sobre el bucle o iniciada por una persona.</p></div><div class="gx-term" data-search="observabilidad observability poder ver que hace un sistema de ia en produccion, a partir de sus registros, trazas y mediciones."><h3 class="gx-name">Observabilidad</h3><div class="gx-other">Observability</div><p class="gx-def">Poder ver qué hace un sistema de IA en producción, a partir de sus registros, trazas y mediciones.</p></div><div class="gx-term" data-search="parada de emergencia emergency stop una forma probada de detener rapido un sistema de ia, con personas designadas autorizadas para activarla."><h3 class="gx-name">Parada de emergencia</h3><div class="gx-other">Emergency stop</div><p class="gx-def">Una forma probada de detener rápido un sistema de IA, con personas designadas autorizadas para activarla.</p></div><div class="gx-term" data-search="rastro de auditoria audit trail un registro duradero y ordenado de las entradas, acciones y resultados de un sistema de ia, para poder reconstruir su comportamiento."><h3 class="gx-name">Rastro de auditoría</h3><div class="gx-other">Audit trail</div><p class="gx-def">Un registro duradero y ordenado de las entradas, acciones y resultados de un sistema de IA, para poder reconstruir su comportamiento.</p></div></div><div class="gx-pane" role="tabpanel" id="gx-pane-4" aria-labelledby="gx-tab-4" hidden><h2 class="gx-group">Adopción y valor</h2><div class="gx-term" data-search="adopcion adoption si las personas realmente usan una herramienta de ia en su trabajo. se mide por separado del valor que aporta."><h3 class="gx-name">Adopción</h3><div class="gx-other">Adoption</div><p class="gx-def">Si las personas realmente usan una herramienta de IA en su trabajo. Se mide por separado del valor que aporta.</p></div><div class="gx-term" data-search="caso de uso use case una tarea especifica que un sistema de ia haria para personas especificas, con un resultado que se puede medir."><h3 class="gx-name">Caso de uso</h3><div class="gx-other">Use case</div><p class="gx-def">Una tarea específica que un sistema de IA haría para personas específicas, con un resultado que se puede medir.</p></div><div class="gx-term" data-search="linea base baseline como funciona una tarea antes de cualquier cambio, registrado para que los resultados posteriores tengan con que compararse."><h3 class="gx-name">Línea base</h3><div class="gx-other">Baseline</div><p class="gx-def">Cómo funciona una tarea antes de cualquier cambio, registrado para que los resultados posteriores tengan con qué compararse.</p></div><div class="gx-term" data-search="n de n n of n reportar un resultado como un conteo sobre un total, por ejemplo 3 de 12 personas, no como un porcentaje suelto."><h3 class="gx-name">n de N</h3><div class="gx-other">n of N</div><p class="gx-def">Reportar un resultado como un conteo sobre un total, por ejemplo 3 de 12 personas, no como un porcentaje suelto.</p></div><div class="gx-term" data-search="piloto pilot una prueba limitada y con plazo, con pocos usuarios, una linea base y criterios acordados para continuar o detenerse."><h3 class="gx-name">Piloto</h3><div class="gx-other">Pilot</div><p class="gx-def">Una prueba limitada y con plazo, con pocos usuarios, una línea base y criterios acordados para continuar o detenerse.</p></div><div class="gx-term" data-search="registro de decisiones decision log una lista fechada de cada decision sobre un sistema de ia, con quien la tomo y por que."><h3 class="gx-name">Registro de decisiones</h3><div class="gx-other">Decision log</div><p class="gx-def">Una lista fechada de cada decisión sobre un sistema de IA, con quién la tomó y por qué.</p></div><div class="gx-term" data-search="responsable del proceso process owner la persona responsable del trabajo que cambia una herramienta de ia, que decide si un piloto sigue adelante."><h3 class="gx-name">Responsable del proceso</h3><div class="gx-other">Process owner</div><p class="gx-def">La persona responsable del trabajo que cambia una herramienta de IA, que decide si un piloto sigue adelante.</p></div><div class="gx-term" data-search="retroalimentacion continua continuous feedback un ciclo que convierte la evidencia del uso en decisiones y correcciones, con un responsable para cada paso."><h3 class="gx-name">Retroalimentación continua</h3><div class="gx-other">Continuous feedback</div><p class="gx-def">Un ciclo que convierte la evidencia del uso en decisiones y correcciones, con un responsable para cada paso.</p></div></div>
+          <p class="gx-none" hidden>Ningún término coincide.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       SLIDE 22 — Referencias (content SLIDE 21)
+       SLIDE 19 · Referencias
        ============================================================ -->
   <section class="slide-refs" data-screen-label="19 Referencias">
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-mark">Apéndice</div>
-        <div class="brand-name">Fuentes y<br>lectura adicional</div>
+        <div class="brand-mark">Apéndice A·2</div>
+        <div class="brand-name">Referencias</div>
       </div>
 
       <div>
         <div class="sidebar-section-label">Edición</div>
         <div class="nav-list">
-          <div class="nav-item"><span class="num">14</span><span>Prompts: Construir</span></div>
-          <div class="nav-item"><span class="num">15</span><span>Prompts: Práctica</span></div>
+          <div class="nav-item"><span class="num">01</span><span>Portada</span></div>
+          <div class="nav-item"><span class="num">02</span><span>Estado actual</span></div>
+          <div class="nav-item"><span class="num">03</span><span>¿Qué es la IA?</span></div>
+          <div class="nav-item"><span class="num">04</span><span>Cómo funciona un LLM</span></div>
+          <div class="nav-item"><span class="num">05</span><span>Gobernanza: intro</span></div>
+          <div class="nav-item"><span class="num">06</span><span>Principios</span></div>
+          <div class="nav-item"><span class="num">07</span><span>Ciclo de vida</span></div>
+          <div class="nav-item"><span class="num">08</span><span>Hoja de ruta</span></div>
+          <div class="nav-item"><span class="num">09</span><span>Puntos ciegos</span></div>
+          <div class="nav-item"><span class="num">10</span><span>Seguridad: qué cambia</span></div>
+          <div class="nav-item"><span class="num">11</span><span>Seguridad: riesgos</span></div>
+          <div class="nav-item"><span class="num">12</span><span>Herramientas: mapa</span></div>
+          <div class="nav-item"><span class="num">13</span><span>Herramientas: criterios</span></div>
+          <div class="nav-item"><span class="num">14</span><span>Prompts: construirlo</span></div>
+          <div class="nav-item"><span class="num">15</span><span>Prompts: práctica</span></div>
           <div class="nav-item"><span class="num">16</span><span>Uso responsable</span></div>
           <div class="nav-item"><span class="num">17</span><span>Próximos pasos</span></div>
-          <div class="nav-item"><span class="num">A·1</span><span>Glosario</span></div>
+          <div class="nav-item"><span class="num">A·1</span><span>Glosario IA</span></div>
           <div class="nav-item active"><span class="num">A·2</span><span>Referencias</span></div>
         </div>
       </div>
 
       <div class="sidebar-footer">
-        Apéndice · Referencias<br>
-        Slide 19 de 19 · Fin
+        Apéndice A·2 · Referencias<br>
+        Diapositiva 19 de 19
       </div>
     </aside>
 
@@ -9376,7 +8946,7 @@
       <div class="topbar">
         <div class="topbar-left">
           <span class="dot"></span>
-          <span>Apéndice · Fuentes y Lectura Adicional · 09</span>
+          <span>Apéndice A·2</span>
         </div>
         <div class="topbar-right">
           <button class="navbtn" data-nav="home" title="Ir a portada">⌂ &nbsp;Ir a portada</button>
@@ -9393,8 +8963,9 @@
       </div>
 
       <div class="content">
+        <div class="tier-line"><span class="tier-tag" data-tier="awareness">Sensibilización</span></div>
         <h1 class="slide-title">Fuentes y lectura recomendada.</h1>
-        <p class="slide-lede">Recursos de referencia organizados por tema. Una bibliografía curada para profundizar en gobernanza, contexto regulatorio costarricense y estrategia organizacional.</p>
+        <p class="slide-lede">Recursos de referencia organizados por tema. Fuentes primarias para profundizar en gobernanza, en el contexto costarricense y en estrategia organizacional.</p>
 
         <div class="refs-grid">
           <!-- Column 1: Global -->
@@ -9405,17 +8976,13 @@
               </div>
               <div class="refs-titles">
                 <span class="refs-tag">Bloque 01</span>
-                <div class="refs-name">Gobernanza IA — Global</div>
+                <div class="refs-name">Gobernanza de IA · Global</div>
               </div>
             </div>
             <ul class="refs-list">
-              <li><span class="src">Stanford HAI · 2025</span><span class="title"><a href="https://aiindex.stanford.edu/" target="_blank" rel="noopener">AI Index 2025 — Policy &amp; Governance</a></span></li>
-              <li><span class="src">ITU · 2025</span><span class="title"><a href="https://www.itu.int/en/publications/Pages/default.aspx" target="_blank" rel="noopener">Annual AI Governance Report 2025</a></span></li>
-              <li><span class="src">OECD · 2024</span><span class="title"><a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">Principios de IA (actualizados)</a></span></li>
-              <li><span class="src">UNESCO</span><span class="title"><a href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics" target="_blank" rel="noopener">Recomendación sobre Ética de la IA</a></span></li>
+              <li><span class="src">OCDE · 2024</span><span class="title"><a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">Principios de IA de la OCDE (actualizados)</a></span></li>
+              <li><span class="src">UNESCO</span><span class="title"><a href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics" target="_blank" rel="noopener">Recomendación sobre la ética de la IA</a></span></li>
               <li><span class="src">WEF</span><span class="title"><a href="https://www.weforum.org/publications/governance-in-the-age-of-generative-ai/" target="_blank" rel="noopener">Governance in the Age of Generative AI</a></span></li>
-              <li><span class="src">ONU</span><span class="title"><a href="https://www.un.org/en/ai-advisory-body" target="_blank" rel="noopener">Governing AI for Humanity — Final Report</a></span></li>
-              <li><span class="src">WEF</span><span class="title"><a href="https://www.weforum.org/publications/ai-governance-alliance-briefing-paper-series/" target="_blank" rel="noopener">AI Governance Alliance — Briefing Papers</a></span></li>
             </ul>
           </div>
 
@@ -9431,13 +8998,8 @@
               </div>
             </div>
             <ul class="refs-list">
-              <li><span class="src">MICITT · 2024–2027</span><span class="title"><a href="https://www.micitt.go.cr/gobierno_digital/inteligencia_artificial" target="_blank" rel="noopener">Estrategia Nacional de IA de Costa Rica — ENIA</a></span></li>
-              <li><span class="src">MICITT · Ago 2025</span><span class="title"><a href="https://www.micitt.go.cr/gobierno_digital/inteligencia_artificial" target="_blank" rel="noopener">Plan de Acción ENIA 2024–2027</a></span></li>
+              <li><span class="src">MICITT · 2024–2027</span><span class="title"><a href="https://www.micitt.go.cr/gobierno_digital/inteligencia_artificial" target="_blank" rel="noopener">Estrategia Nacional de IA de Costa Rica (ENIA)</a></span></li>
               <li><span class="src">PNUD</span><span class="title"><a href="https://www.undp.org/es/costa-rica/comunicados-de-prensa/costa-rica-inicia-evaluacion-nacional-en-inteligencia-artificial-para-impulsar-su-transformacion-digital-0" target="_blank" rel="noopener">Evaluación Nacional en IA (AILA)</a></span></li>
-              <li><span class="src">PROCOMER / Tico Times</span><span class="title"><a href="https://ticotimes.net/2025/07/05/costa-rica-leads-ai-adoption-in-small-businesses-across-latin-america" target="_blank" rel="noopener">CR lidera adopción IA en Pymes de ALC</a></span></li>
-              <li><span class="src">CEPAL · 2025</span><span class="title"><a href="https://www.cepal.org/es/temas/inteligencia-artificial" target="_blank" rel="noopener">ILIA 2025 — Índice Latinoamericano de IA</a></span></li>
-              <li><span class="src">Nemko Digital</span><span class="title"><a href="https://digital.nemko.com/regulations/ai-regulation-costa-rica" target="_blank" rel="noopener">AI Regulation in Costa Rica</a></span></li>
-              <li><span class="src">Delfino · 2026</span><span class="title"><a href="https://delfino.cr/2026/03/costa-rica-inicia-evaluacion-nacional-en-inteligencia-artificial" target="_blank" rel="noopener">CR inicia evaluación nacional en IA</a></span></li>
             </ul>
           </div>
 
@@ -9449,23 +9011,27 @@
               </div>
               <div class="refs-titles">
                 <span class="refs-tag">Bloque 03</span>
-                <div class="refs-name">Estrategia Organizacional</div>
+                <div class="refs-name">Estrategia organizacional</div>
               </div>
             </div>
             <ul class="refs-list">
-              <li><span class="src">McKinsey · 2025</span><span class="title"><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">The State of AI — Global Survey 2025</a></span></li>
+              <li><span class="src">McKinsey · 2025</span><span class="title"><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">The State of AI: Global Survey</a></span></li>
               <li><span class="src">BCG · 2025</span><span class="title"><a href="https://www.bcg.com/publications/2025/closing-the-ai-impact-gap" target="_blank" rel="noopener">Closing the AI Impact Gap</a></span></li>
-              <li><span class="src">Deloitte · 2026</span><span class="title"><a href="https://www2.deloitte.com/us/en/insights/focus/tech-trends.html" target="_blank" rel="noopener">State of AI in the Enterprise 2026</a></span></li>
-              <li><span class="src">Gartner · 2026</span><span class="title"><a href="https://www.gartner.com/en/information-technology/insights/top-technology-trends" target="_blank" rel="noopener">Top Strategic Technology Trends 2026</a></span></li>
-              <li><span class="src">PwC · 2025</span><span class="title"><a href="https://www.pwc.com/gx/en/ceo-agenda/ceosurvey.html" target="_blank" rel="noopener">29th Global CEO Survey — AI Adoption</a></span></li>
-              <li><span class="src">Morgan Stanley · 2026</span><span class="title"><a href="https://www.morganstanley.com/insights/articles/ai-market-trends-institute-2026" target="_blank" rel="noopener">AI Market Trends 2026</a></span></li>
             </ul>
           </div>
         </div>
 
+        <div class="refs-further">
+          <span class="ftag">Lectura adicional</span>
+          <a href="https://github.com/luispsalas/ai-enablement-toolkit" target="_blank" rel="noopener">AI Enablement Toolkit</a>
+          <span class="fdesc">plantillas y guías para adoptar IA en equipos (en inglés)</span>
+          <a href="https://luispsalas.github.io/applied-ai-concepts/" target="_blank" rel="noopener">Applied AI Concepts</a>
+          <span class="fdesc">wiki de conceptos de IA aplicada (en inglés)</span>
+        </div>
+
         <div class="end-card">
-          <span><strong>Fin del documento</strong> · 19 slides · Mayo 2026</span>
-          <span class="tag">Alfabetización en IA · Edición Mayo 2026</span>
+          <span><strong>Fin del documento</strong> · 19 diapositivas · Octubre 2026</span>
+          <span class="tag">Alfabetización en IA · Edición Octubre 2026</span>
         </div>
       </div>
     </div>
@@ -9535,10 +9101,10 @@
       tile.addEventListener('click', () => select(i));
     });
 
-    // Keyboard nav — only when this slide is on screen
+    // Keyboard nav: only while this slide is the active one (inactive slides
+    // keep an on-screen box, so a geometry test captured arrows on every slide)
     function isSlideVisible(){
-      const r = slide.getBoundingClientRect();
-      return r.right > 0 && r.left < window.innerWidth && r.bottom > 0 && r.top < window.innerHeight;
+      return slide.hasAttribute('data-deck-active');
     }
     window.addEventListener('keydown', (e) => {
       if (!isSlideVisible()) return;
@@ -9580,80 +9146,60 @@
 </script>
 
 <script>
-  /* Slide 19 — Glosario hover/click */
-// ============================================================
-  // Slide 19 — Glosario: hover/click a chip to show its definition
-  // Static markup; JS only toggles .active classes.
-  // ============================================================
+  // Slide 18 - glossary: five tabs, and a filter that searches every tab.
   (function(){
-    const slide = document.querySelector('.glossary-merged');
-    if (!slide) return;
-    const chips  = slide.querySelectorAll('.g-chip');
-    const panels = slide.querySelectorAll('.g-panel');
-    if (!chips.length || !panels.length) return;
+    const root = document.querySelector('.glossary .gx');
+    if (!root) return;
+    const tabs  = Array.from(root.querySelectorAll('.gx-tab'));
+    const panes = Array.from(root.querySelectorAll('.gx-pane'));
+    const input = root.querySelector('.gx-filter');
+    const none  = root.querySelector('.gx-none');
+    let current = 0;
+    const fold = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-    let active = 0;
-    let locked = false; // click locks the selection until you click elsewhere
-
-    function select(i){
-      active = Math.max(0, Math.min(chips.length - 1, i));
-      chips.forEach((c, idx) => {
-        const on = idx === active;
-        c.classList.toggle('active', on);
-        c.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
-      panels.forEach((p, idx) => p.classList.toggle('active', idx === active));
+    function show(i){
+      current = i;
+      tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i ? 'true' : 'false'); t.tabIndex = k === i ? 0 : -1; });
+      if (!input.value.trim()) panes.forEach((p, k) => { p.hidden = k !== i; });
     }
-
-    chips.forEach((chip, i) => {
-      chip.addEventListener('mouseenter', () => {
-        if (!locked) select(i);
+    function filter(){
+      const q = fold(input.value.trim());
+      root.classList.toggle('filtering', !!q);
+      let total = 0;
+      panes.forEach((p, k) => {
+        let n = 0;
+        p.querySelectorAll('.gx-term').forEach(c => { const hit = !q || c.dataset.search.includes(q); c.hidden = !hit; if (hit) n++; });
+        p.hidden = q ? n === 0 : k !== current;
+        tabs[k].classList.toggle('gx-nomatch', !!q && n === 0);
+        total += n;
       });
-      chip.addEventListener('focus', () => {
-        if (!locked) select(i);
-      });
-      chip.addEventListener('click', (e) => {
-        e.preventDefault();
-        // Click toggles lock on this term
-        if (locked && active === i) {
-          locked = false;
-        } else {
-          locked = true;
-          select(i);
-        }
-      });
-    });
-
-    // Click outside chips releases the lock
-    slide.addEventListener('click', (e) => {
-      if (!e.target.closest('.g-chip')) locked = false;
-    });
-
-    // Keyboard nav within the chip area
-    function isSlideVisible(){
-      const r = slide.getBoundingClientRect();
-      return r.right > 0 && r.left < window.innerWidth && r.bottom > 0 && r.top < window.innerHeight;
+      none.hidden = !q || total > 0;
     }
+    tabs.forEach((t, i) => t.addEventListener('click', () => { input.value = ''; filter(); show(i); }));
+    input.addEventListener('input', filter);
     window.addEventListener('keydown', (e) => {
-      if (!isSlideVisible()) return;
-      const tag = e.target && e.target.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-      const isChip = e.target && e.target.classList && e.target.classList.contains('g-chip');
-      // Only intercept arrows when focus is on a chip — otherwise leave deck navigation alone
-      if (!isChip) return;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        e.stopPropagation();
-        const next = (active + 1) % chips.length;
-        select(next);
-        chips[next].focus();
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        e.stopPropagation();
-        const next = (active - 1 + chips.length) % chips.length;
-        select(next);
-        chips[next].focus();
-      }
+      const i = tabs.indexOf(e.target);
+      if (i < 0) return;
+      let j = null;
+      if (e.key === 'ArrowRight') j = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft') j = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') j = 0;
+      else if (e.key === 'End') j = tabs.length - 1;
+      if (j === null) return;
+      e.stopPropagation(); e.preventDefault();
+      input.value = ''; filter(); show(j); tabs[j].focus();
     }, true);
   })();
+</script>
+<script>
+  // Slides 3 and 7 - fit the fixed-size diagrams to the width of their column.
+  [['.circles', '.what-right'], ['.cycle-diagram', '.cycle-stage']].forEach(([sel, colSel]) => {
+    const d = document.querySelector(sel);
+    const col = d && d.closest(colSel);
+    if (!col) return;
+    const fit = () => { d.style.zoom = ''; const z = Math.min(1, (col.clientWidth - 8) / d.offsetWidth); if (z > 0) d.style.zoom = z.toFixed(3); };
+    new ResizeObserver(fit).observe(col);
+  });
 </script>
 
 <style>
@@ -9912,7 +9458,9 @@
     const total = slides.length;
     slides.forEach((s, i) => {
       const lbl = s.querySelector('.topbar-left span:last-child');
-      if (lbl) lbl.textContent = 'Diapositiva ' + (i + 1) + ' de ' + total;
+      if (!lbl) return;
+      if (lbl.dataset.section === undefined) lbl.dataset.section = lbl.textContent.trim();
+      lbl.textContent = (lbl.dataset.section ? lbl.dataset.section + ' · ' : '') + (i + 1) + '/' + total;
     });
   }
 
@@ -9962,35 +9510,36 @@
 
   /* ── Master slide list (idx = deck-stage 0-based index) ───── */
   const NAV_ITEMS = [
-    { num: '01', label: 'Estado actual',          idx:  1 },
-    { num: '02', label: '¿Qué es la IA?',         idx:  2 },
-    { num: '03', label: 'Cómo funciona un LLM',   idx:  3 },
-    { num: '04', label: 'Gobernanza: Intro',       idx:  4 },
-    { num: '05', label: 'Principios',              idx:  5 },
-    { num: '06', label: 'Ciclo de Vida',           idx:  6 },
-    { num: '07', label: 'Hoja de Ruta',            idx:  7 },
-    { num: '08', label: 'Puntos Ciegos',           idx:  8 },
-    { num: '09', label: 'Seguridad: Qué cambia',  idx:  9 },
-    { num: '10', label: 'Seguridad: Riesgos',     idx: 10 },
-    { num: '11', label: 'Herramientas: Mapa',     idx: 11 },
-    { num: '12', label: 'Herramientas: Criterios',idx: 12 },
-    { num: '13', label: 'Prompts: Construirlo',   idx: 13 },
-    { num: '14', label: 'Prompts: Práctica',      idx: 14 },
-    { num: '15', label: 'Uso responsable',         idx: 15 },
-    { num: '16', label: 'Próximos pasos',          idx: 16 },
-    { num: 'A·1', label: 'Glosario IA',           idx: 17 },
-    { num: 'A·2', label: 'Referencias',            idx: 18 },
+    { num: '01', label: 'Portada', idx:  0 },
+    { num: '02', label: 'Estado actual', idx:  1 },
+    { num: '03', label: '¿Qué es la IA?', idx:  2 },
+    { num: '04', label: 'Cómo funciona un LLM', idx:  3 },
+    { num: '05', label: 'Gobernanza: intro', idx:  4 },
+    { num: '06', label: 'Principios', idx:  5 },
+    { num: '07', label: 'Ciclo de vida', idx:  6 },
+    { num: '08', label: 'Hoja de ruta', idx:  7 },
+    { num: '09', label: 'Puntos ciegos', idx:  8 },
+    { num: '10', label: 'Seguridad: qué cambia', idx:  9 },
+    { num: '11', label: 'Seguridad: riesgos', idx: 10 },
+    { num: '12', label: 'Herramientas: mapa', idx: 11 },
+    { num: '13', label: 'Herramientas: criterios', idx: 12 },
+    { num: '14', label: 'Prompts: construirlo', idx: 13 },
+    { num: '15', label: 'Prompts: práctica', idx: 14 },
+    { num: '16', label: 'Uso responsable', idx: 15 },
+    { num: '17', label: 'Próximos pasos', idx: 16 },
+    { num: 'A·1', label: 'Glosario IA', idx: 17 },
+    { num: 'A·2', label: 'Referencias', idx: 18 },
   ];
 
   /* ── Cover TOC number → slide index ───────────────────────── */
   const TOC_MAP = {
-    '00':  1,   // Estado actual
-    '01':  4,   // Gobernanza: Intro
-    '02':  7,   // Hoja de Ruta
-    '03':  8,   // Puntos Ciegos
-    '04':  9,   // Seguridad: Qué cambia
-    '05': 11,   // Herramientas: Mapa
-    '06': 13,   // Prompts: Construirlo
+    '00':  1,   // El estado actual de la IA
+    '01':  4,   // Marco de gobernanza
+    '02':  7,   // Hoja de ruta
+    '03':  8,   // Puntos ciegos
+    '04':  9,   // Seguridad en IA
+    '05': 11,   // Herramientas
+    '06': 13,   // Prompts y uso responsable
     '07': 16,   // Próximos pasos
     'A·1': 17,  // Glosario
     'A·2': 18,  // Referencias
@@ -10029,12 +9578,12 @@
       if (wrapper && !wrapper.classList.contains('sidebar')) {
         wrapper.style.flex = '1';
         wrapper.style.minHeight = '0';
-        wrapper.style.overflow = 'hidden';
+        wrapper.style.overflowY = 'auto';
         wrapper.style.display = 'flex';
         wrapper.style.flexDirection = 'column';
       }
 
-      // Replace nav-list with full 19-item version
+      // Replace nav-list with the full 19-slide list
       const existing = sidebar.querySelector('.nav-list');
       if (existing) existing.replaceWith(buildNavList(slideIdx));
     });
@@ -10045,6 +9594,14 @@
     document.querySelectorAll('.nav-list .nav-item').forEach((item) => {
       item.classList.toggle('active', parseInt(item.dataset.deckIdx) === deckIdx);
     });
+    // Keep the current slide's entry visible in the active sidebar
+    const active = document.querySelectorAll('deck-stage > section')[deckIdx];
+    const cur = active && active.querySelector('.nav-item.active');
+    if (cur) {
+      const w = cur.parentElement.parentElement;
+      const top = cur.offsetTop - w.offsetTop;
+      if (top < w.scrollTop || top + cur.offsetHeight > w.scrollTop + w.clientHeight) w.scrollTop = top - w.clientHeight / 2;
+    }
   }
 
   /* ── Make cover TOC rows navigate to their section ─────────── */
@@ -10077,12 +9634,13 @@
   window.addEventListener('load', () => {
     initSidebars();
     initTOC();
+    updateActive(0);
   });
 })();
 </script>
 
 <script>
-  /* Slide 16 — shared "Con contexto" panel, swaps content on weak cell click */
+  /* Slide 15 — shared "Con contexto" panel, swaps content on weak cell click */
   document.querySelectorAll('.compare-cell.weak[data-compare-idx]').forEach(cell => {
     const activate = () => {
       const idx = cell.dataset.compareIdx;
@@ -10275,10 +9833,6 @@
 .main *[style*="--slate-300"] { color: #374151 !important; }
 .main *[style*="--green-pale"] { color: #374151 !important; }
 
-/* 15 · GLOSSARY detail panel text ----------------------------- */
-.g-def          { color: #374151 !important; }
-.g-footer       { color: #6B7280 !important; border-top-color: rgba(0,0,0,0.08) !important; }
-.g-source       { color: #6B7280 !important; }
 
 /* 16 · REFERENCIAS — source text ------------------------------ */
 .ref-date       { color: #6B7280 !important; }
@@ -10374,13 +9928,6 @@
 .cycle-layout[data-active="4"] .node[data-stage="4"] .n-num,
 .cycle-layout[data-active="5"] .node[data-stage="5"] .n-num {
   color: #B45309 !important;
-}
-
-/* GLOSARIO — ENG tag (was bright yellow, illegible on light bg) ---- */
-.g-eng {
-  color: #92400E !important;
-  background: rgba(180,83,9,0.08) !important;
-  border-color: rgba(180,83,9,0.3) !important;
 }
 
 /* PRÓXIMOS PASOS — zone tags (Zona 01/02/03), hardcoded saturated hex */
@@ -10480,18 +10027,6 @@
 .zone-block .zona-sub   { color: #6B7280 !important; }
 .zone-block li          { color: #374151 !important; }
 
-/* GLOSARIO — detail panel ----------------------------------- */
-.gloss-detail {
-  background: rgba(27,67,50,0.06) !important;
-  border-color: rgba(27,67,50,0.18) !important;
-  color: #374151 !important;
-}
-.gloss-detail .g-term   { color: #111827 !important; }
-.gloss-detail .g-en     { color: #0F766E !important; }
-.gloss-detail .g-def    { color: #374151 !important; }
-.gloss-detail .g-footer { color: #6B7280 !important; border-top-color: rgba(0,0,0,0.08) !important; }
-.gloss-detail .g-src    { color: #6B7280 !important; }
-
 /* CATCH-ALL — any remaining rgba(30,41,59) slate leftovers -- */
 /* These came from the original dark-mode slate palette */
 .main [class*="row"]:not(.nav-list),
@@ -10503,6 +10038,74 @@
   --slate-950: #FAF9F6;
   --slate-900: #FAF9F6;
 }
+
+
+/* GLOSSARY (slide 18) - tabs, cards and filter. Opaque backgrounds, no
+   transforms or animations on text, no clipping of long terms. */
+.glossary .gx { gap: 20px; }
+.glossary .gx-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.glossary .gx-title { font-size: 48px; margin: 0 8px 0 0; }
+.glossary .gx-filter { flex: 1 1 260px; max-width: 420px; font: inherit; font-size: 15px; padding: 10px 14px;
+  border: 1px solid rgba(27,67,50,0.28); border-radius: 8px; background: #FFFFFF; color: #111827; }
+.glossary .gx-filter:focus { outline: 2px solid #0F766E; outline-offset: 1px; }
+.glossary .gx-link { font-size: 14px; color: #0D6B63 !important; text-decoration: underline; text-underline-offset: 3px; }
+.glossary .gx-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.glossary .gx-tab { font: inherit; font-size: 15px; font-weight: 600; padding: 9px 16px; border-radius: 8px; cursor: pointer;
+  background: #FFFFFF; color: #1F2937 !important; border: 1px solid rgba(27,67,50,0.22); }
+.glossary .gx-tab[aria-selected="true"] { background: #1B4332; color: #F0FDF4 !important; border-color: #1B4332; }
+.glossary .gx-tab:focus-visible { outline: 2px solid #B45309; outline-offset: 2px; }
+.glossary .gx-count { font-weight: 400; opacity: 0.75; margin-left: 4px; }
+.glossary .gx-tab.gx-nomatch { opacity: 0.45; }
+.glossary .gx-pane { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.glossary .gx-pane[hidden], .glossary .gx-term[hidden], .glossary .gx-none[hidden] { display: none; }
+.glossary .gx-group { display: none; grid-column: 1 / -1; font-size: 15px; font-weight: 700; margin: 6px 0 0;
+  color: #0D6B63 !important; letter-spacing: 0.02em; }
+.glossary .gx.filtering .gx-group { display: block; }
+.glossary .gx-term { background: #FFFFFF; border: 1px solid rgba(27,67,50,0.16); border-radius: 10px; padding: 16px 18px; }
+.glossary .gx-name { margin: 0; font-size: 17px; line-height: 1.3; font-weight: 700; color: #111827 !important; overflow-wrap: anywhere; }
+.glossary .gx-other { margin-top: 4px; font-size: 13.5px; line-height: 1.35; color: #0F766E !important; overflow-wrap: anywhere; }
+.glossary .gx-def { margin: 10px 0 0; font-size: 15px; line-height: 1.5; color: #374151 !important; }
+.glossary .gx-none { font-size: 16px; color: #374151 !important; }
+@media (max-width: 540px) {
+  .glossary .gx-title { font-size: 34px; }
+  .glossary .gx-pane { grid-template-columns: 1fr; }
+}
+
+/* Literacy tier labels (cover and top bar) */
+.tier-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 999px; border: 1px solid currentColor; margin-right: 10px; line-height: 1.3; white-space: nowrap; }
+.tier-tag[data-tier="awareness"]   { color: #155E75 !important; background: #E6F4F9; }
+.tier-tag[data-tier="operational"] { color: #92400E !important; background: #FFF8E6; }
+.tier-tag[data-tier="governance"]  { color: #1B4332 !important; background: #D8F3DC; }
+.cover-meta .tier-tag { margin: 2px 4px 2px 0; }
+.tier-line { margin: 0 0 14px; line-height: 1; }
+.tier-line .tier-tag { margin-right: 0; }
+.cover-tiers { margin: 18px 0 0; font-size: 15px; line-height: 1.5; color: #374151 !important; max-width: 900px; }
+.cycle-lede.cycle-stages { margin-top: 10px; font-size: 15px; }
+.crit-callout.crit-repro { margin-top: 14px; }
+.next-baseline { margin: 0 0 20px; font-size: 16px; line-height: 1.5; color: #374151 !important; }
+.always-link { color: inherit !important; text-decoration: underline; text-underline-offset: 3px; }
+.refs-further { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin-top: 24px; padding: 14px 18px;
+  border: 1px solid rgba(27,67,50,0.16); border-radius: 10px; background: #FFFFFF; font-size: 15px; color: #374151 !important; }
+.refs-further .ftag { font-weight: 700; color: #0D6B63 !important; margin-right: 6px; }
+.refs-further a { color: #0D6B63 !important; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.refs-further .fdesc { color: #6B7280 !important; margin-right: 14px; }
+/* Top bar: buttons stay on one line; below 1200px the sidebar footer carries the section and slide number */
+.topbar .navbtn { white-space: nowrap; }
+.topbar-left { min-width: 0; }
+@media (max-width: 1200px) { .topbar-left > span:last-child { display: none; } }
+/* Slide 7: the 720px cycle diagram scales down to its column instead of running off the edge */
+.cycle-layout > *, .what-layout > * { min-width: 0; }
+.circles, .cycle-diagram { flex-shrink: 0; }
+@media (max-width: 1300px) {
+  .what-layout, .cycle-layout { grid-template-columns: 1fr; flex: none; min-height: auto; }
+  .cycle-header { max-width: none; }
+  .cycle-stage, .what-right { min-height: auto; overflow: visible; }
+}
+@media (max-width: 1100px) {
+  .risk-row-header, .risk-row { grid-template-columns: 96px 180px minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+}
+.glossary .badge { font-size: 14px; font-weight: 600; padding: 4px 12px; border-radius: 999px; background: #D8F3DC; color: #1B4332 !important; }
 
 /* Extra bottom breathing room on every slide so a short scroll always
    confirms there's nothing more hiding below the fold */
