@@ -63,7 +63,7 @@ Measurement belongs at every stage of the work:
 
 Measure a small number of things well rather than many things loosely, and keep the people doing the work involved in choosing them: they know where the time and errors really are.
 
-*In the toolkit:* the [intake canvas](assessment/intake-canvas.md) records today's cost and expected value, the [usage tracker](adoption-kit/usage-tracker.md) tracks adoption on its own, so it is never read as value, the [leadership brief](adoption-kit/leadership-brief-template.md) reports whether fixes landed, and the planned value check carries a baseline through to the result.
+*In the toolkit:* the [needs assessment](assessment/needs-assessment.md) records how the work performs today and where each figure came from, the [intake canvas](assessment/intake-canvas.md) records today's cost and expected value, the [usage tracker](adoption-kit/usage-tracker.md) tracks adoption on its own, so it is never read as value, the [leadership brief](adoption-kit/leadership-brief-template.md) reports whether fixes landed, and the planned value check carries a baseline through to the result.
 
 ## A policy needs a place to act
 

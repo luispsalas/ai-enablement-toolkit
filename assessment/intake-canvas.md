@@ -7,7 +7,7 @@ One card per idea for using AI, filled in before anyone builds. It answers two q
 > [!IMPORTANT]
 > **Not yet tried with a real team.** The example below is made up to show the canvas in use. Until a team has run real ideas through it, treat it as a starting draft to adapt.
 
-**Where it sits:** ideas come from anyone, or from the planned *business AI needs assessment*. The process owner of the work decides whether an idea goes to a pilot, as the [operating model](../governance/operating-model.md) sets out. An accepted idea is then written up with the [agent specification template](../governance/agent-spec-template.md). How much human review the result needs is set by the planned *AI oversight levels* page; this canvas only records the facts that page will use.
+**Where it sits:** ideas come from anyone, or from the [business AI needs assessment](needs-assessment.md), which also records today's cost for each. The process owner of the work decides whether an idea goes to a pilot, as the [operating model](../governance/operating-model.md) sets out. An accepted idea is then written up with the [agent specification template](../governance/agent-spec-template.md). How much human review the result needs is set by the planned *AI oversight levels* page; this canvas only records the facts that page will use.
 
 ## The canvas
 
@@ -39,7 +39,7 @@ Score each line 1 (low), 2 or 3 (high), and write the evidence beside it. A scor
 | | Does it improve something a customer or a decision depends on? | |
 | **Feasibility** | Is the data there, complete and consistent enough? | |
 | | Can the AI reach the systems it needs (an API, read or write access)? | |
-| | Is there a written definition of a correct output, and a few labelled examples? | |
+| | Is there a written definition of a correct output, and a few labeled examples? | |
 | **Risk facts** | Can a wrong output be undone? How many people or records would one reach? Would anyone notice? What data is involved? | recorded for the oversight levels page, not scored |
 
 **Ranking:** value first, then feasibility; between equals, the smaller build goes first. Risk does not lower an idea's rank. It raises how much review it needs and how carefully it is built. **Never give a rank without its scores and their evidence**, so anyone can check how it was reached.

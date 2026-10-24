@@ -5,7 +5,7 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 7 of 21 items are available today. The other 14 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 8 of 21 items are available today. The other 13 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
@@ -55,7 +55,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 
 | Item | What it does | Status |
 |---|---|---|
-| Business AI needs assessment | Where AI could help across the organization: a short questionnaire on goals, processes, data readiness, skills and risk, ending in a list of ideas for the intake canvas | planned |
+| [**Business AI needs assessment**](assessment/needs-assessment.md) | Where AI could help across the organization: a questionnaire on goals, work, data, skills and risk, or a wireframe of a hypothetical use case when goals are unclear, ending in ideas for the intake canvas and a baseline to measure value against | **available** |
 | [**Use-case intake and prioritization canvas**](assessment/intake-canvas.md) | For each idea: can it be done, and should it be (value, feasibility, risk), with stop criteria to disqualify early | **available** |
 
 ### Rollout templates
@@ -99,7 +99,7 @@ adoption-kit/   interview guide, diagnosis sheet, feedback template, usage track
                 REPORTING.md, leadership brief template, and the two CSV templates
 literacy/       the guide to reviewing AI output; deck/ holds the AI literacy deck (Spanish, one HTML file)
 governance/     the AI operating model one-pager and the AI agent specification template
-assessment/     the use-case intake and prioritization canvas
+assessment/     the business AI needs assessment and the use-case intake and prioritization canvas
 tools/          check_lists.py (20 rules) and its tests
 examples/       trial-n1/: the first trial (n = 1, real, anonymized)
 assets/         the banner
