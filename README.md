@@ -75,7 +75,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 
 ## Why it matters
 
-Teams are given AI tools faster than they are shown how to use them. When usage stays low, the usual reactions are to blame the tool or to run another training session, and both can be wrong. Low usage has at least four causes (the tool, the workflow, training, habit), and each needs a different person to fix it. The adoption kit decides which is which and checks that the fix reached the people who were stuck; the literacy material covers the training cause before it happens. Details: [adoption kit](adoption-kit/), [deck](literacy/deck/).
+Teams are given AI tools faster than they are shown how to use them. When usage stays low, the usual reactions are to blame the tool or to run another training session, and both can be wrong. Low usage has at least four causes (the tool, the workflow, training, habit), and each needs a different person to fix it. The adoption kit decides which is which and checks that the fix reached the people who were stuck; the literacy material covers the training cause before it happens. Details: [adoption kit](adoption-kit/), [deck](literacy/deck/). The working principles behind all of it are in [PRINCIPLES.md](PRINCIPLES.md).
 
 ## Quick start
 
@@ -94,6 +94,7 @@ Python 3, standard library only. The documents are plain Markdown and CSV, so th
 ## Repository map
 
 ```
+PRINCIPLES.md   the working principles behind the toolkit
 adoption-kit/   interview guide, diagnosis sheet, feedback template, usage tracker,
                 REPORTING.md, leadership brief template, and the two CSV templates
 literacy/       the guide to reviewing AI output; deck/ holds the AI literacy deck (Spanish, one HTML file)
