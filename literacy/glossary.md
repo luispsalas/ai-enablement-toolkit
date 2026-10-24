@@ -69,7 +69,7 @@ Terms are grouped by theme, so related ideas sit together. Where English and Spa
 | Decision log | Registro de decisiones | A dated list of each decision about an AI system, with who made it and why. | | [Operating model](../governance/operating-model.md) |
 | n of N | n de N | Reporting a result as a count out of a total, such as 3 of 12 people, not a bare percentage. | | [Principles](../PRINCIPLES.md#say-what-you-know-and-how-you-know-it) |
 | Pilot | Piloto | A limited, time-boxed trial with a few users, a baseline, and agreed criteria for continuing or stopping. | | [Operating model](../governance/operating-model.md) |
-| Process owner | Dueño del proceso | The person responsible for the work an AI tool changes, who decides whether a pilot goes ahead. | *Responsable del proceso* also works. | [Operating model](../governance/operating-model.md) |
+| Process owner | Responsable del proceso | The person responsible for the work an AI tool changes, who decides whether a pilot goes ahead. | *Dueño del proceso* also works. The process owner answers for the work; the *responsable asignado* answers for an AI system. | [Operating model](../governance/operating-model.md) |
 | Use case | Caso de uso | A specific task an AI system would do for specific people, with a result that can be measured. | | [Intake canvas](../assessment/intake-canvas.md) · [Wiki](https://luispsalas.github.io/applied-ai-concepts/concepts/ai-use-case.html) |
 
 ## Changes from the deck's first glossary
