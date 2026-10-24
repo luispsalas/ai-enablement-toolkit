@@ -6446,12 +6446,12 @@
             <p class="what-intro">Cuando alguien dice "IA" puede referirse a cosas muy distintas. Entender la diferencia explica por qué los resultados varían y por qué importa cómo se le pregunta.</p>
 
             <div class="ring-callouts" style="position:relative; margin-top:8px; left:0; width:auto; height:auto;">
-              <div class="ring-call r1" style="position:relative; top:0; margin-bottom:18px;">
+              <div class="ring-call r1" style="position:relative; top:0; margin-bottom:32px;">
                 <strong>① Inteligencia Artificial</strong>
                 Sistemas que clasifican, predicen o identifican patrones. No implica creatividad ni comprensión del mundo.
                 <div style="opacity:0.75; margin-top:8px; font-style:italic; font-size:13px;">Filtros de spam · Recomendaciones · Detección de fraude</div>
               </div>
-              <div class="ring-call r2" style="position:relative; top:0; margin-bottom:18px;">
+              <div class="ring-call r2" style="position:relative; top:0; margin-bottom:32px;">
                 <strong>② IA Generativa</strong>
                 Crea contenido nuevo: texto, imágenes, audio, código. Lo hace recombinando patrones aprendidos.
                 <div style="opacity:0.75; margin-top:8px; font-style:italic; font-size:13px;">DALL·E · Suno · Runway</div>
@@ -8773,7 +8773,7 @@
           </div>
         </div>
 
-        <p class="next-baseline">Antes de cambiar una tarea con IA, registre su <strong>línea base</strong>: cómo funciona hoy en tiempo, errores y retrabajo. Sin ella no hay forma de saber si la IA la mejoró.</p>
+        <p class="next-baseline">Antes de cambiar una tarea con IA, registre su <strong>línea base</strong>: cómo se desempeña hoy en tiempo, errores y retrabajo. Sin ella no hay forma de saber si la IA la mejoró.</p>
 
         <div class="zones-row">
           <div class="zone-block z1">
@@ -9415,7 +9415,8 @@
 
   /* ── Zoom ──────────────────────────────────────────────────── */
   const ZOOM_STEPS = [50, 60, 70, 80, 90, 100, 110, 125, 150, 175, 200];
-  let zoomIdx = ZOOM_STEPS.indexOf(100);
+  const DEFAULT_ZOOM = 80;
+  let zoomIdx = ZOOM_STEPS.indexOf(DEFAULT_ZOOM);
   function applyZoom() {
     const z = ZOOM_STEPS[zoomIdx];
     document.querySelectorAll('deck-stage > section .content').forEach(el => {
@@ -9423,6 +9424,7 @@
     });
     document.querySelectorAll('[data-zoom-level]').forEach(el => el.textContent = z + '%');
   }
+  applyZoom();
 
   /* ── Navigation handler ────────────────────────────────────── */
   function handle(action) {
@@ -9483,13 +9485,13 @@
   window.addEventListener('load', () => {
     injectFsButtons();
     updateCounters();
-    updateNavDisabled(0);
+    updateNavDisabled(stage ? (stage.index || 0) : 0);
     syncViewport();
 
     // Zoom level — click to reset to 100%
     document.querySelectorAll('[data-zoom-level]').forEach(el => {
-      el.title = 'Clic para restablecer al 100%';
-      el.addEventListener('click', () => { zoomIdx = ZOOM_STEPS.indexOf(100); applyZoom(); });
+      el.title = 'Clic para restablecer al ' + DEFAULT_ZOOM + '%';
+      el.addEventListener('click', () => { zoomIdx = ZOOM_STEPS.indexOf(DEFAULT_ZOOM); applyZoom(); });
     });
 
     // Dot tooltips — show current section name
@@ -9634,7 +9636,7 @@
   window.addEventListener('load', () => {
     initSidebars();
     initTOC();
-    updateActive(0);
+    updateActive(stage.index || 0);
   });
 })();
 </script>
