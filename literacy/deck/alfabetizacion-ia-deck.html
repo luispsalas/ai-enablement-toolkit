@@ -9415,12 +9415,13 @@
 
   /* ── Zoom ──────────────────────────────────────────────────── */
   const ZOOM_STEPS = [50, 60, 70, 80, 90, 100, 110, 125, 150, 175, 200];
-  const DEFAULT_ZOOM = 80;
+  const DEFAULT_ZOOM = 100;
+  const BASE_SCALE = 0.8;   // what the indicator calls 100% (the original 100% read too large)
   let zoomIdx = ZOOM_STEPS.indexOf(DEFAULT_ZOOM);
   function applyZoom() {
     const z = ZOOM_STEPS[zoomIdx];
     document.querySelectorAll('deck-stage > section .content').forEach(el => {
-      el.style.zoom = (z / 100).toString();
+      el.style.zoom = (BASE_SCALE * z / 100).toString();
     });
     document.querySelectorAll('[data-zoom-level]').forEach(el => el.textContent = z + '%');
   }
