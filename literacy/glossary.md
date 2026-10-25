@@ -74,7 +74,7 @@ Terms are grouped by theme, so related ideas sit together. Where English and Spa
 
 ## Changes from the deck's first glossary
 
-The deck's glossary slide listed 24 of these terms. When the deck is next updated, it takes these changes from this page:
+The deck's glossary slide listed 24 of these terms. The October 2026 edition of the Spanish deck took these changes from this page:
 
 - **Ownership** is *responsable asignado* (was *propiedad / responsabilidad*), and **accountability** is *responsabilidad proactiva* (was *responsabilidad*), so the two no longer share a name.
 - **Alignment** is *alineación de la IA* and has its technical meaning. The deck used the organizational one.

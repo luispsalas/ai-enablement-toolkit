@@ -35,7 +35,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 
 | Item | What it does | Status |
 |---|---|---|
-| [**AI literacy deck** (Spanish)](literacy/deck/) | 19 slides for non-technical teams: governance, blind spots, security, tools, prompting, glossary · [open the deck →](https://luispsalas.github.io/ai-enablement-toolkit/literacy/deck/alfabetizacion-ia-deck.html) | **available** |
+| [**AI literacy deck** (Spanish - Costa Rica)](literacy/deck/) | 19 slides for non-technical teams: governance, blind spots, security, tools, prompting, glossary · [open the deck →](https://luispsalas.github.io/ai-enablement-toolkit/literacy/deck/alfabetizacion-ia-deck.html) | **available** |
 | [**Reviewing AI output**](literacy/reviewing-ai-output.md) | Where AI errors hide in fluent output, a short routine for checking what matters, and a drill to build the skill | **available** |
 | [**English–Spanish glossary**](literacy/glossary.md) | 38 governance, literacy and adoption terms in five groups, with both usages recorded where they differ; the deck and the toolkit's pages share it | **available** |
 | Prompt quick-reference card | One page for any AI chat tool, for non-technical users: how to ask, how to check | planned |
@@ -70,7 +70,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 
 - **The adoption kit is a method, tried once.** One trial, n = 1, and the person interviewed set up the tool being studied. It produced 2 diagnosis rows, 2 tracker rows and 1 feedback page ([the trial](examples/trial-n1/)), which shows the method runs end to end, not how common any finding is.
 - **It does not measure usage automatically.** The tracker records what people report or what a usage log shows, and every row says which.
-- **The deck is written for a Costa Rican audience**, and its references have not been re-checked for this repository.
+- **The deck is written for a Costa Rican audience.** Its references were checked on each publisher's own page in October 2026. A general English version is in progress.
 - **No research grounding yet.** Nothing here cites adoption studies; if it does later, each source will be checked against the primary first.
 
 ## Why it matters
@@ -97,7 +97,7 @@ Python 3, standard library only. The documents are plain Markdown and CSV, so th
 PRINCIPLES.md   the working principles behind the toolkit
 adoption-kit/   interview guide, diagnosis sheet, feedback template, usage tracker,
                 REPORTING.md, leadership brief template, and the two CSV templates
-literacy/       the guide to reviewing AI output and the English–Spanish glossary; deck/ holds the AI literacy deck (Spanish, one HTML file)
+literacy/       the guide to reviewing AI output and the English–Spanish glossary; deck/ holds the AI literacy deck (Spanish - Costa Rica, one HTML file)
 governance/     the AI operating model one-pager and the AI agent specification template
 assessment/     the business AI needs assessment and the use-case intake and prioritization canvas
 tools/          check_lists.py (20 rules) and its tests
