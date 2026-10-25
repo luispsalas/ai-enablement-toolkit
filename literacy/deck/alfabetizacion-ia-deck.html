@@ -9023,10 +9023,10 @@
 
         <div class="refs-further">
           <span class="ftag">Lectura adicional</span>
-          <a href="https://github.com/luispsalas/ai-enablement-toolkit" target="_blank" rel="noopener">AI Enablement Toolkit</a>
-          <span class="fdesc">plantillas y guías para adoptar IA en equipos (en inglés)</span>
-          <a href="https://luispsalas.github.io/applied-ai-concepts/" target="_blank" rel="noopener">Applied AI Concepts</a>
-          <span class="fdesc">wiki de conceptos de IA aplicada (en inglés)</span>
+          <div class="frow"><a href="https://github.com/luispsalas/ai-enablement-toolkit" target="_blank" rel="noopener">AI Enablement Toolkit</a>
+          <span class="fdesc">plantillas y guías para adoptar IA en equipos (en inglés)</span></div>
+          <div class="frow"><a href="https://luispsalas.github.io/applied-ai-concepts/" target="_blank" rel="noopener">Applied AI Concepts</a>
+          <span class="fdesc">wiki de conceptos de IA aplicada (en inglés)</span></div>
         </div>
 
         <div class="end-card">
@@ -9600,7 +9600,7 @@
     const active = document.querySelectorAll('deck-stage > section')[deckIdx];
     const cur = active && active.querySelector('.nav-item.active');
     if (cur) {
-      const w = cur.parentElement.parentElement;
+      const w = cur.parentElement;   // the .nav-list is the element that scrolls
       const top = cur.offsetTop - w.offsetTop;
       if (top < w.scrollTop || top + cur.offsetHeight > w.scrollTop + w.clientHeight) w.scrollTop = top - w.clientHeight / 2;
     }
@@ -10087,11 +10087,12 @@
 .crit-callout.crit-repro { margin-top: 14px; }
 .next-baseline { margin: 0 0 20px; font-size: 16px; line-height: 1.5; color: #374151 !important; }
 .always-link { color: inherit !important; text-decoration: underline; text-underline-offset: 3px; }
-.refs-further { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin-top: 24px; padding: 14px 18px;
+.refs-further { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 24px; padding: 14px 18px;
   border: 1px solid rgba(27,67,50,0.16); border-radius: 10px; background: #FFFFFF; font-size: 15px; color: #374151 !important; }
 .refs-further .ftag { font-weight: 700; color: #0D6B63 !important; margin-right: 6px; }
 .refs-further a { color: #0D6B63 !important; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .refs-further .fdesc { color: #6B7280 !important; margin-right: 14px; }
+.refs-further .frow { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
 /* Top bar: buttons stay on one line; below 1200px the sidebar footer carries the section and slide number */
 .topbar .navbtn { white-space: nowrap; }
 .topbar-left { min-width: 0; }
