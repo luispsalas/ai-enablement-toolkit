@@ -2,7 +2,7 @@
 
 *Part of the [AI Enablement Toolkit](../README.md).*
 
-One list of terms for the whole toolkit: the English pages, the Spanish [AI literacy deck](deck/) and the planned English version of the deck all use these names. Each term has its English and Spanish form, a definition short enough to fit on a slide, and a link for reading further, usually to the [Applied AI Concepts](https://luispsalas.github.io/applied-ai-concepts/) wiki.
+One list of terms for the whole toolkit: the English pages, and both [AI literacy decks](deck/), Spanish and English, use these names. Each term has its English and Spanish form, a definition short enough to fit on a slide, and a link for reading further, usually to the [Applied AI Concepts](https://luispsalas.github.io/applied-ai-concepts/) wiki.
 
 Terms are grouped by theme, so related ideas sit together. Where English and Spanish usage differ, the **Usage** column says how and which form the toolkit chose.
 

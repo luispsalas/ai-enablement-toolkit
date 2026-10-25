@@ -5,7 +5,7 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 9 of 21 items are available today. The other 12 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 10 of 22 items are available today. The other 12 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
@@ -36,6 +36,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 | Item | What it does | Status |
 |---|---|---|
 | [**AI literacy deck** (Spanish - Costa Rica)](literacy/deck/) | 19 slides for non-technical teams: governance, blind spots, security, tools, prompting, glossary · [open the deck →](https://luispsalas.github.io/ai-enablement-toolkit/literacy/deck/alfabetizacion-ia-deck.html) | **available** |
+| [**AI literacy deck** (English - General)](literacy/deck/) | The same 19 slides for a general, international audience, framed by OECD sources, with EU, NIST and ISO references · [open the deck →](https://luispsalas.github.io/ai-enablement-toolkit/literacy/deck/ai-literacy-deck.html) | **available** |
 | [**Reviewing AI output**](literacy/reviewing-ai-output.md) | Where AI errors hide in fluent output, a short routine for checking what matters, and a drill to build the skill | **available** |
 | [**English–Spanish glossary**](literacy/glossary.md) | 38 governance, literacy and adoption terms in five groups, with both usages recorded where they differ; the deck and the toolkit's pages share it | **available** |
 | Prompt quick-reference card | One page for any AI chat tool, for non-technical users: how to ask, how to check | planned |
@@ -70,7 +71,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 
 - **The adoption kit is a method, tried once.** One trial, n = 1, and the person interviewed set up the tool being studied. It produced 2 diagnosis rows, 2 tracker rows and 1 feedback page ([the trial](examples/trial-n1/)), which shows the method runs end to end, not how common any finding is.
 - **It does not measure usage automatically.** The tracker records what people report or what a usage log shows, and every row says which.
-- **The deck is written for a Costa Rican audience.** Its references were checked on each publisher's own page in October 2026. A general English version is in progress.
+- **The Spanish deck is written for a Costa Rican audience, and the English deck for a general one.** The references in both were checked on each publisher's own page in October 2026.
 - **No research grounding yet.** Nothing here cites adoption studies; if it does later, each source will be checked against the primary first.
 
 ## Why it matters
@@ -97,7 +98,7 @@ Python 3, standard library only. The documents are plain Markdown and CSV, so th
 PRINCIPLES.md   the working principles behind the toolkit
 adoption-kit/   interview guide, diagnosis sheet, feedback template, usage tracker,
                 REPORTING.md, leadership brief template, and the two CSV templates
-literacy/       the guide to reviewing AI output and the English–Spanish glossary; deck/ holds the AI literacy deck (Spanish - Costa Rica, one HTML file)
+literacy/       the guide to reviewing AI output and the English–Spanish glossary; deck/ holds the AI literacy decks (Spanish - Costa Rica and English - General, one HTML file each)
 governance/     the AI operating model one-pager and the AI agent specification template
 assessment/     the business AI needs assessment and the use-case intake and prioritization canvas
 tools/          check_lists.py (20 rules) and its tests
@@ -115,4 +116,4 @@ From the [Applied AI Concepts](https://luispsalas.github.io/applied-ai-concepts/
 
 ## License
 
-Code (`tools/`): [MIT](LICENSE). Documents, templates, examples and the deck: [CC BY 4.0](LICENSE-docs). © 2026 Luis P. Salas.
+Code (`tools/`): [MIT](LICENSE). Documents, templates, examples and the decks: [CC BY 4.0](LICENSE-docs). © 2026 Luis P. Salas.
