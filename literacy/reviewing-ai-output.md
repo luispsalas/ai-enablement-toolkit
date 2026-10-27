@@ -37,7 +37,7 @@ Checking everything is slow, and people who try usually end up skimming. Check w
 4. **Say what you verified and what you did not.** When you pass the work on, mark which claims you checked and which you are taking on trust.
 5. **Record what you found.** A repeated error is useful evidence: it may be a tool problem for the developers, or a training need for the people using it. The [adoption review kit](../adoption-kit/) has a way to tell the two apart.
 
-How much of each output needs this routine depends on what is at stake. The planned *AI oversight levels* page will set that scale; until then, anything involving money, access or a person's record gets the full routine every time.
+How much of each output needs this routine depends on what is at stake. The [AI oversight levels](../governance/oversight-levels.md) page sets that scale. Anything involving money, access or a person's record starts at full review, so it gets the full routine every time.
 
 ## When you cannot check it yourself
 
@@ -78,4 +78,4 @@ The link is a fourth thing to check: open it and confirm it goes to this policy,
 
 ## Where it fits
 
-This page is about **how** to review. How **much** review each task needs belongs to the planned AI oversight levels page. Whether training changed what people actually do belongs to the planned training pre/post check, which can use drill scores as one of its measures. Errors found here feed the adoption review kit's feedback pages, and the failure paths section of the [agent specification template](../governance/agent-spec-template.md).
+This page is about **how** to review. How **much** review each task needs belongs to the [AI oversight levels](../governance/oversight-levels.md) page. Whether training changed what people actually do belongs to the planned training pre/post check, which can use drill scores as one of its measures. Errors found here feed the adoption review kit's feedback pages, and the failure paths section of the [agent specification template](../governance/agent-spec-template.md).

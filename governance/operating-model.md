@@ -65,4 +65,4 @@ Every decision taken goes into a short log with its date and owner, so a settled
 
 ## Where this sits among the other one-pagers
 
-This page says **who decides and when**. The planned *acceptable-use one-pager* will hold the data rules the data owner sets. The planned *use-case intake canvas* will hold the scoring for each idea. The [adoption review kit](../adoption-kit/) is how the review stage finds out why usage stalls.
+This page says **who decides and when**. The planned *acceptable-use one-pager* will hold the data rules the data owner sets. The [use-case intake canvas](../assessment/intake-canvas.md) holds the scoring for each idea, and the [AI oversight levels](oversight-levels.md) page sets how much human review each AI task gets. The [adoption review kit](../adoption-kit/) is how the review stage finds out why usage stalls.

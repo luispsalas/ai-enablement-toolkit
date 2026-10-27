@@ -29,7 +29,7 @@ Report adoption as *n of N*, never as a bare percentage, and say where every num
 
 When an AI system only drafts, a person reviews the draft. When it acts (sends, pays, publishes, deletes), the review comes too late. As the wiki puts it, governance *"must shift from output review to action authorization"* ([AI Governance](https://luispsalas.github.io/applied-ai-concepts/concepts/ai-governance.html)). Decide what the system may do on its own, what needs approval, and what is never allowed, before it runs.
 
-*In the toolkit:* the [agent specification template](governance/agent-spec-template.md) records those decisions for each agent, and the planned oversight levels page will set how much review each kind of task needs.
+*In the toolkit:* the [agent specification template](governance/agent-spec-template.md) records those decisions for each agent, and the [AI oversight levels](governance/oversight-levels.md) page sets how much review each kind of task needs.
 
 ## Keep responsibility with named people
 

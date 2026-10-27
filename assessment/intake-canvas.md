@@ -7,7 +7,7 @@ One card per idea for using AI, filled in before anyone builds. It answers two q
 > [!IMPORTANT]
 > **Not yet tried with a real team.** The example below is made up to show the canvas in use. Until a team has run real ideas through it, treat it as a starting draft to adapt.
 
-**Where it sits:** ideas come from anyone, or from the [business AI needs assessment](needs-assessment.md), which also records today's cost for each. The process owner of the work decides whether an idea goes to a pilot, as the [operating model](../governance/operating-model.md) sets out. An accepted idea is then written up with the [agent specification template](../governance/agent-spec-template.md). How much human review the result needs is set by the planned *AI oversight levels* page; this canvas only records the facts that page will use.
+**Where it sits:** ideas come from anyone, or from the [business AI needs assessment](needs-assessment.md), which also records today's cost for each. The process owner of the work decides whether an idea goes to a pilot, as the [operating model](../governance/operating-model.md) sets out. An accepted idea is then written up with the [agent specification template](../governance/agent-spec-template.md). How much human review the result needs is set by the [AI oversight levels](../governance/oversight-levels.md) page; this canvas only records the facts that page uses.
 
 ## The canvas
 

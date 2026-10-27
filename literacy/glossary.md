@@ -57,7 +57,7 @@ Terms are grouped by theme, so related ideas sit together. Where English and Spa
 | Guardrails | Barreras de protección | Controls around a model, such as filters and permission limits, that keep its behavior within set bounds. | | [Wiki](https://luispsalas.github.io/applied-ai-concepts/concepts/guardrails-ai-systems.html) |
 | HITL · Human in the loop | HITL · *humano en el bucle* | A person reviews, corrects or approves the AI's work at defined points, at one of the oversight levels. | The acronym is used in both languages. | [Wiki](https://luispsalas.github.io/applied-ai-concepts/concepts/human-in-the-loop.html) |
 | Observability | Observabilidad | Being able to see what an AI system is doing in production, from its logs, traces and measurements. | | [Wiki](https://luispsalas.github.io/applied-ai-concepts/concepts/observability.html) |
-| Oversight levels | Niveles de supervisión | How much human review a task gets: full review, selective review, human on the loop, or human-initiated. | The four levels are the wiki's. The toolkit's own page on choosing a level is planned. | [Wiki](https://luispsalas.github.io/applied-ai-concepts/concepts/human-in-the-loop.html) |
+| Oversight levels | Niveles de supervisión | How much human review a task gets: full review, selective review, human on the loop, or human-initiated. | The four levels are the wiki's. The toolkit's [oversight levels page](../governance/oversight-levels.md) covers choosing one. | [Oversight levels](../governance/oversight-levels.md) · [Wiki](https://luispsalas.github.io/applied-ai-concepts/concepts/human-in-the-loop.html) |
 
 ## Adoption and value
 

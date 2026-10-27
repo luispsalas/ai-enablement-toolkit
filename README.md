@@ -5,7 +5,7 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 10 of 22 items are available today. The other 12 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 11 of 22 items are available today. The other 11 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
@@ -48,7 +48,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 |---|---|---|
 | Acceptable-use one-pager | What data may go into which AI tool, and when to ask first | planned |
 | AI tool evaluation scorecard | Does the tool work in *this* workflow? Broken versus confusing, before buying | planned |
-| AI oversight levels | How much human review an AI task needs, from approving every case to reading the log, and what decides it: reversibility, reach, detectability and the data involved | next |
+| [**AI oversight levels**](governance/oversight-levels.md) | How much human review an AI task needs, from full review to human-initiated, how to choose a level for each task, and how to tell whether the review is real | **available** |
 | [**AI operating model one-pager**](governance/operating-model.md) | Who decides what: roles and decision rights for AI tools, the cycle from idea to pilot to rollout, and what each review checks | **available** |
 | [**AI agent specification template**](governance/agent-spec-template.md) | One page a delivery team can build from: goal and owner, data it must never see, tools and permissions, what goes to a person, failure paths and success metrics, with an example | **available** |
 
@@ -99,7 +99,7 @@ PRINCIPLES.md   the working principles behind the toolkit
 adoption-kit/   interview guide, diagnosis sheet, feedback template, usage tracker,
                 REPORTING.md, leadership brief template, and the two CSV templates
 literacy/       the guide to reviewing AI output and the English–Spanish glossary; deck/ holds the AI literacy decks (Spanish - Costa Rica and English - General, one HTML file each)
-governance/     the AI operating model one-pager and the AI agent specification template
+governance/     the AI operating model one-pager, the AI agent specification template and the AI oversight levels page
 assessment/     the business AI needs assessment and the use-case intake and prioritization canvas
 tools/          check_lists.py (20 rules) and its tests
 examples/       trial-n1/: the first trial (n = 1, real, anonymized)

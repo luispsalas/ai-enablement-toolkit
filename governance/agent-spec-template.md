@@ -7,7 +7,7 @@ One page that a business owner and a delivery team fill in together before anyon
 > [!IMPORTANT]
 > **Not yet tried with a real team.** The template is filled in once below, for a lab built on synthetic data. Until a delivery team has built from it, treat it as a starting draft to adapt.
 
-**How it connects to the rest of the toolkit:** the [operating model](operating-model.md) says who approves the agent and who reviews it. The planned *acceptable-use one-pager* will hold the data rules that section 2 points to. The planned *use-case intake canvas* decides whether the agent is worth building at all; this page starts after that decision.
+**How it connects to the rest of the toolkit:** the [operating model](operating-model.md) says who approves the agent and who reviews it. The planned *acceptable-use one-pager* will hold the data rules that section 2 points to. The [use-case intake canvas](../assessment/intake-canvas.md) decides whether the agent is worth building at all; this page starts after that decision. The [AI oversight levels](oversight-levels.md) page sets how much human review each decision gets.
 
 ## The template
 
@@ -33,7 +33,7 @@ Grant the least that the job needs, and list anything the platform does by defau
 | Decision | Who makes it | Oversight |
 |---|---|---|
 
-**Oversight levels (provisional):** *person approves* every case before it takes effect · *person reviews* a sample or the exceptions · *agent acts*, and a person reads the log. Any decision involving money, access or a person's record starts at *person approves*. *These levels are a working draft until the toolkit's planned AI oversight levels page sets the final scale.*
+**Oversight:** one of the four [AI oversight levels](oversight-levels.md): *full review* of every output before it takes effect · *selective review* of a sample and the cases that trip a rule · *human on the loop*, where a person watches the logs and alerts · *human-initiated*, where the system acts until someone stops it. Any decision involving money, access or a person's record starts at *full review*.
 
 ### 5. Failure paths
 | Failure | How it is detected | Where it goes | Who sees it |
@@ -70,9 +70,9 @@ Name metrics from the [AI Observability Toolkit's metric list](https://github.co
 
 | Decision | Who makes it | Oversight |
 |---|---|---|
-| Category, urgency, summary | the model | agent acts; person reads the log |
+| Category, urgency, summary | the model | human on the loop: a person reads the log |
 | Whether personal data is present | fixed rules, no AI | a suspected name goes to a person |
-| Approval of $5,000 or more | a named approver | person approves |
+| Approval of $5,000 or more | a named approver | full review |
 | Approval below $5,000 | the same fixed rule, no AI | no approver; logged (the write-up states only the $5,000 threshold) |
 
 5. **Failure paths.** A missing vendor or a non-numeric amount is rejected before any model call. A bad model reply, or the model being unavailable, is logged with a status and a reason, never lost. A request telling the model to mark it approved was flagged, and routing still used the real amount, which the model never sees. *Gap found in the lab:* no alert when something unexpected crashes.
