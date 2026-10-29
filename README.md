@@ -79,6 +79,12 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 
 Teams are given AI tools faster than they are shown how to use them. When usage stays low, the usual reactions are to blame the tool or to run another training session, and both can be wrong. Low usage has at least four causes (the tool, the workflow, training, habit), and each needs a different person to fix it. The adoption kit decides which is which and checks that the fix reached the people who were stuck; the literacy material covers the training cause before it happens. Details: [adoption kit](adoption-kit/), [deck](literacy/deck/). The working principles behind all of it are in [PRINCIPLES.md](PRINCIPLES.md).
 
+Two passages from the [Applied AI Concepts](https://luispsalas.github.io/applied-ai-concepts/) wiki frame the toolkit:
+
+> *"Literacy is what makes AI adoption durable: when users understand the technology at a working level, the organization can set appropriate expectations, catch failures, and course-correct."* ([AI Literacy](https://luispsalas.github.io/applied-ai-concepts/concepts/ai-literacy.html))
+
+> *"Agentic AI requires a different governance posture. When AI systems take actions rather than producing outputs for human review, the intervention point moves. Governance must shift from output review to action authorization, defining what the system is permitted to do before it does it, not after."* ([AI Governance](https://luispsalas.github.io/applied-ai-concepts/concepts/ai-governance.html))
+
 ## Quick start
 
 ```bash

@@ -4,6 +4,8 @@
 
 One page that a business owner and a delivery team fill in together before anyone builds an AI agent. It records what the agent is for, what it may touch, what it may decide on its own, and how everyone will know it is working. Copy the template below, fill every section, and keep the page next to the agent's code and change log.
 
+> *"Agentic AI requires a different governance posture. When AI systems take actions rather than producing outputs for human review, the intervention point moves. Governance must shift from output review to action authorization, defining what the system is permitted to do before it does it, not after."* ([AI Governance](https://luispsalas.github.io/applied-ai-concepts/concepts/ai-governance.html), Applied AI Concepts wiki)
+
 > [!IMPORTANT]
 > **Not yet tried with a real team.** The template is filled in once below, for a lab built on synthetic data. Until a delivery team has built from it, treat it as a starting draft to adapt.
 
