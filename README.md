@@ -5,7 +5,7 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 12 of 23 items are available today. The other 11 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 13 of 24 items are available today. The other 11 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
@@ -59,6 +59,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 |---|---|---|
 | [**Business AI needs assessment**](assessment/needs-assessment.md) | Where AI could help across the organization: a questionnaire on goals, work, data, skills and risk, or a wireframe of a hypothetical use case when goals are unclear, ending in ideas for the intake canvas and a baseline to measure value against | **available** |
 | [**Use-case intake and prioritization canvas**](assessment/intake-canvas.md) | For each idea: can it be done, and should it be (value, feasibility, risk), with stop criteria to disqualify early | **available** |
+| [**Value baseline and check**](assessment/value-check.md) | One record per use case from idea to decision: measures and thresholds fixed before the pilot, a labeled baseline, where the effort went, and who confirmed the gain | **available** |
 
 ### Rollout templates
 

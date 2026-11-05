@@ -40,7 +40,7 @@ For organizations that can name their goals. Each section has a few questions an
 - For each: who does it, how many people, how often, and how long it takes.
 - Is that figure measured (from a system), reported (from the people doing it) or estimated?
 
-*For:* this is the baseline. Each idea's *today's cost* on the intake canvas comes from here, and so does the starting point the planned value check compares against. A reported figure is fine if it is labeled as one.
+*For:* this is the baseline. Each idea's *today's cost* on the intake canvas comes from here, and so does the starting point the [value check](value-check.md) compares against. A reported figure is fine if it is labeled as one.
 
 ### 3. Data and systems
 - Where does the information for those tasks live, and is it complete and consistent?
@@ -99,7 +99,7 @@ The organization picks which of these it wants. Produce only those.
 | Output | What it holds | Goes to |
 |---|---|---|
 | **Idea list** | One line per idea: the problem, who and how often, today's cost and its source, and the goal it serves | Each idea becomes a card in the [intake canvas](intake-canvas.md) |
-| **Baseline record** | The figures from section 2 (or from the wireframe's *Today* row), each labeled measured, reported or estimated, with the date | The planned value check, after a pilot |
+| **Baseline record** | The figures from section 2 (or from the wireframe's *Today* row), each labeled measured, reported or estimated, with the date | The [value check](value-check.md), after a pilot |
 | **Readiness gaps** | What is missing in data, skills or rules, each with a suggested owner | The [operating model](../governance/operating-model.md)'s decision log, and the literacy work |
 | **What to learn first** | The open questions from a wireframe, each with an owner and a date | The next conversation |
 

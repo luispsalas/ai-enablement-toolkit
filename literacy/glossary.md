@@ -64,7 +64,7 @@ Terms are grouped by theme, so related ideas sit together. Where English and Spa
 | English | Español | Definition | Usage | More |
 |---|---|---|---|---|
 | Adoption | Adopción | Whether people actually use an AI tool in their work. It is measured separately from the value it brings. | | [Adoption review kit](../adoption-kit/) |
-| Baseline | Línea base | How a task performs before anything changes, recorded so later results have something to be compared with. | | [Needs assessment](../assessment/needs-assessment.md) · [Wiki](https://luispsalas.github.io/applied-ai-concepts/concepts/value-realization-ai.html) |
+| Baseline | Línea base | How a task performs before anything changes, recorded so later results have something to be compared with. | | [Value check](../assessment/value-check.md) · [Needs assessment](../assessment/needs-assessment.md) · [Wiki](https://luispsalas.github.io/applied-ai-concepts/concepts/value-realization-ai.html) |
 | Continuous feedback | Retroalimentación continua | A loop that turns evidence from use into decisions and fixes, with an owner for each step. | | [Wiki](https://luispsalas.github.io/applied-ai-concepts/concepts/continuous-feedback-improvement.html) |
 | Decision log | Registro de decisiones | A dated list of each decision about an AI system, with who made it and why. | | [Operating model](../governance/operating-model.md) |
 | n of N | n de N | Reporting a result as a count out of a total, such as 3 of 12 people, not a bare percentage. | | [Principles](../PRINCIPLES.md#say-what-you-know-and-how-you-know-it) |
