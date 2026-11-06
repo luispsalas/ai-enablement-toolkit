@@ -4,7 +4,7 @@
 
 One list of terms for the whole toolkit: the English pages, and both [AI literacy decks](deck/), Spanish and English, use these names. Each term has its English and Spanish form, a definition short enough to fit on a slide, and a link for reading further, usually to the [Applied AI Concepts](https://luispsalas.github.io/applied-ai-concepts/) wiki.
 
-Terms are grouped by theme, so related ideas sit together. Where English and Spanish usage differ, the **Usage** column says how and which form the toolkit chose.
+Architecture, data and organization terms that the toolkit's pages do not use, such as knowledge graph or data lakehouse, are explained for business readers in [AI and data architecture terms](architecture-terms.md). Terms are grouped by theme, so related ideas sit together. Where English and Spanish usage differ, the **Usage** column says how and which form the toolkit chose.
 
 > [!NOTE]
 > **Acronyms keep their English form.** RAG, HITL and XAI are used as they are in both languages, followed by the full English term and a Spanish reference translation.
