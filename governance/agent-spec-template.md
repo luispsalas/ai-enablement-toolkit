@@ -22,6 +22,7 @@ One page that a business owner and a delivery team fill in together before anyon
 
 ### 2. Inputs and data
 - **What it receives,** and from where.
+- **Whether the stored data it relies on can be trusted:** if it answers from a table, a report or a document index, name who owns that source and how current it must be. The AI Observability Toolkit's [Trust Tiers design](https://github.com/luispsalas/ai-observability-toolkit/blob/main/data-quality/trust-tiers.md) is one way to decide whether a dataset is fit to feed an AI system.
 - **Data it must never see,** following the team's acceptable-use rules, and **where that data is removed** (before the model, never after).
 - **What it keeps:** logs, history, retention, and who can read them.
 
