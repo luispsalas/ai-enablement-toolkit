@@ -9,7 +9,7 @@ One page that a business owner and a delivery team fill in together before anyon
 > [!IMPORTANT]
 > **Not yet tried with a real team.** The template is filled in once below, for a lab built on synthetic data. Until a delivery team has built from it, treat it as a starting draft to adapt.
 
-**How it connects to the rest of the toolkit:** the [operating model](operating-model.md) says who approves the agent and who reviews it. The planned *acceptable-use one-pager* will hold the data rules that section 2 points to. The [use-case intake canvas](../assessment/intake-canvas.md) decides whether the agent is worth building at all; this page starts after that decision. The [AI oversight levels](oversight-levels.md) page sets how much human review each decision gets.
+**How it connects to the rest of the toolkit:** the [operating model](operating-model.md) says who approves the agent and who reviews it. The planned *acceptable-use one-pager* will hold the data rules that section 2 points to. The [agent safety practices](agent-safety-practices.md) are the checklist to fill it in against. The [use-case intake canvas](../assessment/intake-canvas.md) decides whether the agent is worth building at all; this page starts after that decision. The [AI oversight levels](oversight-levels.md) page sets how much human review each decision gets.
 
 ## The template
 
