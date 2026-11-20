@@ -17,6 +17,22 @@ The practices are grouped by the challenge they answer. Each is tagged with the 
 
 **Where it sits:** an idea passes the [intake canvas](../assessment/intake-canvas.md), the agent is written up with the specification template, its review level comes from the oversight levels page, and the [operating model](operating-model.md) says who approves it. This page covers how to make that agent safe in practice, at every stage.
 
+## What an AI agent is made of
+
+An agent can be described in five parts. Some descriptions split them further and list perception, communication or learning on their own. Knowing the parts tells you where each control attaches.
+
+![Diagram of an AI agent's parts. Inside a control loop, instructions and goals feed a model that reasons and decides the next step. The model reads and writes memory and state, and calls tools and actions that reach the outside world. The loop escalates to a person in charge, who owns the agent, approves what cannot be undone and can stop it. Each part is labeled with the sections of this page that govern it.](../assets/agent-components.svg)
+
+| Part | What it is | Governed mainly by |
+|---|---|---|
+| **Model** | The language model that reads the situation, reasons through it and decides what to do next | Explainability and traceability |
+| **Instructions and goals** | The role, rules, limits and target outcome the agent is given | Defined outcomes; Risk |
+| **Tools and actions** | What lets the agent act outside itself: APIs, search, databases, files, running code | Security; Human control |
+| **Memory and state** | The context of the current run, and anything kept between runs | Privacy and data |
+| **Control loop** | The cycle that observes the result, plans the next step, acts and repeats until the goal is met or a person is needed | Timeliness; Cost; Change, monitoring and incidents |
+
+The person in charge sits outside the loop. The loop should hand over to them for anything it cannot undo, and they must be able to stop it.
+
 ## Two ideas that run through every practice
 
 **The deciding question is whether a mistake can be undone.** If the agent gets something wrong once, can someone reverse it, and at what cost? Mistakes that can be reversed, such as a draft or a change on a test branch, can be left to the agent's judgment with checks after the fact. Mistakes that cannot be reversed, such as a payment, a deletion, a message to a customer or leaked data, need a rule the agent cannot get around, or a person's approval before they happen.
@@ -192,10 +208,11 @@ The practices above are drawn from, and written in this toolkit's own words from
 10. Shavit, Agarwal, Brundage and others (OpenAI), [*Practices for Governing Agentic AI Systems*](https://cdn.openai.com/papers/practices-for-governing-agentic-ai-systems.pdf), December 2023.
 11. Díaz, Kern and Olive (Google), [*Google's Approach for Secure AI Agents*](https://research.google/pubs/an-introduction-to-googles-approach-for-secure-ai-agents/), 2025.
 
-**Agent developer guidance**
+**Vendor guidance**
 
 12. Anthropic, [*Our framework for developing safe and trustworthy agents*](https://www.anthropic.com/news/our-framework-for-developing-safe-and-trustworthy-agents), August 4, 2025.
 13. Anthropic, [*Building effective AI agents*](https://www.anthropic.com/engineering/building-effective-agents), December 19, 2024.
 14. Anthropic, [*Writing effective tools for AI agents*](https://www.anthropic.com/engineering/writing-tools-for-agents), September 11, 2025, and [*Effective context engineering for AI agents*](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), September 29, 2025.
 15. Anthropic, [*How we built Claude Code auto mode*](https://www.anthropic.com/engineering/claude-code-auto-mode), March 25, 2026.
 16. Anthropic, Claude Code documentation: [Best practices](https://code.claude.com/docs/en/best-practices), [Permissions](https://code.claude.com/docs/en/permissions), [Sandboxing](https://code.claude.com/docs/en/sandboxing) and [Hooks](https://code.claude.com/docs/en/hooks), read November 18, 2026.
+17. IBM (Cole Stryker), [*What are Components of AI Agents?*](https://www.ibm.com/think/topics/components-of-ai-agents), March 11, 2025, updated March 2, 2026.
