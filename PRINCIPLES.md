@@ -69,7 +69,7 @@ Measure a small number of things well rather than many things loosely, and keep 
 
 Writing down what is allowed does not make it happen. *"A policy is not a control"* ([Acceptable Use Policy](https://luispsalas.github.io/applied-ai-concepts/concepts/acceptable-use-policy.html)): it needs a point where it is enforced, and a permitted way to do the work, or people will find an unofficial one.
 
-*In the toolkit:* the planned acceptable-use one-pager pairs each rule with a sanctioned route.
+*In the toolkit:* the [acceptable-use one-pager](governance/acceptable-use.md) pairs each rule with a permitted route.
 
 ## Know how to stop, and who decides
 

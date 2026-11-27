@@ -61,7 +61,7 @@ For organizations that can name their goals. Each section has a few questions an
 - Which decisions or customer-facing outputs must always have a person check them?
 - If an AI tool got something wrong, who would notice, and how fast?
 
-*For:* the canvas's stop check, and the gaps the [operating model](../governance/operating-model.md) and the planned acceptable-use one-pager should close. Record the answers; do not settle them here.
+*For:* the canvas's stop check, and the gaps the [operating model](../governance/operating-model.md) and the [acceptable-use one-pager](../governance/acceptable-use.md) should close. Record the answers; do not settle them here.
 
 ### 6. Quick wins and longer bets
 - Which problem could be helped within a month with tools you already have?

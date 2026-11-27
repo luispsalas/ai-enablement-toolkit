@@ -24,7 +24,7 @@ Any *yes* sets the idea aside, with the reason written down. A set-aside idea ca
 | Question | Yes means |
 |---|---|
 | Is there no process owner willing to own the result? | Nobody will act on it |
-| Does it need data that may not go into an AI tool? | It conflicts with the team's acceptable-use rules |
+| Does it need data that may not go into an AI tool? | It conflicts with the team's [acceptable-use rules](../governance/acceptable-use.md) |
 | Can nobody say what a correct output looks like? | It cannot be tested, and people and the AI will disagree while both seem right |
 | Could a wrong output reach a customer or move money before anyone sees it, with no way to undo it? | Redesign it so a person approves first, or stop |
 | Is the real problem training, habit or a workflow step? | Fix that instead; the [adoption review kit](../adoption-kit/) helps tell which |

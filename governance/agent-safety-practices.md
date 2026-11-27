@@ -134,7 +134,7 @@ Agents can carry information from one task, team or customer into another, and t
 | Decide which data the agent may read, which it may write and which it must never see | Design |
 | Keep data separate between tasks, teams and customers, with access checked on every request | Enable |
 | Minimize what goes into the agent's context and records to what the task needs | Build |
-| Follow the organization's acceptable-use rules for what data may go into which tool | Use |
+| Follow the organization's [acceptable-use rules](acceptable-use.md) for what data may go into which tool | Use |
 
 ## Cost and resources
 
