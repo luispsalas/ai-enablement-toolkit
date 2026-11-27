@@ -18,6 +18,7 @@ Each decision has one owner. Others are consulted, but the owner decides and the
 | What data may go into which tool | **data owner** | dev team, sponsor |
 | Approve a new tool for wider use | **sponsor** | data owner, dev team, process owner |
 | Stop, extend or roll out a pilot | **process owner** | the people in the pilot, enablement |
+| Change or remove a role because AI takes over its work | **sponsor** | HR, process owner |
 | Fix what the diagnosis finds | the **fix owner** for its class (below) | whoever raised it |
 
 Fix owners follow the [diagnosis sheet](../adoption-kit/diagnosis-sheet.md): a **tool** problem goes to the dev team, a **workflow** problem to the process owner, a **training** problem to enablement, and a **habit** problem to the manager. In a small team one person may hold several roles. Name the role anyway, so each decision is still sorted by kind.
