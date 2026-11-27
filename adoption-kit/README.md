@@ -13,6 +13,7 @@ A team gets a new AI tool, and a month later few people use it. This kit finds o
 | [`diagnosis-sheet.md`](diagnosis-sheet.md) + `.csv` | One classified row per stall: tool, workflow, training, habit, undetermined, or not a stall |
 | [`feedback-template.md`](feedback-template.md) | One page per issue for its fix owner, with a priority block and a follow-up section |
 | [`usage-tracker.md`](usage-tracker.md) + `.csv` | One row per team and tool, from access to regular use, stalled or dropped |
+| [`usage-log-guide.md`](usage-log-guide.md) | How to fill the tracker from a tool's own usage report: its definitions, the traps, and keeping a history |
 | [`REPORTING.md`](REPORTING.md) | How findings travel: feedback page, status report, leadership brief, and the loop |
 | [`leadership-brief-template.md`](leadership-brief-template.md) | A one-page brief for a reader with two minutes |
 

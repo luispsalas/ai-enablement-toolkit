@@ -21,7 +21,7 @@ Keep it at team level. It tracks adoption, not individual people, and it never h
 | `next_action` | The next concrete step, for example "send feedback-02 to the dev team" or "15-minute walkthrough of the summary feature" |
 | `action_owner` | `dev team`, `process owner`, `enablement` or `manager` |
 | `review_date` | When to look at this row again, `YYYY-MM-DD`. Leave it empty when the review waits on an event rather than a date, and name the event in `next_action` |
-| `source` | How the dates and counts were learned: `interview`, `self-report`, `usage log` or `estimate`. An `estimate` must say so wherever its numbers are repeated |
+| `source` | How the dates and counts were learned: `interview`, `self-report`, `usage log` or `estimate`. An `estimate` must say so wherever its numbers are repeated. For `usage log`, see the [usage-log guide](usage-log-guide.md) |
 | `synthetic` | `no` for real teams. `yes` only for example rows, which must never be mixed into real results |
 
 **Dates known only to the month** (common in self-reports) are entered as the first day of that month, and the row's `source` must not be `usage log`. Say "accurate to the month" wherever such a date is repeated.

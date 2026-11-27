@@ -5,7 +5,7 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 21 of 28 items are available today. The other 7 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 22 of 28 items are available today. The other 6 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
@@ -27,7 +27,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 | [**Adoption review kit**](adoption-kit/) | Interview, four-way diagnosis (tool, workflow, training, habit), feedback page and usage tracker, with a check script | **available** |
 | [**Structured reporting**](adoption-kit/REPORTING.md) | Priority block on feedback pages, status report and one-page leadership brief, written by hand or drafted by the report generator | **available** |
 | [**Report generator**](tools/build_reports.py) | Builds the status report and a draft leadership brief from the CSV files and feedback pages, lists what changed since the last report, and writes nothing if the files fail the checks · [synthetic sample →](examples/synthetic-rollout/) | **available** |
-| Usage-log guide | How to read a tool's own usage report, so tracker figures come from logs and not memory | next |
+| [**Usage-log guide**](adoption-kit/usage-log-guide.md) | How to read a tool's own usage report, so tracker figures come from logs and not memory: its definitions, the traps, and keeping a history | **available** |
 | Spanish version of the kit | Interview guide and consent script first | planned |
 | Second trial | Interviews with other people, which lifts *n* above 1 | planned |
 
@@ -114,7 +114,7 @@ Python 3, standard library only. The documents are plain Markdown and CSV, so th
 
 ```
 PRINCIPLES.md   the working principles behind the toolkit
-adoption-kit/   interview guide, diagnosis sheet, feedback template, usage tracker,
+adoption-kit/   interview guide, diagnosis sheet, feedback template, usage tracker, usage-log guide,
                 REPORTING.md, leadership brief template, and the two CSV templates
 literacy/       the guide to reviewing AI output, the English–Spanish glossary, why governance helps, the AI and data architecture terms, the prompt quick-reference card and the keep, practice or hand over map; deck/ holds the AI literacy decks (Spanish - Costa Rica and English - General, one HTML file each)
 governance/     the AI operating model one-pager, the AI agent specification template, the AI oversight levels page, the agent safety practices, the acceptable-use one-pager and the AI and agent inventory (with its CSV template)
