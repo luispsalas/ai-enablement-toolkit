@@ -17,7 +17,7 @@ Keep it at team level. It tracks adoption, not individual people, and it never h
 | `users_regular` | How many use it for real work at least as often as the task comes up |
 | `status` | One of the five values below |
 | `stall_class` | `tool`, `workflow`, `training`, `habit` or `undetermined`, from the diagnosis sheet. **Required** when `status` is `stalled` or `dropped`; empty or a class otherwise |
-| `stall_ref` | The diagnosis row(s) behind it, for example `S01 S04` |
+| `stall_ref` | The diagnosis row(s) behind it, separated by spaces, for example `S01 S04`. The brief gives each one its own line in *What stalled, and why* |
 | `next_action` | The next concrete step, for example "send feedback-02 to the dev team" or "15-minute walkthrough of the summary feature" |
 | `action_owner` | `dev team`, `process owner`, `enablement` or `manager` |
 | `review_date` | When to look at this row again, `YYYY-MM-DD`. Leave it empty when the review waits on an event rather than a date, and name the event in `next_action` |

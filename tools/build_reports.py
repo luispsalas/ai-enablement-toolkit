@@ -89,10 +89,15 @@ def read_page(path):
     return page
 
 
+def stall_refs(row):
+    """The diagnosis IDs a tracker row names in stall_ref: several are allowed, e.g. "S01 S04"."""
+    return row["stall_ref"].split()
+
+
 def follow_up_date(page, diag, track):
     """A page's follow-up date is the review_date of the tracker rows linked to it."""
     stalls = {r["stall_id"] for r in diag if r["feedback_ref"] == page["id"] + ".md"}
-    dates = sorted(r["review_date"] for r in track if r["stall_ref"] in stalls and r["review_date"])
+    dates = sorted(r["review_date"] for r in track if stalls & set(stall_refs(r)) and r["review_date"])
     return dates[0] if dates else ""
 
 
@@ -248,13 +253,15 @@ def brief(date, diag, track, pages, example):
             "| Team · tool | Status | Class | Evidence (one line) | Diagnosis row |", "|---|---|---|---|---|"]
     stalled = [r for r in track if r["status"] in {"stalled", "dropped", "not started"} or r["stall_ref"]]
     for r in stalled:
-        d = by_stall.get(r["stall_ref"], {})
-        cls = d.get("class_primary", r["stall_class"] or "not diagnosed")
-        if d.get("class_secondary"):
-            cls += f", with {d['class_secondary']} second"
-        ref = f"`{r['stall_ref']}`" if r["stall_ref"] else "none yet"
-        out.append(f"| {r['team']} · {r['tool']} | {r['status']} | {cls} | "
-                   f"{d.get('observation', 'TO WRITE')} | {ref} |")
+        # One line per linked diagnosis row, in the order stall_ref lists them.
+        for sid in stall_refs(r) or [None]:
+            d = by_stall.get(sid, {})
+            cls = d.get("class_primary", r["stall_class"] or "not diagnosed")
+            if d.get("class_secondary"):
+                cls += f", with {d['class_secondary']} second"
+            ref = f"`{sid}`" if sid else "none yet"
+            out.append(f"| {r['team']} · {r['tool']} | {r['status']} | {cls} | "
+                       f"{d.get('observation', 'TO WRITE')} | {ref} |")
     if not stalled:
         out.append("| nothing this period | | | | |")
     out += ["", "## 3. Decisions needed", "",

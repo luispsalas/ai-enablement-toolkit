@@ -169,6 +169,18 @@ def main():
     t = [dict(r) for r in TRACK]
     t[1]["review_date"] = "2026-10-17"
     seeded("overdue page", ("status-report", "Overdue follow-ups"), "`feedback-01`, follow-up date 2026-10-17", track=t)
+    # Several diagnosis IDs in one stall_ref ("S03 S02"), as the tracker docs allow.
+    t = [dict(r) for r in TRACK]
+    t[1]["stall_ref"], t[1]["review_date"] = "S03 S02", "2026-10-17"
+    seeded("two IDs, follow-up", ("status-report", "Overdue follow-ups"),
+           "`feedback-01`, follow-up date 2026-10-17", track=t)
+    t = [dict(r) for r in TRACK]
+    t[1]["stall_ref"] = "S01 S02"
+    code, _, outs = run_case(track=t)
+    lines = [l for l in section(outs["brief"] or "", "2. What stalled, and why").split("\n") if "team b" in l]
+    report("two IDs in stall_ref: one brief line each, in order, with each row's class and evidence",
+           code == 0 and len(lines) == 2 and "| tool | Export fails | `S01` |" in lines[0]
+           and "| training, with habit second | Summary never used | `S02` |" in lines[1])
     done = {**PAGES, "02": {**PAGES["02"], "status": "checked", "shipped": "2026-10-12",
                             "checked": "2026-10-16", "result": "fixed"}}
     seeded("fixes", ("brief", "4. Fixes shipped, and whether they landed"),
