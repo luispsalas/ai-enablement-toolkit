@@ -5,7 +5,7 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 15 of 26 items are available today. The other 11 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 16 of 26 items are available today. The other 10 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
@@ -25,8 +25,8 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 | Item | What it does | Status |
 |---|---|---|
 | [**Adoption review kit**](adoption-kit/) | Interview, four-way diagnosis (tool, workflow, training, habit), feedback page and usage tracker, with a 20-rule check script | **available** |
-| [**Structured reporting**](adoption-kit/REPORTING.md) | Priority block on feedback pages, status report and one-page leadership brief, written by hand | **available** |
-| Report generator | Builds the status report and brief from the CSV files, with the same tested checks | next |
+| [**Structured reporting**](adoption-kit/REPORTING.md) | Priority block on feedback pages, status report and one-page leadership brief, written by hand or drafted by the report generator | **available** |
+| [**Report generator**](tools/build_reports.py) | Builds the status report and a draft leadership brief from the CSV files and feedback pages, and writes nothing if the files fail the checks | **available** |
 | Usage-log guide | How to read a tool's own usage report, so tracker figures come from logs and not memory | next |
 | Spanish version of the kit | Interview guide and consent script first | planned |
 | Second trial | Interviews with other people, which lifts *n* above 1 | planned |
@@ -100,6 +100,12 @@ This proves the checker works: each of its 20 rules must catch a planted error, 
 python3 tools/check_lists.py adoption-kit/diagnosis-sheet.csv adoption-kit/usage-tracker.csv
 ```
 
+Once your copies of the two files have rows, build the status report and a draft leadership brief from them and the feedback pages in the same folder. It runs the checks first and writes nothing if they fail; `python3 tools/test_build_reports.py` tests it.
+
+```bash
+python3 tools/build_reports.py my-rollout/diagnosis-sheet.csv my-rollout/usage-tracker.csv my-rollout
+```
+
 Python 3, standard library only. The documents are plain Markdown and CSV, so they work in any editor or spreadsheet.
 
 ## Repository map
@@ -111,7 +117,7 @@ adoption-kit/   interview guide, diagnosis sheet, feedback template, usage track
 literacy/       the guide to reviewing AI output, the English–Spanish glossary and why governance helps; deck/ holds the AI literacy decks (Spanish - Costa Rica and English - General, one HTML file each)
 governance/     the AI operating model one-pager, the AI agent specification template and the AI oversight levels page
 assessment/     the business AI needs assessment and the use-case intake and prioritization canvas
-tools/          check_lists.py (20 rules) and its tests
+tools/          check_lists.py (20 rules), build_reports.py (the report generator) and their tests
 examples/       trial-n1/: the first trial (n = 1, real, anonymized)
 assets/         the banner
 ```

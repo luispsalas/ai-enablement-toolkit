@@ -91,4 +91,10 @@ This proves the checker works; it should end with `ALL PASSED`. Then check your 
 python3 tools/check_lists.py adoption-kit/diagnosis-sheet.csv adoption-kit/usage-tracker.csv
 ```
 
+Once your copies of the files have rows, build the status report and a draft leadership brief from them and the feedback pages in the same folder ([`REPORTING.md`](REPORTING.md)):
+
+```bash
+python3 tools/build_reports.py my-rollout/diagnosis-sheet.csv my-rollout/usage-tracker.csv my-rollout
+```
+
 Python 3, standard library only. The documents are plain Markdown and CSV, so they work in any editor or spreadsheet.

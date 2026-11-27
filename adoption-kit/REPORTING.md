@@ -15,7 +15,7 @@ Interviews only help if what people say reaches someone who can act on it, and i
 
 ## Level 2: the status report (for whoever runs the rollout)
 
-A dated one-page summary of every team and tool, built from `usage-tracker.csv`, `diagnosis-sheet.csv` and the open feedback pages. In this release it is written by hand; a script that builds it from the files is planned (see the README's roadmap). It covers:
+A dated one-page summary of every team and tool, built from `usage-tracker.csv`, `diagnosis-sheet.csv` and the open feedback pages. It can be written by hand, or built by `tools/build_reports.py`, which runs the check script first and writes nothing if a rule fails. It covers:
 
 - **adoption by team and tool**, always as `users_regular` of `users_with_access`, with the source;
 - **stalls by class** (tool, workflow, training, habit, undetermined), each pointing at its diagnosis rows;
@@ -27,7 +27,7 @@ Run the check script on both CSV files before writing it. A report built on rows
 
 ## Level 3: the leadership brief (for a reader with two minutes)
 
-One page (`leadership-brief-template.md`): what is working, what stalled and why, the decisions needed, the fixes shipped and whether they landed, and the next review date. Every figure in it must be traceable to the tracker or the diagnosis sheet. If the evidence is thin, the brief says so at the top, with *n*.
+One page (`leadership-brief-template.md`): what is working, what stalled and why, the decisions needed, the fixes shipped and whether they landed, and the next review date. Every figure in it must be traceable to the tracker or the diagnosis sheet. The same script drafts it, leaving the decisions and the limit sentence for a person to write; edit the draft before sending it. If the evidence is thin, the brief says so at the top, with *n*.
 
 ## The loop
 
