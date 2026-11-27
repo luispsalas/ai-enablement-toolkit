@@ -21,7 +21,7 @@ A dated one-page summary of every team and tool, built from `usage-tracker.csv`,
 - **stalls by class** (tool, workflow, training, habit, undetermined), each pointing at its diagnosis rows;
 - **open feedback pages by priority**, with owner and follow-up date;
 - **overdue follow-ups**: any tracker row or feedback page past its review date;
-- **what changed since the last report**.
+- **what changed since the last report**. The script saves a small snapshot (`report-snapshot-<date>.json`) with each report and lists what differs from the latest earlier one in the same folder; it never compares real data with example data. By hand, write it in a few lines.
 
 Run the check script on both CSV files before writing it. A report built on rows that fail the checks is not sent.
 

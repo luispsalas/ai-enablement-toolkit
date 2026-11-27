@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-02",
+  "synthetic": true,
+  "tracker": {
+    "support team · reply assistant": {
+      "status": "trying",
+      "users_regular": "7",
+      "users_with_access": "12"
+    },
+    "account management · reply assistant": {
+      "status": "stalled",
+      "users_regular": "0",
+      "users_with_access": "4"
+    },
+    "sales team · call summary assistant": {
+      "status": "trying",
+      "users_regular": "2",
+      "users_with_access": "6"
+    }
+  },
+  "stalls": {
+    "S01": {
+      "class": "tool",
+      "class_secondary": ""
+    },
+    "S02": {
+      "class": "training",
+      "class_secondary": ""
+    },
+    "S03": {
+      "class": "workflow",
+      "class_secondary": "habit"
+    },
+    "S04": {
+      "class": "not a stall",
+      "class_secondary": ""
+    }
+  },
+  "pages": {
+    "feedback-01": {
+      "status": "fix planned",
+      "priority": "high",
+      "result": "not checked yet"
+    },
+    "feedback-02": {
+      "status": "open",
+      "priority": "medium",
+      "result": "not checked yet"
+    }
+  }
+}

@@ -4,8 +4,11 @@
         examples/trial-n1/usage-tracker.csv examples/trial-n1 --date 2026-10-10
 
 Reads the diagnosis sheet, the usage tracker and every `feedback-NN.md` page in
-the folder given. Writes two files next to the usage tracker (or into --out):
-`status-report-<date>.md` and `brief-<date>-draft.md`.
+the folder given. Writes three files next to the usage tracker (or into --out):
+`status-report-<date>.md`, `brief-<date>-draft.md` and `report-snapshot-<date>.json`.
+The snapshot is what the next run compares against: the status report's "What
+changed" section lists the differences from the latest snapshot dated before
+this report in the same folder.
 
 The rules it follows are in adoption-kit/REPORTING.md:
 - It first runs check_lists.py on both CSV files and writes nothing if any rule
@@ -14,14 +17,15 @@ The rules it follows are in adoption-kit/REPORTING.md:
   does not match is named and nothing is written.
 - Real and example (synthetic) data never share a file, so inputs that mix
   them are refused.
+- A snapshot of real data is never compared with one of example data.
 - The brief is a DRAFT: section 3 (decisions) and the evidence-base limit are
   left for a person to write, and the evidence lines should be edited.
 
-Exit code 0 = both files written, 1 = the CSV checks failed, 2 = an input
+Exit code 0 = all three files written, 1 = the CSV checks failed, 2 = an input
 could not be read, did not match its template, the tracker has no rows, or an
 output already exists.
 """
-import argparse, csv, datetime, os, re, sys
+import argparse, csv, datetime, json, os, re, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from check_lists import check, OWNERS, NOT_A_STALL  # noqa: E402
@@ -34,6 +38,7 @@ RESULTS = ["fixed", "partly fixed", "not fixed", "could not check"]
 REQUIRED = ["For (fix owner)", "Status", "Priority", "Fix shipped on", "Checked on", "Result"]
 CLASS_ORDER = ["tool", "workflow", "training", "habit", "undetermined"]
 INTERVIEW_CODE = re.compile(r"\bP\d{2,}\b")
+SNAPSHOT_NAME = re.compile(r"^report-snapshot-(\d{4}-\d{2}-\d{2})\.json$")
 
 
 class InputError(Exception):
@@ -100,7 +105,7 @@ def evidence(diag, track):
     return len(codes), len(teams), sources
 
 
-def status_report(date, diag, track, pages, example):
+def status_report(date, diag, track, pages, example, changed):
     n, teams, sources = evidence(diag, track)
     out = [f"# Status report, {date}", ""]
     if example:
@@ -132,9 +137,89 @@ def status_report(date, diag, track, pages, example):
     else:
         out.append("None.")
     out += ["", "## Overdue follow-ups", "", *overdue_lines(date, track, open_pages),
-            "", "## What changed since the last report", "",
-            "*Write by hand: this release keeps no snapshot of the previous report.*", ""]
+            "", "## What changed since the last report", "", *changed, ""]
     return "\n".join(out)
+
+
+def keyed(rows, key):
+    """Rows by a readable key; a repeated key gets ' #2', ' #3' so no row is lost."""
+    out = {}
+    for r in rows:
+        k, n = key(r), 2
+        while k in out:
+            k, n = f"{key(r)} #{n}", n + 1
+        out[k] = r
+    return out
+
+
+def snapshot(date, diag, track, pages, example):
+    """The figures the next report compares against."""
+    return {
+        "date": date,
+        "synthetic": example,
+        "tracker": {k: {"status": r["status"], "users_regular": r["users_regular"],
+                        "users_with_access": r["users_with_access"]}
+                    for k, r in keyed(track, lambda r: f"{r['team']} · {r['tool']}").items()},
+        "stalls": {k: {"class": r["class_primary"], "class_secondary": r["class_secondary"]}
+                   for k, r in keyed(diag, lambda r: r["stall_id"]).items()},
+        "pages": {p["id"]: {"status": p["status"], "priority": p["priority"], "result": p["result"]}
+                  for p in pages},
+    }
+
+
+def previous_snapshot(folder, date):
+    """The latest snapshot in the folder dated before this report, or None."""
+    try:
+        names = os.listdir(folder)
+    except OSError:
+        return None, None
+    dated = sorted((m.group(1), n) for n in names if (m := SNAPSHOT_NAME.match(n)) and m.group(1) < date)
+    if not dated:
+        return None, None
+    name = dated[-1][1]
+    with open(os.path.join(folder, name), encoding="utf-8") as f:
+        return json.load(f), name
+
+
+def what_changed(prev, name, cur):
+    """Lines for the status report's 'What changed' section."""
+    if prev is None:
+        return ["*No earlier snapshot in this folder, so there is nothing to compare with. "
+                "Write this section by hand, or leave it for the next report.*"]
+    if prev.get("synthetic") != cur["synthetic"]:
+        return [f"*Not compared: `{name}` holds {'example' if prev.get('synthetic') else 'real'} data "
+                f"and this report holds {'example' if cur['synthetic'] else 'real'} data.*"]
+    lines = []
+    users = lambda r: f"{r['users_regular']} of {r['users_with_access']}"
+    old, new = prev.get("tracker", {}), cur["tracker"]
+    for k in new:
+        if k not in old:
+            lines.append(f"- Tracker: new row {k} (status {new[k]['status']}, regular users {users(new[k])}).")
+            continue
+        if old[k]["status"] != new[k]["status"]:
+            lines.append(f"- Tracker: {k}, status {old[k]['status']} → {new[k]['status']}.")
+        if users(old[k]) != users(new[k]):
+            lines.append(f"- Tracker: {k}, regular users {users(old[k])} → {users(new[k])}.")
+    lines += [f"- Tracker: row removed, {k}." for k in old if k not in new]
+    old, new = prev.get("stalls", {}), cur["stalls"]
+    cls = lambda r: r["class"] + (f", with {r['class_secondary']} second" if r["class_secondary"] else "")
+    for k in new:
+        if k not in old:
+            lines.append(f"- Diagnosis: new row `{k}` ({cls(new[k])}).")
+        elif cls(old[k]) != cls(new[k]):
+            lines.append(f"- Diagnosis: `{k}`, class {cls(old[k])} → {cls(new[k])}.")
+    lines += [f"- Diagnosis: row removed, `{k}`." for k in old if k not in new]
+    old, new = prev.get("pages", {}), cur["pages"]
+    for k in new:
+        if k not in old:
+            lines.append(f"- Feedback: new page `{k}` (priority {new[k]['priority']}, status {new[k]['status']}).")
+            continue
+        for field in ("status", "priority", "result"):
+            if old[k][field] != new[k][field]:
+                lines.append(f"- Feedback: `{k}`, {field} {old[k][field]} → {new[k][field]}.")
+    lines += [f"- Feedback: page removed, `{k}`." for k in old if k not in new]
+    intro = f"*Compared with `{name}`, the snapshot of the report of {prev.get('date', 'unknown date')}.*"
+    return [intro, ""] + (lines or ["No changes in the tracker, the diagnosis sheet or the feedback pages."])
 
 
 def overdue_lines(date, track, open_pages):
@@ -185,7 +270,7 @@ def brief(date, diag, track, pages, example):
     overdue = [l.lstrip("- ") for l in overdue_lines(date, track,
                [p for p in pages if p["status"] != "checked"]) if l != "None."]
     out += ["", "## 5. Next review", "",
-            (future[0] if future else "*TO WRITE: no future review date in the tracker; give a date or the event it waits on.*")
+            (future[0] + "." if future else "*TO WRITE: no future review date in the tracker; give a date or the event it waits on.*")
             + f" Overdue items: {'; '.join(overdue) if overdue else 'none'}.", ""]
     return "\n".join(out)
 
@@ -233,8 +318,16 @@ def main(argv):
     example = flags == {"yes"}
 
     out_dir = a.out or os.path.dirname(os.path.abspath(a.tracker))
-    targets = {os.path.join(out_dir, f"status-report-{a.date}.md"): status_report(a.date, diag, track, pages, example),
-               os.path.join(out_dir, f"brief-{a.date}-draft.md"): brief(a.date, diag, track, pages, example)}
+    snap = snapshot(a.date, diag, track, pages, example)
+    try:
+        prev, prev_name = previous_snapshot(out_dir, a.date)
+    except (OSError, ValueError) as e:
+        print(f"earlier snapshot could not be read: {e}. Nothing written.")
+        return 2
+    changed = what_changed(prev, prev_name, snap)
+    targets = {os.path.join(out_dir, f"status-report-{a.date}.md"): status_report(a.date, diag, track, pages, example, changed),
+               os.path.join(out_dir, f"brief-{a.date}-draft.md"): brief(a.date, diag, track, pages, example),
+               os.path.join(out_dir, f"report-snapshot-{a.date}.json"): json.dumps(snap, ensure_ascii=False, indent=2) + "\n"}
     existing = [t for t in targets if os.path.exists(t)]
     if existing:
         print(f"already exists, not overwritten: {existing}. Nothing written.")

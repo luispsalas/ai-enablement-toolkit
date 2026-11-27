@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-16",
+  "synthetic": true,
+  "tracker": {
+    "support team · reply assistant": {
+      "status": "regular",
+      "users_regular": "10",
+      "users_with_access": "12"
+    },
+    "account management · reply assistant": {
+      "status": "trying",
+      "users_regular": "1",
+      "users_with_access": "4"
+    },
+    "sales team · call summary assistant": {
+      "status": "trying",
+      "users_regular": "2",
+      "users_with_access": "6"
+    },
+    "account management · call summary assistant": {
+      "status": "not started",
+      "users_regular": "0",
+      "users_with_access": "4"
+    }
+  },
+  "stalls": {
+    "S01": {
+      "class": "tool",
+      "class_secondary": ""
+    },
+    "S02": {
+      "class": "training",
+      "class_secondary": "habit"
+    },
+    "S03": {
+      "class": "workflow",
+      "class_secondary": "habit"
+    },
+    "S04": {
+      "class": "not a stall",
+      "class_secondary": ""
+    },
+    "S05": {
+      "class": "undetermined",
+      "class_secondary": ""
+    }
+  },
+  "pages": {
+    "feedback-01": {
+      "status": "shipped",
+      "priority": "high",
+      "result": "not checked yet"
+    },
+    "feedback-02": {
+      "status": "fix planned",
+      "priority": "medium",
+      "result": "not checked yet"
+    },
+    "feedback-03": {
+      "status": "open",
+      "priority": "not set",
+      "result": "not checked yet"
+    }
+  }
+}

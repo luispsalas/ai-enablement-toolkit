@@ -26,7 +26,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 |---|---|---|
 | [**Adoption review kit**](adoption-kit/) | Interview, four-way diagnosis (tool, workflow, training, habit), feedback page and usage tracker, with a 20-rule check script | **available** |
 | [**Structured reporting**](adoption-kit/REPORTING.md) | Priority block on feedback pages, status report and one-page leadership brief, written by hand or drafted by the report generator | **available** |
-| [**Report generator**](tools/build_reports.py) | Builds the status report and a draft leadership brief from the CSV files and feedback pages, and writes nothing if the files fail the checks | **available** |
+| [**Report generator**](tools/build_reports.py) | Builds the status report and a draft leadership brief from the CSV files and feedback pages, lists what changed since the last report, and writes nothing if the files fail the checks · [synthetic sample →](examples/synthetic-rollout/) | **available** |
 | Usage-log guide | How to read a tool's own usage report, so tracker figures come from logs and not memory | next |
 | Spanish version of the kit | Interview guide and consent script first | planned |
 | Second trial | Interviews with other people, which lifts *n* above 1 | planned |
@@ -119,7 +119,7 @@ governance/     the AI operating model one-pager, the AI agent specification tem
 assessment/     the business AI needs assessment, the use-case intake and prioritization canvas and the value baseline and check
 rollout/        the office hours and release briefing templates
 tools/          check_lists.py (20 rules), build_reports.py (the report generator) and their tests
-examples/       trial-n1/: the first trial (n = 1, real, anonymized)
+examples/       trial-n1/: the first trial (n = 1, real, anonymized); synthetic-rollout/: made-up data, two reports apart
 assets/         the banner
 ```
 

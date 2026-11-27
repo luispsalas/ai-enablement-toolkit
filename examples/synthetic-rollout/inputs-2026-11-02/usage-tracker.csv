@@ -1,0 +1,4 @@
+team,tool,access_given,users_with_access,first_real_use,last_use,users_regular,status,stall_class,stall_ref,next_action,action_owner,review_date,source,synthetic
+support team,reply assistant,2026-10-05,12,2026-10-06,2026-10-30,7,trying,tool,S01,Send feedback-01 to the dev team: refund drafts quote an outdated window,dev team,2026-11-16,usage log,yes
+account management,reply assistant,2026-10-05,4,2026-10-08,2026-10-14,0,stalled,training,S02,15-minute walkthrough on reply templates,enablement,2026-11-09,interview,yes
+sales team,call summary assistant,2026-10-12,6,2026-10-13,2026-10-31,2,trying,workflow,S03,Send feedback-02 to the process owner: summaries do not reach the CRM record,process owner,2026-11-12,usage log,yes

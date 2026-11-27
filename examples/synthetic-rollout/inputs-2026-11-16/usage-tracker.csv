@@ -1,0 +1,5 @@
+team,tool,access_given,users_with_access,first_real_use,last_use,users_regular,status,stall_class,stall_ref,next_action,action_owner,review_date,source,synthetic
+support team,reply assistant,2026-10-05,12,2026-10-06,2026-11-13,10,regular,tool,S01,Check refund drafts in a new sample after the fix (feedback-01),enablement,2026-11-30,usage log,yes
+account management,reply assistant,2026-10-05,4,2026-10-08,2026-11-13,1,trying,training,S02,Add the assistant to the renewal checklist,manager,2026-11-30,interview,yes
+sales team,call summary assistant,2026-10-12,6,2026-10-13,2026-11-14,2,trying,workflow,S03,Process owner to confirm the CRM change date (feedback-02),process owner,2026-11-12,usage log,yes
+account management,call summary assistant,2026-11-09,4,,,0,not started,,,"Walkthrough before first use, with the CRM change from feedback-02",enablement,2026-11-30,usage log,yes

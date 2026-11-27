@@ -10,6 +10,13 @@
    cannot pass on text that was there anyway).
 3. The trial: on examples/trial-n1 the generated brief carries the same figures
    and row IDs as the hand-written leadership-brief.md (wording is not compared).
+4. Snapshots: a first run says there is nothing to compare; a later run lists
+   each planted change and only those; real and example snapshots are not
+   compared; a snapshot dated after the report is ignored; a broken snapshot
+   stops the run; an existing snapshot is not overwritten.
+5. The synthetic sample: rebuilding examples/synthetic-rollout from its inputs
+   gives exactly the files committed there, so the sample cannot drift from the
+   generator.
 All test rows and pages are synthetic.
 """
 import csv, os, re, subprocess, sys, tempfile
@@ -61,8 +68,9 @@ def build(d, date=DATE, extra=()):
            "--date", date, *extra]
     p = subprocess.run(cmd, capture_output=True, text=True)
     outs = {}
-    for kind in ("status-report", "brief"):
-        path = os.path.join(d, f"{kind}-{date}.md" if kind == "status-report" else f"brief-{date}-draft.md")
+    for kind, name in (("status-report", f"status-report-{date}.md"), ("brief", f"brief-{date}-draft.md"),
+                       ("snapshot", f"report-snapshot-{date}.json")):
+        path = os.path.join(d, name)
         outs[kind] = open(path, encoding="utf-8").read() if os.path.exists(path) else None
     return p.returncode, p.stdout, outs
 
@@ -188,6 +196,104 @@ def main():
             report(f"trial brief matches the hand-written one: {key} ({h[key]})", g[key] == h[key])
     else:
         report("trial brief generated", False)
+
+    # 4. Snapshots: two runs in one folder, the second with planted changes.
+    LATER = "2026-11-01"
+    changed = lambda outs: section(outs["status-report"] or "", "What changed since the last report")
+    report("first run writes a snapshot and says there is nothing to compare",
+           base["snapshot"] is not None and "No earlier snapshot" in changed(base))
+    with tempfile.TemporaryDirectory() as d:
+        setup(d)
+        build(d)
+        t = [dict(r) for r in TRACK]
+        t[0]["users_regular"] = "2"
+        t[1]["status"] = "regular"
+        dg = [dict(r) for r in DIAG]
+        dg[1]["class_primary"] = "habit"
+        dg[1]["class_secondary"] = ""
+        pg = {**PAGES, "02": {**PAGES["02"], "status": "shipped", "shipped": "2026-10-25"},
+              "03": dict(PAGES["01"], title="New issue", priority="high")}
+        setup(d, diag=dg, track=t, pages=pg)
+        code, _, outs = build(d, date=LATER)
+        text = changed(outs)
+        planted = ["team a · Example tool, regular users 4 of 5 → 2 of 5", "team b · Example tool, status stalled → regular",
+                   "`S02`, class training, with habit second → habit",
+                   "`feedback-02`, status fix planned → shipped", "new page `feedback-03` (priority high, status open)"]
+        for needle in planted:
+            report(f"second run lists a planted change: {needle}", code == 0 and needle in text)
+        report("second run names the snapshot it compared with", f"report-snapshot-{DATE}.json" in text)
+        report("second run lists only the planted changes (5 lines)", text.count("\n- ") == 5)
+    with tempfile.TemporaryDirectory() as d:
+        setup(d)
+        build(d)
+        setup(d, track=TRACK[:2], diag=DIAG[:1])
+        code, _, outs = build(d, date=LATER)
+        report("a removed tracker row and a removed diagnosis row are listed",
+               code == 0 and "row removed, team c · Example tool" in changed(outs)
+               and "row removed, `S02`" in changed(outs))
+    with tempfile.TemporaryDirectory() as d:
+        setup(d)
+        build(d)
+        t = [dict(r) for r in TRACK]
+        t[0]["status"] = "trying"
+        setup(d, track=t)
+        build(d, date="2026-10-25")
+        code, _, outs = build(d, date=LATER)
+        report("the latest earlier snapshot is the one compared (no change since 2026-10-25)",
+               code == 0 and "report-snapshot-2026-10-25.json" in changed(outs)
+               and "No changes in the tracker" in changed(outs))
+    with tempfile.TemporaryDirectory() as d:
+        setup(d)
+        build(d)
+        code, _, outs = build(d, date=LATER)
+        report("an unchanged second run says no changes",
+               code == 0 and "No changes in the tracker" in changed(outs))
+    with tempfile.TemporaryDirectory() as d:
+        setup(d)
+        build(d)
+        setup(d, track=[dict(r, synthetic="no") for r in TRACK], diag=[dict(r, synthetic="no") for r in DIAG])
+        code, _, outs = build(d, date=LATER)
+        report("an example snapshot is not compared with real data",
+               code == 0 and "Not compared" in changed(outs) and "- Tracker" not in changed(outs))
+    report("a future review date ends with a period before the overdue items",
+           "\n2026-10-20. Overdue items:" in section(base["brief"], "5. Next review"))
+    with tempfile.TemporaryDirectory() as d:
+        setup(d)
+        build(d, date=LATER)
+        code, _, outs = build(d)
+        report("a snapshot dated after the report is ignored",
+               code == 0 and "No earlier snapshot" in changed(outs))
+    with tempfile.TemporaryDirectory() as d:
+        setup(d)
+        with open(os.path.join(d, "report-snapshot-2026-10-01.json"), "w") as f:
+            f.write("{not json")
+        code, out, outs = build(d)
+        report("a broken earlier snapshot stops the run, nothing written",
+               code == 2 and "snapshot" in out and not any(outs.values()))
+    with tempfile.TemporaryDirectory() as d:
+        setup(d)
+        path = os.path.join(d, f"report-snapshot-{DATE}.json")
+        with open(path, "w") as f:
+            f.write("keep me")
+        code, _, outs = build(d)
+        report("gate: an existing snapshot is not overwritten, nothing written",
+               code == 2 and open(path).read() == "keep me" and outs["status-report"] is None)
+
+    # 5. The synthetic sample, rebuilt from its inputs, must match what is committed.
+    sample = os.path.join(ROOT, "examples", "synthetic-rollout")
+    committed = os.path.join(sample, "reports")
+    with tempfile.TemporaryDirectory() as d:
+        for date in ("2026-11-02", "2026-11-16"):
+            inputs = os.path.join(sample, f"inputs-{date}")
+            subprocess.run([sys.executable, "-I", BUILD, os.path.join(inputs, "diagnosis-sheet.csv"),
+                            os.path.join(inputs, "usage-tracker.csv"), inputs, "--date", date, "--out", d],
+                           capture_output=True, text=True)
+        names = sorted(os.listdir(committed))
+        report("the sample has six report files (two rounds of three)", len(names) == 6)
+        same = names == sorted(os.listdir(d)) and all(
+            open(os.path.join(committed, n), encoding="utf-8").read() == open(os.path.join(d, n), encoding="utf-8").read()
+            for n in names)
+        report("the synthetic sample rebuilds exactly as committed", same)
 
     print("ALL PASSED" if failures == 0 else f"{failures} FAILURE(S)")
     return 1 if failures else 0

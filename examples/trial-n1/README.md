@@ -10,7 +10,7 @@ The kit's first real use, on 2026-10-09: one person, interviewed in a chat by an
 | `usage-tracker.csv` | 2 rows, self-reported, dates accurate to the month |
 | `feedback-01.md` | The one feedback page, still open: its follow-up waits for the next model launch |
 | `leadership-brief.md` | The brief template filled by hand from the three files above |
-| `status-report-2026-10-10.md` | The status report as `tools/build_reports.py` generated it from the same three files, unedited |
+| `status-report-2026-10-10.md` | The status report as `tools/build_reports.py` generated it from the same three files, unedited. It predates report snapshots, so its *What changed* section still says to write it by hand |
 
 **Not here, on purpose:** the interview notes. The guide keeps notes private, and the interviewee chose paraphrase only, so no file in this repository quotes them.
 
