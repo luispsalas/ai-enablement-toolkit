@@ -10,7 +10,7 @@ Two templates for the time after an AI tool is in use. **Office hours** are a st
 ## What it does not do
 
 - **It does not cover the first rollout.** Announcing a new tool and explaining what changes for people is the job of the planned change-communication pack. These templates start once people are using the tool.
-- **It does not teach a task.** Showing someone how to do one task with one tool is the planned walkthrough. Office hours answer whatever people bring.
+- **It does not teach a task.** Showing someone how to do one task with one tool is the [walkthrough](walkthrough.md). Office hours answer whatever people bring.
 - **It does not diagnose why usage stalled.** A question asked in office hours is a signal. Finding the cause takes the [adoption review kit](../adoption-kit/), with its interview guide and diagnosis sheet.
 - **It is not an outage channel.** When the tool is down, people need the dev team's or the vendor's support route, not a session next week.
 
@@ -46,7 +46,7 @@ The kinds line up with the [diagnosis sheet](../adoption-kit/diagnosis-sheet.md)
 ### Signs it is not working
 
 - **Nobody comes.** That does not prove everything is fine. Check the [usage tracker](../adoption-kit/usage-tracker.md) for teams marked `stalled` or `dropped`, and ask them directly.
-- **The same questions every time.** The answer is not reaching people. Fix the source, such as the quick-reference card, the FAQ or the training, instead of answering it again.
+- **The same questions every time.** The answer is not reaching people. Fix the source, such as the walkthrough's [quick-reference card](walkthrough.md#the-quick-reference-card), the FAQ or the training, instead of answering it again.
 - **Only the same few people come.** The session may be at the wrong time, or people may not know it is for them.
 
 ## Release briefings

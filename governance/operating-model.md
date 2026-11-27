@@ -29,7 +29,7 @@ Fix owners follow the [diagnosis sheet](../adoption-kit/diagnosis-sheet.md): a *
 |---|---|---|---|
 | **Idea** | Anyone proposes a use for AI | The process owner writes down the problem, the people affected and what success would look like | The idea is accepted for a pilot or declined, with the reason |
 | **Pilot** | A small group, a start date and **stop rules** are agreed | The group uses the tool on real work; the [usage tracker](../adoption-kit/usage-tracker.md) records each team and tool | The pilot's end date, or a stop rule fires |
-| **Rollout** | The process owner decides to extend it, and the sponsor approves the tool | Access, a short walkthrough, and a named person to ask | Most people with access use it when the task comes up |
+| **Rollout** | The process owner decides to extend it, and the sponsor approves the tool | Access, a short [walkthrough](../rollout/walkthrough.md), and a named person to ask | Most people with access use it when the task comes up |
 | **Review** | On the team's review date | Interviews with the [interview guide](../adoption-kit/interview-guide.md) where usage stalls; one [feedback page](../adoption-kit/feedback-template.md) per issue | Each finding has an owner and a follow-up date |
 
 **Stop rules are written before a pilot starts**, while nobody has a stake in continuing. Examples: output needs checking so often that the old way is faster; the tool needs data the data owner has not cleared; nobody in the pilot uses it after the first two weeks.

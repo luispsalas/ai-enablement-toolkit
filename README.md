@@ -5,7 +5,7 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 22 of 28 items are available today. The other 6 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 23 of 28 items are available today. The other 5 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
@@ -69,7 +69,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 
 | Item | What it does | Status |
 |---|---|---|
-| Walkthrough script and quick reference | A short guided session on one tool and task, and the card for that tool that people keep afterwards | next |
+| [**Walkthrough script and quick reference**](rollout/walkthrough.md) | A short guided session on one tool and task, and the card for that tool that people keep afterwards | **available** |
 | [**Office hours and release briefings**](rollout/office-hours-and-release-briefings.md) | A standing session for questions, with a log that routes each one to whoever can act on it, and a short note for each later change to a tool already in use | **available** |
 | Change-communication pack | For the first rollout of a new tool: announcement, FAQ and "what changes for you" | planned |
 
@@ -119,7 +119,7 @@ adoption-kit/   interview guide, diagnosis sheet, feedback template, usage track
 literacy/       the guide to reviewing AI output, the English–Spanish glossary, why governance helps, the AI and data architecture terms, the prompt quick-reference card and the keep, practice or hand over map; deck/ holds the AI literacy decks (Spanish - Costa Rica and English - General, one HTML file each)
 governance/     the AI operating model one-pager, the AI agent specification template, the AI oversight levels page, the agent safety practices, the acceptable-use one-pager and the AI and agent inventory (with its CSV template)
 assessment/     the business AI needs assessment, the use-case intake and prioritization canvas and the value baseline and check
-rollout/        the office hours and release briefing templates
+rollout/        the walkthrough script and card, and the office hours and release briefing templates
 tools/          check_lists.py (32 rules), build_reports.py (the report generator) and their tests
 examples/       trial-n1/: the first trial (n = 1, real, anonymized); synthetic-rollout/: made-up data, two reports apart, and an AI inventory
 assets/         the banner

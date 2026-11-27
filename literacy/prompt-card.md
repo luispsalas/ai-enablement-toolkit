@@ -2,7 +2,7 @@
 
 *Part of the [AI Enablement Toolkit](../README.md).*
 
-One page to keep beside any AI chat tool: how to ask, and what to do before you rely on the answer. It condenses the prompts section of the [AI literacy deck](deck/) (slides 14 and 15), where the examples are worked through. For one tool and one task, the planned walkthrough comes with its own card.
+One page to keep beside any AI chat tool: how to ask, and what to do before you rely on the answer. It condenses the prompts section of the [AI literacy deck](deck/) (slides 14 and 15), where the examples are worked through. For one tool and one task, the [walkthrough](../rollout/walkthrough.md) comes with its own card.
 
 ## Before you type
 
