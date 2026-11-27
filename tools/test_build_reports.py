@@ -133,6 +133,17 @@ def main():
             f.write("keep me")
         code, out, _ = build(d)
         report("gate: an existing output is not overwritten", code == 2 and open(path).read() == "keep me")
+    with tempfile.TemporaryDirectory() as d:
+        setup(d)
+        new = os.path.join(d, "reports", "round-1")
+        code, _, _ = build(d, extra=("--out", new))
+        report("a missing --out folder is created and all three files written",
+               code == 0 and len(os.listdir(new)) == 3)
+        bad = os.path.join(d, "never-made")
+        with open(os.path.join(d, "track.csv"), "a", encoding="utf-8") as f:
+            f.write("broken row\n")
+        code, _, _ = build(d, extra=("--out", bad))
+        report("a refused run creates no --out folder", code != 0 and not os.path.exists(bad))
 
     # 2. Sections: each planted change shows up, and was not in the baseline.
     def seeded(name, where, needle, **inputs):

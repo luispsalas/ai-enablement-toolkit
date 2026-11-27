@@ -281,7 +281,7 @@ def main(argv):
     ap.add_argument("tracker")
     ap.add_argument("feedback_dir")
     ap.add_argument("--date", default=datetime.date.today().isoformat(), help="report date, YYYY-MM-DD")
-    ap.add_argument("--out", help="output folder (default: the usage tracker's folder)")
+    ap.add_argument("--out", help="output folder, created if missing (default: the usage tracker's folder)")
     a = ap.parse_args(argv)
     if not re.match(r"^\d{4}-\d{2}-\d{2}$", a.date):
         print(f"--date must be YYYY-MM-DD, got {a.date}")
@@ -332,6 +332,9 @@ def main(argv):
     if existing:
         print(f"already exists, not overwritten: {existing}. Nothing written.")
         return 2
+    if not os.path.isdir(out_dir):
+        os.makedirs(out_dir)
+        print(f"created folder {out_dir}")
     for path, text in targets.items():
         with open(path, "w", encoding="utf-8") as f:
             f.write(text)
