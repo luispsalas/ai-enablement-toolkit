@@ -28,7 +28,7 @@ Your organization writes one. The provider of each AI tool writes the other, as 
 | **Approved tool** | The organization has an agreement with the provider that covers how data is handled: whether it is kept, for how long, who can see it, and whether it is used to train models. People sign in with their work account. |
 | **Personal or public tool** | Anything without that agreement: a personal account, a free version, a browser extension, a tool a colleague recommended. The organization cannot see or control what happens to the data. |
 
-Keep the list of approved tools somewhere everyone can find it, with the date it was last checked. It is the only part of this page that names products.
+The approved tools are the rows marked `approved` in the [AI and agent inventory](ai-inventory.md), each with its review date. That list is the only place products are named, so this page never needs updating when a tool is added.
 
 ## What data may go in
 

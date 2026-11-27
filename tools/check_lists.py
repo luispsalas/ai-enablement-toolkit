@@ -1,7 +1,11 @@
-"""Check the kit's two CSV files against their fixed lists and rules.
+"""Check the toolkit's CSV files against their fixed lists and rules.
 
     python3 tools/check_lists.py adoption-kit/diagnosis-sheet.csv adoption-kit/usage-tracker.csv
     python3 tools/check_lists.py examples/trial-n1/diagnosis-sheet.csv examples/trial-n1/usage-tracker.csv
+    python3 tools/check_lists.py examples/synthetic-rollout/ai-inventory.csv
+
+Three kinds of file: the diagnosis sheet and usage tracker (adoption kit) and
+the AI and agent inventory (governance/ai-inventory.md).
 
 Each file is recognized by its header. Exit code 0 = every rule passed,
 1 = at least one row broke a rule (each problem is printed with its rule ID),
@@ -19,6 +23,10 @@ OWNERS = {"dev team", "process owner", "enablement", "manager"}
 REPRODUCED = {"yes", "no", "not possible", "not applicable"}
 SOURCES = {"interview", "self-report", "usage log", "estimate"}
 YESNO = {"yes", "no"}
+KINDS = {"chat tool", "built-in assistant", "agent", "automation"}
+INV_STATUSES = {"found", "pilot", "approved", "retired"}
+DATA_CLASSES = {"public", "internal", "confidential", "personal", "restricted"}
+LEVELS = {"full review", "selective review", "human on the loop", "human-initiated"}
 
 DIAG_COLS = ["stall_id", "date", "tool", "team", "observation", "evidence", "ruled_out",
              "class_primary", "class_secondary", "reproduced", "users_affected", "sources",
@@ -27,7 +35,12 @@ TRACK_COLS = ["team", "tool", "access_given", "users_with_access", "first_real_u
               "users_regular", "status", "stall_class", "stall_ref", "next_action", "action_owner",
               "review_date", "source", "synthetic"]
 
+INV_COLS = ["system_id", "system", "purpose", "kind", "provider", "owner", "team", "status",
+            "data_classes", "oversight_level", "connections", "spec_ref", "obligations_ref",
+            "approved_on", "review_date", "retirement_criteria", "synthetic"]
+
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+SYSTEM_ID = re.compile(r"^A\d{2,}$")
 CODE = re.compile(r"^P\d{2,}$")
 
 
@@ -86,6 +99,34 @@ TRACK_RULES = [
      and not (r["status"] == "regular" and not r["first_real_use"])),
 ]
 
+# The inventory's rules check that each record is complete and consistent. None of
+# them rejects a row because it describes a problem: a found tool holding personal
+# data is exactly what the inventory must be able to show.
+ACTIVE = {"pilot", "approved"}
+INV_RULES = [
+    ("I1", "system_id is A followed by digits (A01, A02...)", lambda r: bool(SYSTEM_ID.match(r["system_id"]))),
+    ("I2", "kind is one of the four kinds", lambda r: r["kind"] in KINDS),
+    ("I3", "status is one of the four statuses", lambda r: r["status"] in INV_STATUSES),
+    ("I4", "data_classes lists one or more of the five data classes, separated by spaces",
+     lambda r: r["data_classes"] != "" and set(r["data_classes"].split()) <= DATA_CLASSES),
+    ("I5", "oversight_level is empty or one of the four levels, and set for an agent or automation in pilot or approved",
+     lambda r: r["oversight_level"] in LEVELS | {""}
+     and not (r["kind"] in {"agent", "automation"} and r["status"] in ACTIVE and r["oversight_level"] == "")),
+    ("I6", "owner is set unless the status is found", lambda r: r["status"] == "found" or r["owner"] != ""),
+    ("I7", "approved_on is YYYY-MM-DD, and set when the status is approved",
+     lambda r: (r["approved_on"] == "" or bool(DATE.match(r["approved_on"])))
+     and not (r["status"] == "approved" and r["approved_on"] == "")),
+    ("I8", "review_date is YYYY-MM-DD, and set unless the status is retired",
+     lambda r: (r["review_date"] == "" or bool(DATE.match(r["review_date"])))
+     and not (r["status"] != "retired" and r["review_date"] == "")),
+    ("I9", "an agent in pilot or approved points to its agent specification (spec_ref)",
+     lambda r: not (r["kind"] == "agent" and r["status"] in ACTIVE and r["spec_ref"] == "")),
+    ("I10", "a system in pilot or approved has retirement_criteria",
+     lambda r: not (r["status"] in ACTIVE and r["retirement_criteria"] == "")),
+    ("I11", "synthetic is yes or no", lambda r: r["synthetic"] in YESNO),
+]
+UNIQUE_RULE = ("I12", "each system_id appears once in the file")
+
 # File-level rule: real and example rows must never be mixed in one file.
 MIX_RULE = ("M1", "a file holds either real rows or synthetic rows, never both")
 
@@ -103,8 +144,10 @@ def check(path, disabled):
         kind, rules, key = "diagnosis sheet", DIAG_RULES, "stall_id"
     elif header == TRACK_COLS:
         kind, rules, key = "usage tracker", TRACK_RULES, "team"
+    elif header == INV_COLS:
+        kind, rules, key = "AI inventory", INV_RULES, "system_id"
     else:
-        print(f"{path}: columns do not match the diagnosis sheet or the usage tracker")
+        print(f"{path}: columns do not match the diagnosis sheet, the usage tracker or the AI inventory")
         return None
     problems = []
     for n, row in enumerate(rows, start=2):  # line 1 is the header
@@ -114,6 +157,10 @@ def check(path, disabled):
                 continue
             if not ok(row):
                 problems.append(f"{path}:{n} [{rid}] {row.get(key, '?')}: {desc}")
+    ids = [(r.get("system_id") or "").strip() for r in rows]
+    if kind == "AI inventory" and UNIQUE_RULE[0] not in disabled:
+        for d in sorted({i for i in ids if ids.count(i) > 1}):
+            problems.append(f"{path} [{UNIQUE_RULE[0]}] {d}: {UNIQUE_RULE[1]}")
     if MIX_RULE[0] not in disabled and len({(r.get("synthetic") or "").strip() for r in rows} & YESNO) > 1:
         problems.append(f"{path} [{MIX_RULE[0]}] {MIX_RULE[1]}")
     # The positive control: say how many rows were looked at, so an empty

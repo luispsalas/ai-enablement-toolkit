@@ -71,7 +71,7 @@ Ask about **one specific recent occasion**, not "usually". People describe what 
 12. What makes that easier, or safer, than [tool]?
 13. Is anyone on your team using a different AI tool for this? You don't need to name anyone.
 
-*Handle with care:* question 13 can surface **shadow AI**, people using unapproved tools instead. Record it as a pattern ("team uses an unapproved chat assistant for drafting"), never against a person. The point is that the approved tool lost to something easier. It is not a compliance finding about the interviewee.
+*Handle with care:* question 13 can surface **shadow AI**, people using unapproved tools instead. Record it as a pattern ("team uses an unapproved chat assistant for drafting"), never against a person. The point is that the approved tool lost to something easier. It is not a compliance finding about the interviewee. If the tool is not in the [AI and agent inventory](../governance/ai-inventory.md), add it there as `found`, again without naming anyone.
 
 ## 5. Help, prompts and trust (about 4 min)
 

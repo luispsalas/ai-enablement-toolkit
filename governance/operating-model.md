@@ -42,6 +42,7 @@ Pick a cadence and keep it ([`REPORTING.md`](../adoption-kit/REPORTING.md) sugge
 - Stalls by class, each pointing at its diagnosis rows;
 - Open feedback pages by priority, and any follow-up past its date;
 - Pilots against their stop rules;
+- The [AI and agent inventory](ai-inventory.md): systems found, added or retired since the last review, and rows past their review date. Enablement keeps the file; each row's owner keeps their row current;
 - Decisions needed, which go into the [leadership brief](../adoption-kit/leadership-brief-template.md) for the sponsor.
 
 Every decision taken goes into a short log with its date and owner, so a settled question is not reopened at the next review.

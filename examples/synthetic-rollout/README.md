@@ -6,10 +6,11 @@ The company is the same made-up one as in the [intake canvas](../../assessment/i
 
 ## What is in it
 
-| Folder | What it holds |
+| Folder or file | What it holds |
 |---|---|
 | `inputs-2026-11-02/` | The kit's files at the first review: usage tracker (3 rows), diagnosis sheet (4 rows) and 2 feedback pages |
 | `inputs-2026-11-16/` | The same files two weeks later: 4 tracker rows, 5 diagnosis rows, 3 feedback pages |
+| `ai-inventory.csv` | The company's [AI and agent inventory](../../governance/ai-inventory.md): five systems, including one found in use without approval. Check it with `python3 tools/check_lists.py examples/synthetic-rollout/ai-inventory.csv` |
 | `reports/` | What the generator wrote for each date, unedited: the status report, the draft leadership brief and the snapshot the next run compares against |
 
 ## What the second report shows

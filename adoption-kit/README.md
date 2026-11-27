@@ -63,7 +63,7 @@ The governance questions here are about **people**, not data:
 - **Consent first.** Every conversation opens with a one-paragraph consent script. Quoting someone word for word needs a second, separate yes.
 - **Anonymity by design.** Interviewees are codes (P01, P02), teams are role-level labels, and notes never hold names, employers or contact details. Notes stay private and never enter this repository.
 - **Not blaming the tool unfairly, or the person.** The reproduce-first test keeps a confusing tool from being filed as a broken one. People using unapproved AI tools are recorded as a pattern, never as a person.
-- **Fixed lists, checked.** Classes, statuses, owners and sources are fixed lists, checked by a small script ([`tools/check_lists.py`](../tools/check_lists.py)). Each of its 20 rules is tested twice: it must catch a planted error, and must miss it when switched off, which shows no other rule is doing its job.
+- **Fixed lists, checked.** Classes, statuses, owners and sources are fixed lists, checked by a small script ([`tools/check_lists.py`](../tools/check_lists.py)). Each of its rules (20 for the kit's two files, 32 in all) is tested twice: it must catch a planted error, and must miss it when switched off, which shows no other rule is doing its job.
 
 ## The first trial
 

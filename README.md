@@ -5,7 +5,7 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 20 of 27 items are available today. The other 7 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 21 of 28 items are available today. The other 7 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
@@ -24,7 +24,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 
 | Item | What it does | Status |
 |---|---|---|
-| [**Adoption review kit**](adoption-kit/) | Interview, four-way diagnosis (tool, workflow, training, habit), feedback page and usage tracker, with a 20-rule check script | **available** |
+| [**Adoption review kit**](adoption-kit/) | Interview, four-way diagnosis (tool, workflow, training, habit), feedback page and usage tracker, with a check script | **available** |
 | [**Structured reporting**](adoption-kit/REPORTING.md) | Priority block on feedback pages, status report and one-page leadership brief, written by hand or drafted by the report generator | **available** |
 | [**Report generator**](tools/build_reports.py) | Builds the status report and a draft leadership brief from the CSV files and feedback pages, lists what changed since the last report, and writes nothing if the files fail the checks · [synthetic sample →](examples/synthetic-rollout/) | **available** |
 | Usage-log guide | How to read a tool's own usage report, so tracker figures come from logs and not memory | next |
@@ -51,6 +51,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 |---|---|---|
 | [**Acceptable use of AI tools**](governance/acceptable-use.md) | What data may go into which kind of AI tool, what the output may be relied on for, and when to ask first, with a permitted route for every "no" | **available** |
 | AI tool evaluation scorecard | Does the tool work in *this* workflow? Broken versus confusing, before buying | planned |
+| [**AI and agent inventory**](governance/ai-inventory.md) | One row per AI system or agent: owner, data it touches, oversight level and status, in a CSV the check script validates. Holds the approved-tool list, and records tools found in use without approval | **available** |
 | [**AI oversight levels**](governance/oversight-levels.md) | How much human review an AI task needs, from full review to human-initiated, how to choose a level for each task, and how to tell whether the review is real | **available** |
 | [**AI operating model one-pager**](governance/operating-model.md) | Who decides what: roles and decision rights for AI tools, the cycle from idea to pilot to rollout, and what each review checks | **available** |
 | [**Governing AI agents: safety practices**](governance/agent-safety-practices.md) | Practices for any AI agent or automation that acts on its own, from design to use: defined outcomes, risk, security, traceability, timeliness, human control, privacy, cost, incidents and skills, with a pre-run checklist and sources | **available** |
@@ -95,7 +96,7 @@ Two passages from the [Applied AI Concepts](https://luispsalas.github.io/applied
 python3 tools/test_check_lists.py
 ```
 
-This proves the checker works: each of its 20 rules must catch a planted error, and miss it when switched off. It should end with `ALL PASSED`. Then check your own files before sending anything on:
+This proves the checker works: each of its 32 rules must catch a planted error, and miss it when switched off. It should end with `ALL PASSED`. Then check your own files before sending anything on:
 
 ```bash
 python3 tools/check_lists.py adoption-kit/diagnosis-sheet.csv adoption-kit/usage-tracker.csv
@@ -116,11 +117,11 @@ PRINCIPLES.md   the working principles behind the toolkit
 adoption-kit/   interview guide, diagnosis sheet, feedback template, usage tracker,
                 REPORTING.md, leadership brief template, and the two CSV templates
 literacy/       the guide to reviewing AI output, the English–Spanish glossary, why governance helps, the AI and data architecture terms, the prompt quick-reference card and the keep, practice or hand over map; deck/ holds the AI literacy decks (Spanish - Costa Rica and English - General, one HTML file each)
-governance/     the AI operating model one-pager, the AI agent specification template, the AI oversight levels page, the agent safety practices and the acceptable-use one-pager
+governance/     the AI operating model one-pager, the AI agent specification template, the AI oversight levels page, the agent safety practices, the acceptable-use one-pager and the AI and agent inventory (with its CSV template)
 assessment/     the business AI needs assessment, the use-case intake and prioritization canvas and the value baseline and check
 rollout/        the office hours and release briefing templates
-tools/          check_lists.py (20 rules), build_reports.py (the report generator) and their tests
-examples/       trial-n1/: the first trial (n = 1, real, anonymized); synthetic-rollout/: made-up data, two reports apart
+tools/          check_lists.py (32 rules), build_reports.py (the report generator) and their tests
+examples/       trial-n1/: the first trial (n = 1, real, anonymized); synthetic-rollout/: made-up data, two reports apart, and an AI inventory
 assets/         the banner
 ```
 

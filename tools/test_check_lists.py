@@ -2,6 +2,7 @@
 
     python3 tools/test_check_lists.py
 
+Covers the diagnosis sheet, the usage tracker and the AI inventory.
 For every rule: (1) a clean example file passes; (2) one seeded fault makes
 that rule fail, naming its ID; (3) with that rule switched off, the same fault
 is NOT caught, so no other rule does its job. All example rows are synthetic.
@@ -11,7 +12,7 @@ import csv, os, subprocess, sys, tempfile
 HERE = os.path.dirname(os.path.abspath(__file__))
 CHECK = os.path.join(HERE, "check_lists.py")
 sys.path.insert(0, HERE)
-from check_lists import DIAG_COLS, TRACK_COLS  # noqa: E402
+from check_lists import DIAG_COLS, TRACK_COLS, INV_COLS  # noqa: E402
 
 DIAG = [  # synthetic example rows, one per situation the rules cover
     dict(stall_id="S01", date="2026-10-09", tool="Example tool", team="example team",
@@ -46,6 +47,27 @@ TRACK = [
          stall_class="", stall_ref="", next_action="check access", action_owner="manager",
          review_date="2026-10-15", source="estimate", synthetic="yes"),
 ]
+INV = [
+    dict(system_id="A01", system="Example assistant", purpose="Drafts replies", kind="chat tool",
+         provider="Example provider", owner="owner a", team="team a", status="approved",
+         data_classes="internal personal", oversight_level="", connections="", spec_ref="",
+         obligations_ref="", approved_on="2026-09-01", review_date="2026-12-01",
+         retirement_criteria="Unused for three months, or replaced", synthetic="yes"),
+    dict(system_id="A02", system="Example agent", purpose="Updates records", kind="agent",
+         provider="Example provider", owner="owner b", team="team b", status="pilot",
+         data_classes="internal", oversight_level="full review", connections="CRM (write)",
+         spec_ref="agent-spec-a02.md", obligations_ref="", approved_on="", review_date="2026-11-15",
+         retirement_criteria="Pilot stop rules fire", synthetic="yes"),
+    dict(system_id="A03", system="Found tool", purpose="Rewording replies", kind="chat tool",
+         provider="Unknown", owner="", team="team a", status="found", data_classes="personal",
+         oversight_level="", connections="", spec_ref="", obligations_ref="", approved_on="",
+         review_date="2026-11-10", retirement_criteria="", synthetic="yes"),
+    dict(system_id="A04", system="Old automation", purpose="Tagged emails", kind="automation",
+         provider="Example provider", owner="owner c", team="team a", status="retired",
+         data_classes="internal", oversight_level="selective review", connections="", spec_ref="",
+         obligations_ref="", approved_on="2025-01-10", review_date="", retirement_criteria="Replaced by triage",
+         synthetic="yes"),
+]
 
 # rule -> (which file, row index, field, seeded bad value)
 SEEDS = {
@@ -69,7 +91,27 @@ SEEDS = {
     "T8": ("track", 0, "users_regular", "9"),
     "T9": ("track", 2, "first_real_use", "2026-09-20"),
     "M1": ("track", 2, "synthetic", "no"),
+    "I1": ("inv", 0, "system_id", "1"),
+    "I2": ("inv", 0, "kind", "bot"),
+    "I3": ("inv", 0, "status", "live"),
+    "I4": ("inv", 0, "data_classes", "internal secret"),
+    "I5": ("inv", 1, "oversight_level", ""),
+    "I6": ("inv", 0, "owner", ""),
+    "I7": ("inv", 0, "approved_on", ""),
+    "I8": ("inv", 0, "review_date", ""),
+    "I9": ("inv", 1, "spec_ref", ""),
+    "I10": ("inv", 1, "retirement_criteria", ""),
+    "I11": ("inv", 0, "synthetic", "maybe"),
+    "I12": ("inv", 1, "system_id", "A01"),
 }
+# Rules that check two things get a second seed, one per part.
+EXTRA_SEEDS = [
+    ("I4", ("inv", 0, "data_classes", "")),
+    ("I5", ("inv", 0, "oversight_level", "spot checks")),
+    ("I7", ("inv", 3, "approved_on", "10/01/2025")),
+    ("I8", ("inv", 1, "review_date", "mid-November")),
+]
+FILES = {"diag": (DIAG_COLS, DIAG), "track": (TRACK_COLS, TRACK), "inv": (INV_COLS, INV)}
 
 
 def write(path, cols, rows):
@@ -88,25 +130,28 @@ def run(paths, disable=None):
 def main():
     failures = 0
     with tempfile.TemporaryDirectory() as d:
-        dp, tp = os.path.join(d, "diag.csv"), os.path.join(d, "track.csv")
+        paths = {k: os.path.join(d, f"{k}.csv") for k in FILES}
+        dp = paths["diag"]
 
-        write(dp, DIAG_COLS, DIAG)
-        write(tp, TRACK_COLS, TRACK)
-        code, out = run([dp, tp])
-        ok = code == 0 and f"{len(DIAG)} row(s) checked" in out and f"{len(TRACK)} row(s) checked" in out
+        for k, (cols, rows) in FILES.items():
+            write(paths[k], cols, rows)
+        code, out = run(list(paths.values()))
+        ok = code == 0 and all(f"{len(rows)} row(s) checked" in out for _, rows in FILES.values()) \
+            and "AI inventory, 4 row(s)" in out
         print(f"clean example passes: {'ok' if ok else 'FAIL'}")
         failures += not ok
 
-        for rule, (which, i, field, bad) in SEEDS.items():
-            rows = [dict(r) for r in (DIAG if which == "diag" else TRACK)]
-            rows[i][field] = bad
-            write(dp, DIAG_COLS, rows if which == "diag" else DIAG)
-            write(tp, TRACK_COLS, rows if which == "track" else TRACK)
-            code_on, out_on = run([dp, tp])
+        for rule, (which, i, field, bad) in [*SEEDS.items(), *EXTRA_SEEDS]:
+            for k, (cols, base) in FILES.items():
+                rows = [dict(r) for r in base]
+                if k == which:
+                    rows[i][field] = bad
+                write(paths[k], cols, rows)
+            code_on, out_on = run(list(paths.values()))
             fires = code_on == 1 and f"[{rule}]" in out_on
-            code_off, _ = run([dp, tp], disable=rule)
+            code_off, _ = run(list(paths.values()), disable=rule)
             needed = code_off == 0
-            print(f"{rule}: fires on seeded fault {'ok' if fires else 'FAIL'} · "
+            print(f"{rule} ({field}={bad!r}): fires on seeded fault {'ok' if fires else 'FAIL'} · "
                   f"undetected when disabled {'ok' if needed else 'FAIL (another rule also catches it)'}")
             failures += (not fires) + (not needed)
 
