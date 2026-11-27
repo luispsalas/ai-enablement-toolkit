@@ -114,9 +114,9 @@ Python 3, standard library only. The documents are plain Markdown and CSV, so th
 PRINCIPLES.md   the working principles behind the toolkit
 adoption-kit/   interview guide, diagnosis sheet, feedback template, usage tracker,
                 REPORTING.md, leadership brief template, and the two CSV templates
-literacy/       the guide to reviewing AI output, the English–Spanish glossary and why governance helps; deck/ holds the AI literacy decks (Spanish - Costa Rica and English - General, one HTML file each)
-governance/     the AI operating model one-pager, the AI agent specification template and the AI oversight levels page
-assessment/     the business AI needs assessment and the use-case intake and prioritization canvas
+literacy/       the guide to reviewing AI output, the English–Spanish glossary, why governance helps and the AI and data architecture terms; deck/ holds the AI literacy decks (Spanish - Costa Rica and English - General, one HTML file each)
+governance/     the AI operating model one-pager, the AI agent specification template, the AI oversight levels page and the agent safety practices
+assessment/     the business AI needs assessment, the use-case intake and prioritization canvas and the value baseline and check
 tools/          check_lists.py (20 rules), build_reports.py (the report generator) and their tests
 examples/       trial-n1/: the first trial (n = 1, real, anonymized)
 assets/         the banner
