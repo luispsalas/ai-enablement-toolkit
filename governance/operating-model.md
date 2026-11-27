@@ -34,7 +34,7 @@ Fix owners follow the [diagnosis sheet](../adoption-kit/diagnosis-sheet.md): a *
 
 **Stop rules and the baseline are fixed before a pilot starts**, while nobody has a stake in continuing. The baseline is how the work performs today, recorded in the [value check](../assessment/value-check.md) and not changed afterwards. Stop rules are, for example: output needs checking so often that the old way is faster; the tool needs data the data owner has not cleared; nobody in the pilot uses it after the first two weeks.
 
-**Emergency stop and escalation.** Any tool or agent that acts on its own has a stop that named people can trigger, tried before it goes live (see its [specification](agent-spec-template.md)). When stopping is not your call, escalate instead of carrying the risk alone: write down what you saw and what you recommend, send it to the process owner, or to the sponsor if the process owner cannot be reached, and log their decision with its date.
+**Emergency stop and escalation.** Any tool or agent that acts on its own has a stop that named people can trigger, tried before it goes live (see its [specification](agent-spec-template.md)). When stopping is not your call, escalate instead of carrying the risk alone: write down what you saw and what you recommend, send it to the process owner, or to the sponsor if the process owner cannot be reached, and log their decision with its date. Work waiting on that decision stays on hold, and never goes ahead because nobody answered.
 
 ## 3. What each review checks
 

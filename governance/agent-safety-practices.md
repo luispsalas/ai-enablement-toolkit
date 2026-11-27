@@ -122,6 +122,7 @@ Removing a person from each step does not remove the need for a person in charge
 | Name one person who owns each agent and answers for what it does | Design |
 | Require a person's approval for irreversible actions, enforced by the system rather than requested in the instructions | Build |
 | Make sure approvers can see enough to judge, and can say no without penalty | Enable |
+| Decide in advance what happens when an approval request goes unanswered, and make the default to hold the work until a person decides | Build |
 | Watch for approval rates near 100%, a sign that review has become a formality | Use |
 | Log every change to an agent's permissions or review level, with its owner, date and reason | Use |
 
@@ -154,6 +155,7 @@ Agents change when their models, tools or data change, often without any visible
 |---|---|
 | Run the same quality checks on a fixed set of examples before launch and after every change | Build, Use |
 | Monitor for actions outside the agent's assigned scope, unusual volumes and repeated failures, and alert a named person | Use |
+| Judge whether a step worked from its results in the systems it changed, such as the records written or the messages sent, since an agent can report success while its output is wrong | Use |
 | When something goes wrong, contain it first, then work out whether the agent acted on its own or was manipulated, since the fix differs | Use |
 | Confirm the containment works before restarting the agent | Use |
 | Record near misses as well as incidents, and feed what was learned back into rules and checks | Use |

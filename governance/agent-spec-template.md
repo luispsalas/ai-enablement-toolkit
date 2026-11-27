@@ -42,7 +42,7 @@ Grant the least that the job needs, and list anything the platform does by defau
 | Decision | Who makes it | Allowed | Oversight |
 |---|---|---|---|
 
-**Allowed:** *alone*, *with approval*, or *never*. List what the agent must never do as rows of their own, so the boundary is written down and can be tested.
+**Allowed:** *alone*, *with approval*, or *never*. List what the agent must never do as rows of their own, so the boundary is written down and can be tested. For each *with approval* decision, say how long the approver has and what happens if nobody answers in time. The safe default holds the work until someone decides.
 
 **Oversight:** one of the four [AI oversight levels](oversight-levels.md): *full review* of every output before it takes effect · *selective review* of a sample and the cases that trip a rule · *human on the loop*, where a person watches the logs and alerts · *human-initiated*, where the system acts until someone stops it. Any decision involving money, access or a person's record starts at *full review*.
 
@@ -54,7 +54,7 @@ Grant the least that the job needs, and list anything the platform does by defau
 | Input that tries to steer the agent | | | |
 | A step that fails without an error | | | |
 
-Every path ends somewhere a person will see. A failure that is only logged, where nobody looks, has no path.
+Every path ends somewhere a person will see. A failure that is only logged, where nobody looks, has no path. Detect a step that fails without an error from its results where they land, such as the records it wrote, because the agent's own report will say it succeeded.
 
 **Emergency stop:** who can halt the agent, how fast the stop takes effect, what happens to work in progress, and when the stop was last tried. A stop that has never been tried is not known to work ([Know how to stop, and who decides](../PRINCIPLES.md#know-how-to-stop-and-who-decides)).
 
@@ -68,6 +68,7 @@ Name metrics from the [AI Observability Toolkit's metric list](https://github.co
 - Each failure path in section 5 was triggered on purpose and reached its destination.
 - Each limit in section 3 was tested by trying to exceed it, and each *never* in section 4 by trying to make the agent do it.
 - The emergency stop was triggered once and took effect as described.
+- One *with approval* decision was left unanswered past its deadline, and the work was held as described.
 - The business owner has read sections 1, 4 and 6 and agrees with them.
 - **Sign-off:** business owner, data owner, and the approver named in the operating model, each with a date.
 
@@ -102,4 +103,4 @@ Name metrics from the [AI Observability Toolkit's metric list](https://github.co
 | M13 Prompt Injection Detection Rate | the one injection attempt was flagged | 1 test |
 | M36 Error Rate, M37 Human Override Rate, M42 Audit Trail Coverage | not measured yet; every path does write a log line | none |
 
-7. **Before go-live.** Every failure path above was triggered on purpose and logged as intended. Still open before any real use: an independent check for names the rules miss, an alert for unexpected crashes, approval by named people rather than a shared password, and an emergency stop path, which the write-up does not describe.
+7. **Before go-live.** Every failure path above was triggered on purpose and logged as intended. Still open before any real use: an independent check for names the rules miss, an alert for unexpected crashes, approval by named people rather than a shared password, what happens to a request over $5,000 that nobody approves, and an emergency stop path. The write-up describes neither of the last two.
