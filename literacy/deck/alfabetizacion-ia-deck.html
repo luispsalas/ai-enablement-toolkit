@@ -8333,21 +8333,13 @@
               <div class="dim">
                 <div class="dnum">01</div>
                 <div>
-                  <div class="dname">Rol</div>
-                  <div class="ddesc">¿Qué perfil debe adoptar el modelo? Define el lente desde el que responde.</div>
-                  <div class="dex"><span class="lbl">Ej:</span>"Actúa como analista de riesgos…"</div>
-                </div>
-              </div>
-              <div class="dim">
-                <div class="dnum">02</div>
-                <div>
                   <div class="dname">Propósito</div>
                   <div class="ddesc">¿Para qué sirve la respuesta y quién la va a usar? El uso final cambia el contenido.</div>
                   <div class="dex"><span class="lbl">Ej:</span>"Para una presentación al directorio…"</div>
                 </div>
               </div>
               <div class="dim">
-                <div class="dnum">03</div>
+                <div class="dnum">02</div>
                 <div>
                   <div class="dname">Restricciones</div>
                   <div class="ddesc">¿Qué <em>no</em> debe incluir? Extensión, tono, formato, datos a excluir.</div>
@@ -8355,11 +8347,19 @@
                 </div>
               </div>
               <div class="dim">
-                <div class="dnum">04</div>
+                <div class="dnum">03</div>
                 <div>
                   <div class="dname">Formato de salida</div>
                   <div class="ddesc">¿Cómo debe presentarse el resultado? Tabla, lista, párrafo, correo, etc.</div>
                   <div class="dex"><span class="lbl">Ej:</span>"Devuelve una tabla con 3 columnas."</div>
+                </div>
+              </div>
+              <div class="dim">
+                <div class="dnum">04</div>
+                <div>
+                  <div class="dname">Rol (opcional)</div>
+                  <div class="ddesc">¿Desde qué perfil escribe y para quién? Ajusta el tono y el vocabulario. Las pruebas muestran que no mejora la exactitud de las respuestas factuales.</div>
+                  <div class="dex"><span class="lbl">Ej:</span>"Escribe como analista de riesgos, para el directorio…"</div>
                 </div>
               </div>
             </div>
@@ -8370,15 +8370,15 @@
               <div class="tmpl-title">Plantilla reutilizable</div>
               <div class="tmpl-tag">Copiar &amp; adaptar</div>
             </div>
-            <div class="tmpl-code"><span class="field">Rol:</span> Actúa como <span class="placeholder">[perfil profesional relevante]</span>.
-
-<span class="field">Contexto:</span> Trabajo en <span class="placeholder">[área / empresa / sector]</span>. El objetivo es <span class="placeholder">[propósito]</span>.
+            <div class="tmpl-code"><span class="field">Contexto:</span> Trabajo en <span class="placeholder">[área / empresa / sector]</span>. El objetivo es <span class="placeholder">[propósito]</span>.
 
 <span class="field">Tarea:</span> <span class="placeholder">[Instrucción clara y específica]</span>.
 
 <span class="field">Restricciones:</span> <span class="placeholder">[Formato, extensión, tono, qué no incluir]</span>.
 
-<span class="field">Resultado esperado:</span> <span class="placeholder">[Tabla, párrafos, lista, borrador, etc.]</span>.</div>
+<span class="field">Resultado esperado:</span> <span class="placeholder">[Tabla, párrafos, lista, borrador, etc.]</span>.
+
+<span class="field">Rol (opcional):</span> Escribe como <span class="placeholder">[perfil]</span>, para <span class="placeholder">[público]</span>.</div>
             <div class="tmpl-note">No es necesario completar todos los campos, solo los que evitan malinterpretaciones. Cuanto más sensible la tarea, más explícito debe ser el contexto.</div>
           </div>
         </div>

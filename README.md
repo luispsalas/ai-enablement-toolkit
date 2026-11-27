@@ -5,7 +5,7 @@
 **Reusable material for bringing AI tools into a team: finding out why people stop using them, building the literacy to use them well, and reporting what changed.**
 
 > [!NOTE]
-> **Work in progress.** 18 of 26 items are available today. The other 8 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
+> **Work in progress.** 19 of 26 items are available today. The other 7 are listed below with their status, so you can see where the toolkit is going. Each available item stands on its own.
 
 ## At a glance
 
@@ -41,7 +41,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 | [**English–Spanish glossary**](literacy/glossary.md) | 38 governance, literacy and adoption terms in five groups, with both usages recorded where they differ; the deck and the toolkit's pages share it | **available** |
 | [**AI and data architecture terms for business**](literacy/architecture-terms.md) | One-paragraph explanations of 36 architecture, data, development and organization terms business people meet in AI projects and vendor pitches, such as ontology, knowledge graph and medallion architecture | **available** |
 | [**Why governance helps**](literacy/why-governance-helps.md) | A plain-language case for AI governance, for people new to it: what it means, why it lets teams move faster and more safely, and what it is not | **available** |
-| Prompt quick-reference card | One page for any AI chat tool, for non-technical users: how to ask, how to check | planned |
+| [**Prompt quick-reference card**](literacy/prompt-card.md) | One page for any AI chat tool, for non-technical users: how to ask, and what to check before relying on the answer | **available** |
 | Training pre/post check | Did the session change what people do, not only what they know? Feeds the usage tracker | planned |
 
 ### Governance one-pagers
@@ -114,7 +114,7 @@ Python 3, standard library only. The documents are plain Markdown and CSV, so th
 PRINCIPLES.md   the working principles behind the toolkit
 adoption-kit/   interview guide, diagnosis sheet, feedback template, usage tracker,
                 REPORTING.md, leadership brief template, and the two CSV templates
-literacy/       the guide to reviewing AI output, the English–Spanish glossary, why governance helps and the AI and data architecture terms; deck/ holds the AI literacy decks (Spanish - Costa Rica and English - General, one HTML file each)
+literacy/       the guide to reviewing AI output, the English–Spanish glossary, why governance helps, the AI and data architecture terms and the prompt quick-reference card; deck/ holds the AI literacy decks (Spanish - Costa Rica and English - General, one HTML file each)
 governance/     the AI operating model one-pager, the AI agent specification template, the AI oversight levels page, the agent safety practices and the acceptable-use one-pager
 assessment/     the business AI needs assessment, the use-case intake and prioritization canvas and the value baseline and check
 rollout/        the office hours and release briefing templates

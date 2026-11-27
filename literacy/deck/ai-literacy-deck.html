@@ -8333,21 +8333,13 @@
               <div class="dim">
                 <div class="dnum">01</div>
                 <div>
-                  <div class="dname">Role</div>
-                  <div class="ddesc">Which profile should the model take on? It sets the lens it answers from.</div>
-                  <div class="dex"><span class="lbl">E.g.:</span>"Act as a risk analyst…"</div>
-                </div>
-              </div>
-              <div class="dim">
-                <div class="dnum">02</div>
-                <div>
                   <div class="dname">Purpose</div>
                   <div class="ddesc">What is the answer for, and who will use it? The end use changes the content.</div>
                   <div class="dex"><span class="lbl">E.g.:</span>"For a presentation to the board…"</div>
                 </div>
               </div>
               <div class="dim">
-                <div class="dnum">03</div>
+                <div class="dnum">02</div>
                 <div>
                   <div class="dname">Constraints</div>
                   <div class="ddesc">What should it <em>not</em> include? Length, tone, format, data to leave out.</div>
@@ -8355,11 +8347,19 @@
                 </div>
               </div>
               <div class="dim">
-                <div class="dnum">04</div>
+                <div class="dnum">03</div>
                 <div>
                   <div class="dname">Output format</div>
                   <div class="ddesc">How should the result be presented? A table, a list, a paragraph, an email, and so on.</div>
                   <div class="dex"><span class="lbl">E.g.:</span>"Return a table with 3 columns."</div>
+                </div>
+              </div>
+              <div class="dim">
+                <div class="dnum">04</div>
+                <div>
+                  <div class="dname">Role (optional)</div>
+                  <div class="ddesc">Who should it write as, and for whom? It shapes tone and vocabulary. Tests found it does not make factual answers more accurate.</div>
+                  <div class="dex"><span class="lbl">E.g.:</span>"Write as a risk analyst, for the board…"</div>
                 </div>
               </div>
             </div>
@@ -8370,15 +8370,15 @@
               <div class="tmpl-title">Reusable template</div>
               <div class="tmpl-tag">Copy &amp; adapt</div>
             </div>
-            <div class="tmpl-code"><span class="field">Role:</span> Act as <span class="placeholder">[relevant professional profile]</span>.
-
-<span class="field">Context:</span> I work in <span class="placeholder">[area / company / sector]</span>. The goal is <span class="placeholder">[purpose]</span>.
+            <div class="tmpl-code"><span class="field">Context:</span> I work in <span class="placeholder">[area / company / sector]</span>. The goal is <span class="placeholder">[purpose]</span>.
 
 <span class="field">Task:</span> <span class="placeholder">[A clear, specific instruction]</span>.
 
 <span class="field">Constraints:</span> <span class="placeholder">[Format, length, tone, what to leave out]</span>.
 
-<span class="field">Expected result:</span> <span class="placeholder">[Table, paragraphs, list, draft, and so on]</span>.</div>
+<span class="field">Expected result:</span> <span class="placeholder">[Table, paragraphs, list, draft, and so on]</span>.
+
+<span class="field">Role (optional):</span> Write as <span class="placeholder">[profile]</span>, for <span class="placeholder">[audience]</span>.</div>
             <div class="tmpl-note">You don't need to fill in every field, only the ones that prevent misunderstandings. The more sensitive the task, the more explicit the context should be.</div>
           </div>
         </div>
