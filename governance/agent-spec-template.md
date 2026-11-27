@@ -19,22 +19,30 @@ One page that a business owner and a delivery team fill in together before anyon
 - **The job:** one sentence on the task, for whom, and how often it comes up.
 - **Done well means:** the outcome a user would notice, with a number where one exists.
 - **Not for:** the nearby tasks it must not take on.
+- **Confirming the goal:** when it acts on someone's request, how it checks its reading of the request with that person before acting.
 
 ### 2. Inputs and data
 - **What it receives,** and from where.
 - **Whether the stored data it relies on can be trusted:** if it answers from a table, a report or a document index, name who owns that source and how current it must be. The AI Observability Toolkit's [Trust Tiers design](https://github.com/luispsalas/ai-observability-toolkit/blob/main/data-quality/trust-tiers.md) is one way to decide whether a dataset is fit to feed an AI system.
 - **Data it must never see,** following the team's acceptable-use rules, and **where that data is removed** (before the model, never after).
+- **Outside content it reads,** such as emails, web pages, documents and other tools' replies. Treat it as untrusted, because it can carry instructions meant to steer the agent. Say what the agent may still do after reading it ([Security](agent-safety-practices.md#security) in the safety practices).
 - **What it keeps:** logs, history, retention, and who can read them.
+- **The evidence record for each action:** which agent acted, on whose request, with what context, under which version of its rules, what it decided, who approved it, what enforced the limit, and the outcome. Also say what it must not keep, such as personal data the record does not need.
 
 ### 3. Tools and permissions
 | Tool or system | Read or write | Limits (amount, rate, scope) | Who granted it |
 |---|---|---|---|
 
-Grant the least that the job needs, and list anything the platform does by default that was switched off.
+Grant the least that the job needs, and list anything the platform does by default that was switched off. Include every outside service or channel it can reach, such as email, a web search or another company's system.
+
+- **Its identity:** the account the agent acts as, which is its own and never a person's or a shared login, who created it, and when its credentials expire.
+- **Where the limits are enforced:** by permissions, approvals and settings outside the model. A limit that lives only in the agent's instructions can be overridden by content the agent reads.
 
 ### 4. Decisions and handoffs
-| Decision | Who makes it | Oversight |
-|---|---|---|
+| Decision | Who makes it | Allowed | Oversight |
+|---|---|---|---|
+
+**Allowed:** *alone*, *with approval*, or *never*. List what the agent must never do as rows of their own, so the boundary is written down and can be tested.
 
 **Oversight:** one of the four [AI oversight levels](oversight-levels.md): *full review* of every output before it takes effect · *selective review* of a sample and the cases that trip a rule · *human on the loop*, where a person watches the logs and alerts · *human-initiated*, where the system acts until someone stops it. Any decision involving money, access or a person's record starts at *full review*.
 
@@ -48,6 +56,8 @@ Grant the least that the job needs, and list anything the platform does by defau
 
 Every path ends somewhere a person will see. A failure that is only logged, where nobody looks, has no path.
 
+**Emergency stop:** who can halt the agent, how fast the stop takes effect, what happens to work in progress, and when the stop was last tried. A stop that has never been tried is not known to work ([Know how to stop, and who decides](../PRINCIPLES.md#know-how-to-stop-and-who-decides)).
+
 ### 6. Success metrics
 | Metric | Target | How it is measured | Sample and source |
 |---|---|---|---|
@@ -56,7 +66,8 @@ Name metrics from the [AI Observability Toolkit's metric list](https://github.co
 
 ### 7. Before go-live
 - Each failure path in section 5 was triggered on purpose and reached its destination.
-- Each limit in section 3 was tested by trying to exceed it.
+- Each limit in section 3 was tested by trying to exceed it, and each *never* in section 4 by trying to make the agent do it.
+- The emergency stop was triggered once and took effect as described.
 - The business owner has read sections 1, 4 and 6 and agrees with them.
 - **Sign-off:** business owner, data owner, and the approver named in the operating model, each with a date.
 
@@ -71,12 +82,13 @@ Name metrics from the [AI Observability Toolkit's metric list](https://github.co
 3. **Tools and permissions.** A hosted model that only classifies text, reached only after the privacy gate. The workflow writes one log line per request to a file.
 4. **Decisions and handoffs.**
 
-| Decision | Who makes it | Oversight |
-|---|---|---|
-| Category, urgency, summary | the model | human on the loop: a person reads the log |
-| Whether personal data is present | fixed rules, no AI | a suspected name goes to a person |
-| Approval of $5,000 or more | a named approver | full review |
-| Approval below $5,000 | the same fixed rule, no AI | no approver; logged (the write-up states only the $5,000 threshold) |
+| Decision | Who makes it | Allowed | Oversight |
+|---|---|---|---|
+| Category, urgency, summary | the model | alone | human on the loop: a person reads the log |
+| Whether personal data is present | fixed rules, no AI | alone | a suspected name goes to a person |
+| Approval of $5,000 or more | a named approver | with approval | full review |
+| Approval below $5,000 | the same fixed rule, no AI | alone | no approver; logged (the write-up states only the $5,000 threshold) |
+| Approve any request, or see the amount | the model | never | the model receives neither |
 
 5. **Failure paths.** A missing vendor or a non-numeric amount is rejected before any model call. A bad model reply, or the model being unavailable, is logged with a status and a reason, never lost. A request telling the model to mark it approved was flagged, and routing still used the real amount, which the model never sees. *Gap found in the lab:* no alert when something unexpected crashes.
 6. **Success metrics** (measured in the lab, small samples):
@@ -86,8 +98,8 @@ Name metrics from the [AI Observability Toolkit's metric list](https://github.co
 | M09 Answer Correctness (category) | 9/10 clear-cut, 2/5 ambiguous | 15 requests, labels confirmed by the owner |
 | M09 Answer Correctness (urgency) | 14/15 | same 15 requests |
 | M27 PII Detection Recall (gate) | 0 of 6 planted cases reached the model with the gate on | 6 synthetic requests |
-| M18 Latency (P50/P95/P99) | ~1.2 s per request, about 95% of it the model call | lab runs |
+| M18 Latency (P50/P95/P99) | ~1.2 s per request, about 95% of it the model call. A typical value, not the percentiles M18 asks for | a small number of lab runs |
 | M13 Prompt Injection Detection Rate | the one injection attempt was flagged | 1 test |
 | M36 Error Rate, M37 Human Override Rate, M42 Audit Trail Coverage | not measured yet; every path does write a log line | none |
 
-7. **Before go-live.** Every failure path above was triggered on purpose and logged as intended. Still open before any real use: an independent check for names the rules miss, an alert for unexpected crashes, and approval by named people rather than a shared password.
+7. **Before go-live.** Every failure path above was triggered on purpose and logged as intended. Still open before any real use: an independent check for names the rules miss, an alert for unexpected crashes, approval by named people rather than a shared password, and an emergency stop path, which the write-up does not describe.

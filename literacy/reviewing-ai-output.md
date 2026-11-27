@@ -19,7 +19,7 @@ Background on why this happens is in the wiki: [Hallucination](https://luispsala
 | **Hardened hedges** | The source says *may*, *suggests* or *early results*; the output says *shows* or *proves* | Compare the strength of each key claim with the wording of the source |
 | **A paraphrase in quotation marks** | Words in quotation marks that are close to, but not exactly, what the source says | Search the cited page for the exact words. Check the page that is cited, not any page that happens to contain them |
 | **Numbers that do not hold up** | A total that does not add up, a percentage without its base, mixed units | Recompute one figure by hand and ask what each number counts |
-| **Labels or order swapped** | Option A and B reversed, before and after inverted, actions credited to the wrong party | Check every labeled list or sequence against the original |
+| **Labels or order swapped** | Option A and B reversed, before and after inverted, actions credited to the wrong party, or one word flipping a rule, such as *covered* where the source says *not covered* | Check every labeled list or sequence against the original, and read each rule's key word against the source |
 | **A dropped condition** | A summary that keeps the claim and loses the *only if*, *except* or *in this sample* | Read the source's limits and conditions, then look for them in the summary |
 | **Agreement with you** | The output repeats your framing, or changes its answer when you push back | Ask the question without revealing your view, or ask it the opposite way |
 | **A clean result that saw nothing** | *No issues found*, *0 errors*, *all checks passed* | Before trusting it, give the same check one case you know is wrong. If it misses that case, the clean result means nothing |
@@ -31,9 +31,9 @@ Background on why this happens is in the wiki: [Hallucination](https://luispsala
 
 Checking everything is slow, and people who try usually end up skimming. Check what the decision depends on.
 
-1. **Find the load-bearing claims.** Mark the few facts, figures or sources that the decision or the next step depends on. Those get checked; the rest gets read.
+1. **Find the load-bearing claims.** Mark the few facts, figures or sources that the decision or the next step depends on. Those get checked; the rest gets read. Choose them by what depends on them, never by which ones look suspicious, since AI errors rarely look suspicious.
 2. **Check against the source, never against the output.** Asking the same AI whether it was right is not a check. Open the source, run the code, recompute the number.
-3. **Use the table above as a checklist** for the load-bearing claims, especially the patterns that look most like correct work.
+3. **Use the table above as a checklist** for the load-bearing claims, especially the patterns that look most like correct work. Then ask **what is missing**: a condition, an exception, a case or an option the source has and the output left out. An omission leaves nothing on the page to catch.
 4. **Say what you verified and what you did not.** When you pass the work on, mark which claims you checked and which you are taking on trust.
 5. **Record what you found.** A repeated error is useful evidence: it may be a tool problem for the developers, or a training need for the people using it. The [adoption review kit](../adoption-kit/) has a way to tell the two apart.
 

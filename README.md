@@ -55,7 +55,7 @@ Status: **available** · **next** (the next batch being built) · **planned**. N
 | [**AI oversight levels**](governance/oversight-levels.md) | How much human review an AI task needs, from full review to human-initiated, how to choose a level for each task, and how to tell whether the review is real | **available** |
 | [**AI operating model one-pager**](governance/operating-model.md) | Who decides what: roles and decision rights for AI tools, the cycle from idea to pilot to rollout, and what each review checks | **available** |
 | [**Governing AI agents: safety practices**](governance/agent-safety-practices.md) | Practices for any AI agent or automation that acts on its own, from design to use: defined outcomes, risk, security, traceability, timeliness, human control, privacy, cost, incidents and skills, with a pre-run checklist and sources | **available** |
-| [**AI agent specification template**](governance/agent-spec-template.md) | One page a delivery team can build from: goal and owner, data it must never see, tools and permissions, what goes to a person, failure paths and success metrics, with an example | **available** |
+| [**AI agent specification template**](governance/agent-spec-template.md) | One page a delivery team can build from: goal and owner, data it must never see, tools and permissions, what it may do alone, with approval or never, failure paths with an emergency stop, and success metrics, with an example | **available** |
 
 ### Assessment
 

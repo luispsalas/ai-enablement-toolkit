@@ -14,8 +14,10 @@ One card per idea for using AI, filled in before anyone builds. It answers two q
 ### 1. The idea
 - **Problem:** what goes wrong or takes too long today, in one or two sentences.
 - **Who and how often:** the team, how many people, how many times a day or week.
+- **Affected people:** who the output reaches or decides about beyond the people using the tool, such as customers, applicants or colleagues in another team.
 - **Today's cost:** time, errors or delays, and whether that figure was measured, reported or estimated.
 - **Data and systems:** what the AI would read, what it would write, and in which systems.
+- **If it goes wrong:** what one wrong output would cost, and who would bear it.
 - **Proposed by · process owner · date**
 
 ### 2. Stop check (answer before scoring)
@@ -47,6 +49,8 @@ Score each line 1 (low), 2 or 3 (high), and write the evidence beside it. A scor
 ### 4. Decision
 **Pilot · park · stop**, with the reason, the process owner who decided, the date, and the next review date. The decision goes in the team's decision log.
 
+**Fill in a new card when the scope changes:** new data, new users, a new team, or a new action the AI can take, such as writing where it used to only suggest. A changed idea is a new idea, and the earlier decision does not cover it.
+
 ## Example: three ideas from a customer service and sales team
 
 *Illustrative only. A made-up mid-size company that runs sales and service in a CRM; the people, volumes and scores are invented to show the canvas in use.*
@@ -55,7 +59,9 @@ Score each line 1 (low), 2 or 3 (high), and write the evidence beside it. A scor
 |---|---|---|---|
 | **Problem** | Agents read and route every incoming support email by hand | Sales reps work leads in arrival order, not by fit | Customers who look likely to cancel are offered nothing until they call |
 | **Who and how often** | 12 agents, about 300 emails a day (estimated) | 6 reps, about 40 leads a day (reported) | Account managers, a few cases a week |
+| **Affected people** | Customers waiting for a reply | Prospects, who may wait longer if scored low | Customers, and the company's revenue |
 | **Data and systems** | Email text and the customer record; writes a category, urgency and queue in the CRM | Lead form fields and past won and lost deals | Usage history; would write and send an offer |
+| **If it goes wrong** | A ticket waits in the wrong queue until an agent moves it | A good prospect is contacted late | A discount reaches the wrong customer, or the right one at the wrong price |
 | **Stop check** | Passes | **Fails:** sales and marketing define a qualified lead differently, so nobody can say what a correct score is | **Fails:** a wrong offer reaches the customer and moves money, with no way to take it back |
 | **Value** | 3: about 300 reads a day moved off agents | 3: reps start with the best leads | n/a |
 | **Feasibility** | 3, 3, 2: text and CRM API are available; categories exist but need written definitions | n/a | n/a |
@@ -63,3 +69,5 @@ Score each line 1 (low), 2 or 3 (high), and write the evidence beside it. A scor
 | **Decision** | **Pilot** with two agents for four weeks; write the category definitions first | **Park** until sales and marketing agree a written definition; review next quarter | **Stop as designed.** Redesign as a drafted offer that an account manager approves, then score again |
 
 **What the example shows:** of three reasonable ideas, one goes ahead, one waits for a business decision that no model can make, and one comes back in a safer form. The triage pilot would next be written up with the [agent specification template](../governance/agent-spec-template.md), whose own example is a triage workflow of the same shape.
+
+**A fourth idea, with regulated data.** A small clinic proposes that AI summarize patients' visit notes for the doctor. The **affected people** are patients, and **if it goes wrong**, a doctor could act on a summary that dropped an allergy or a dose. The stop check's data question decides first. Health records are *restricted* under the [acceptable-use one-pager](../governance/acceptable-use.md), so the idea is set aside until the data owner names a system allowed to hold them, and the law that applies to health data is checked. If it comes back, the summary goes to the doctor for full review, never into the record on its own.
