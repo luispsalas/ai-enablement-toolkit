@@ -41,7 +41,7 @@ When an AI system only drafts, a person reviews the draft. When it acts (sends, 
 
 AI mistakes rarely look like mistakes: the output is fluent and confident whether or not it is right. The ability to judge AI output is therefore the skill an organization most needs to keep, and it improves with deliberate practice, not with exposure. Check the claims a decision depends on against the source, and choose them by their consequence, never by how suspicious they look.
 
-*In the toolkit:* [reviewing AI output](literacy/reviewing-ai-output.md) lists where errors hide and includes a drill to build the skill.
+*In the toolkit:* [reviewing AI output](literacy/reviewing-ai-output.md) lists where errors hide and includes a drill to build the skill, and the [keep, practice or hand over](literacy/keep-practice-hand-over.md) map decides which skills a team keeps sharp.
 
 ## Literacy is about behavior
 
