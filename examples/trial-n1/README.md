@@ -6,9 +6,9 @@ The kit's first real use, on 2026-10-09: one person, interviewed in a chat by an
 
 | File | What it is |
 |---|---|
-| `diagnosis-sheet.csv` | 2 rows: `S01` undetermined (usage changes that cannot be explained without a history), `S02` workflow with habit second (add-ons replaced, inventory unclear) |
+| `diagnosis-sheet.csv` | 2 rows: `S01` training with tool second (a usage view by model exists but had not been shown, and it covers fixed windows only; classed 2026-11-27, first recorded as undetermined), `S02` workflow with habit second (add-ons replaced, inventory unclear) |
 | `usage-tracker.csv` | 2 rows, self-reported, dates accurate to the month |
-| `feedback-01.md` | The one feedback page, still open: its follow-up waits for the next model launch |
+| `feedback-01.md` | The one feedback page, still open: the view is found, and the follow-up compares figures recorded before and after the next model launch |
 | `leadership-brief.md` | The brief template filled by hand from the three files above |
 | `status-report-2026-10-10.md` | The status report as `tools/build_reports.py` generated it from the same three files, unedited. It predates report snapshots, so its *What changed* section still says to write it by hand |
 

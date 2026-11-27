@@ -2,6 +2,8 @@
 
 *Filled by hand from this folder's `usage-tracker.csv`, `diagnosis-sheet.csv` and `feedback-01.md`, to show the template in use. Real data, not synthetic.*
 
+*Update, 2026-11-27: this brief records what was known on 2026-10-10. Since then `S01` has been classed **training**, with tool second. A usage view by model exists (the Models tab of `/stats`) that the user had not been shown, so decision 2 below is answered. The view covers fixed windows only, which is the tool gap.*
+
 **Evidence base:** 1 interview, 1 one-person team, source: self-report. **n = 1, and the person interviewed set up the tool being studied.** This shows the method runs end to end; it says nothing about how common any finding is.
 
 ## 1. What is working
